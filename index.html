@@ -296,6 +296,25 @@
       color: #666;
     }
 
+    .game-cover {
+      width: 100%;
+      max-height: 280px;
+      object-fit: contain;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+      border: 1px solid #2a2a3a;
+      transition: transform 0.3s ease;
+    }
+
+    .game-card:hover .game-cover { transform: scale(1.03); }
+
+    .game-credit {
+      font-size: 0.6rem;
+      color: #444;
+      margin-top: 0.8rem;
+      font-style: italic;
+    }
+
     /* Stats section */
     .stats {
       display: grid;
@@ -668,6 +687,7 @@
       <a href="#catalog" class="nav-link">Catalog</a>
       <a href="#timeline" class="nav-link">Timeline</a>
       <a href="#machines" class="nav-link">Machines</a>
+      <a href="#accessories" class="nav-link">Gear</a>
       <a href="#lynx" class="nav-link">Lynx</a>
       <a href="#people" class="nav-link">People</a>
       <a href="#firsts" class="nav-link">Firsts</a>
@@ -715,51 +735,103 @@
 
     <div class="games-grid">
       <div class="game-card">
+        <img src="img/summer-games.png" alt="Summer Games box art" class="game-cover">
         <div class="game-year">1984</div>
         <div class="game-title">Summer Games</div>
         <div class="game-platform">C64 • Apple II • Atari • Sega</div>
         <div class="game-desc">The one that started it all. Eight Olympic events, fluid animation, and a medal ceremony that made you feel like a champion. The joystick waggler that launched a franchise.</div>
         <span class="game-genre">Sports / Olympic</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
       </div>
 
       <div class="game-card">
+        <img src="img/summer-games-2.png" alt="Summer Games II box art" class="game-cover">
+        <div class="game-year">1985</div>
+        <div class="game-title">Summer Games II</div>
+        <div class="game-platform">C64 • Apple II • Atari • Amiga</div>
+        <div class="game-desc">Eight new events: triple jump, rowing, javelin, equestrian, kayaking, cycling, fencing, and high jump. The sequel that proved the format had legs.</div>
+        <span class="game-genre">Sports / Olympic</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+      </div>
+
+      <div class="game-card">
+        <img src="img/winter-games-amiga.png" alt="Winter Games box art" class="game-cover">
         <div class="game-year">1985</div>
         <div class="game-title">Winter Games</div>
-        <div class="game-platform">C64 • Apple II • Atari • NES</div>
+        <div class="game-platform">C64 • Apple II • Atari • Amiga • NES</div>
         <div class="game-desc">Hot Dog Aerials. Biathlon. Figure Skating with a 6.0 perfect score system. Seven events of frozen glory on 8-bit hardware that had no business looking this good.</div>
         <span class="game-genre">Sports / Olympic</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
       </div>
 
       <div class="game-card">
+        <img src="img/world-games.png" alt="World Games box art" class="game-cover">
         <div class="game-year">1986</div>
         <div class="game-title">World Games</div>
-        <div class="game-platform">C64 • Amiga • Atari ST</div>
+        <div class="game-platform">C64 • Amiga • Atari ST • Apple IIgs</div>
         <div class="game-desc">Bull riding in Mexico. Cliff diving in Acapulco. Sumo in Japan. Caber toss in Scotland. Eight events from eight countries — before the internet made the world small.</div>
         <span class="game-genre">Sports / International</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
       </div>
 
       <div class="game-card">
+        <img src="img/california-games.png" alt="California Games box art" class="game-cover">
         <div class="game-year">1987</div>
         <div class="game-title">California Games</div>
         <div class="game-platform">C64 • NES • Lynx • Sega • DOS</div>
         <div class="game-desc">Hacky sack. BMX. Surfing. Half-pipe skateboarding. Six events of pure SoCal sunshine. The best-selling game in the series — and the one everyone remembers.</div>
         <span class="game-genre">Sports / Lifestyle</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
       </div>
 
       <div class="game-card">
+        <img src="img/california-games-2.png" alt="California Games II box art" class="game-cover">
+        <div class="game-year">1990</div>
+        <div class="game-title">California Games II</div>
+        <div class="game-platform">DOS • SNES • Sega Master System</div>
+        <div class="game-desc">Hang gliding. Jet surfing. Snowboarding before snowboarding was an Olympic sport. The sequel that proved California never goes out of style.</div>
+        <span class="game-genre">Sports / Extreme</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+      </div>
+
+      <div class="game-card">
+        <img src="img/impossible-mission.png" alt="Impossible Mission box art" class="game-cover">
         <div class="game-year">1984</div>
         <div class="game-title">Impossible Mission</div>
         <div class="game-platform">C64 • Atari 7800 • Sega • NES</div>
         <div class="game-desc">"Another visitor. Stay a while... stay FOREVER!" Professor Elvin Atombender's tower. 36 rooms. Puzzles. Platforming. The voice synthesis that haunted a generation.</div>
         <span class="game-genre">Action / Puzzle</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
       </div>
 
       <div class="game-card">
+        <img src="img/impossible-mission-2.png" alt="Impossible Mission II box art" class="game-cover">
+        <div class="game-year">1988</div>
+        <div class="game-title">Impossible Mission II</div>
+        <div class="game-platform">C64 • Spectrum • Amiga • DOS • NES</div>
+        <div class="game-desc">"Elvin Atombender is back in power." Eight towers. New puzzles. New security systems. The sequel that brought the mad professor back from the dead.</div>
+        <span class="game-genre">Action / Puzzle</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+      </div>
+
+      <div class="game-card">
+        <img src="img/pitstop.png" alt="Pit Stop box art" class="game-cover">
+        <div class="game-year">1983</div>
+        <div class="game-title">Pit Stop</div>
+        <div class="game-platform">C64 • ColecoVision</div>
+        <div class="game-desc">The original. Formula racing with actual pit stops — tire changes and fuel management. Strategy meets speed. The foundation for what came next.</div>
+        <span class="game-genre">Racing / Strategy</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+      </div>
+
+      <div class="game-card">
+        <img src="img/pitstop-2.png" alt="Pitstop II box art" class="game-cover">
         <div class="game-year">1984</div>
         <div class="game-title">Pitstop II</div>
         <div class="game-platform">C64 • Atari • ColecoVision</div>
         <div class="game-desc">Split-screen racing before split-screen racing was cool. Tire wear. Pit strategy. Two-player head-to-head on a Commodore 64. Revolutionary.</div>
         <span class="game-genre">Racing / Strategy</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
       </div>
 
       <div class="game-card">
@@ -771,11 +843,13 @@
       </div>
 
       <div class="game-card">
+        <img src="img/temple-of-apshai.png" alt="Temple of Apshai box art" class="game-cover">
         <div class="game-year">1979</div>
         <div class="game-title">Temple of Apshai</div>
         <div class="game-platform">TRS-80 • Apple II • C64 • Atari</div>
         <div class="game-desc">One of the first graphical RPGs ever made. Dungeon crawling before Diablo was a concept. Room descriptions read from the manual. Pure imagination fuel.</div>
         <span class="game-genre">RPG / Dungeon Crawler</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
       </div>
 
       <div class="game-card">
@@ -787,11 +861,21 @@
       </div>
 
       <div class="game-card">
-        <div class="game-year">1989</div>
-        <div class="game-title">California Games II</div>
-        <div class="game-platform">DOS • SNES • Sega Master System</div>
-        <div class="game-desc">Hang gliding. Jet surfing. Snowboarding before snowboarding was an Olympic sport. The sequel that proved California never goes out of style.</div>
-        <span class="game-genre">Sports / Extreme</span>
+        <div class="game-year">1990</div>
+        <div class="game-title">Chip's Challenge</div>
+        <div class="game-platform">Lynx • DOS • Windows</div>
+        <div class="game-desc">149 levels of pure puzzle addiction. Collect chips, avoid monsters, find the exit. Shipped with Windows Entertainment Pack and consumed millions of office hours worldwide.</div>
+        <span class="game-genre">Puzzle / Logic</span>
+      </div>
+
+      <div class="game-card">
+        <img src="img/street-sports-soccer.png" alt="Street Sports Soccer box art" class="game-cover">
+        <div class="game-year">1988</div>
+        <div class="game-title">Street Sports Soccer</div>
+        <div class="game-platform">C64 • Apple II • DOS</div>
+        <div class="game-desc">Street-level soccer on cracked asphalt and dirt lots. Pick your team from the neighborhood. Part of the Street Sports series that made sandlot competition a genre.</div>
+        <span class="game-genre">Sports / Street</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
       </div>
 
       <div class="game-card">
@@ -803,11 +887,102 @@
       </div>
 
       <div class="game-card">
-        <div class="game-year">1990</div>
-        <div class="game-title">Chip's Challenge</div>
-        <div class="game-platform">Lynx • DOS • Windows</div>
-        <div class="game-desc">149 levels of pure puzzle addiction. Collect chips, avoid monsters, find the exit. Shipped with Windows Entertainment Pack and consumed millions of office hours worldwide.</div>
-        <span class="game-genre">Puzzle / Logic</span>
+        <img src="img/super-cycle.png" alt="Super Cycle box art" class="game-cover">
+        <div class="game-year">1986</div>
+        <div class="game-title">Super Cycle</div>
+        <div class="game-platform">C64 • Amstrad • DOS</div>
+        <div class="game-desc">Motorcycle racing with a behind-the-rider perspective. Lean into curves, dodge traffic, hit the throttle. Pure arcade speed on home hardware.</div>
+        <span class="game-genre">Racing / Arcade</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+      </div>
+
+      <div class="game-card">
+        <img src="img/4x4-offroad-racing.png" alt="4x4 Off-Road Racing box art" class="game-cover">
+        <div class="game-year">1988</div>
+        <div class="game-title">4x4 Off-Road Racing</div>
+        <div class="game-platform">C64 • DOS • Amiga • Atari ST</div>
+        <div class="game-desc">Baja desert, mud trails, and monster trucks. Vehicle customization before it was standard. Win a Kawasaki KDX200 — details inside. Peak 80s box marketing.</div>
+        <span class="game-genre">Racing / Off-Road</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+      </div>
+
+      <div class="game-card">
+        <img src="img/destroyer.png" alt="Destroyer box art" class="game-cover">
+        <div class="game-year">1986</div>
+        <div class="game-title">Destroyer</div>
+        <div class="game-platform">C64 • DOS • Apple II</div>
+        <div class="game-desc">Naval warfare simulation. Command a destroyer through WWII scenarios. Radar, sonar, depth charges. Epyx proving they could do serious military sims alongside sports.</div>
+        <span class="game-genre">Simulation / Military</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+      </div>
+
+      <div class="game-card">
+        <img src="img/international-karate.png" alt="International Karate box art" class="game-cover">
+        <div class="game-year">1985</div>
+        <div class="game-title">International Karate</div>
+        <div class="game-platform">C64 • Spectrum • Amstrad • Atari</div>
+        <div class="game-desc">One-on-one martial arts with exotic backgrounds. Scored by judges like real competition. Before Street Fighter II, this was how you settled it on 8-bit.</div>
+        <span class="game-genre">Fighting / Martial Arts</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+      </div>
+
+      <div class="game-card">
+        <img src="img/hot-wheels.png" alt="Hot Wheels box art" class="game-cover">
+        <div class="game-year">1987</div>
+        <div class="game-title">Hot Wheels</div>
+        <div class="game-platform">C64 • Spectrum • Amstrad</div>
+        <div class="game-desc">Mattel-licensed racing on miniature tracks. Brand integration done right. Epyx was doing licensed IP games before it became the entire industry's business model.</div>
+        <span class="game-genre">Racing / Licensed</span>
+        <div class="game-credit">Box art © Epyx Inc. / Mattel. Historical reference.</div>
+      </div>
+
+      <div class="game-card">
+        <img src="img/gi-joe.png" alt="G.I. Joe box art" class="game-cover">
+        <div class="game-year">1985</div>
+        <div class="game-title">G.I. Joe: A Real American Hero</div>
+        <div class="game-platform">C64 • Apple II • Atari</div>
+        <div class="game-desc">Hasbro-licensed action. Command the G.I. Joe team against Cobra. Another example of Epyx turning toy brands into playable games on home computers.</div>
+        <span class="game-genre">Action / Licensed</span>
+        <div class="game-credit">Box art © Epyx Inc. / Hasbro. Historical reference.</div>
+      </div>
+
+      <div class="game-card">
+        <img src="img/armor-assault.png" alt="Armor Assault box art" class="game-cover">
+        <div class="game-year">1982</div>
+        <div class="game-title">Armor Assault</div>
+        <div class="game-platform">Atari 400/800</div>
+        <div class="game-desc">Hex-based tank warfare strategy. "Computer Games Thinkers Play." Early Epyx before the sports era — proving they could do deep strategy on home hardware.</div>
+        <span class="game-genre">Strategy / Wargame</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+      </div>
+
+      <div class="game-card">
+        <img src="img/alien-garden.png" alt="Alien Garden box art" class="game-cover">
+        <div class="game-year">1982</div>
+        <div class="game-title">Alien Garden</div>
+        <div class="game-platform">Atari 400/800 • C64</div>
+        <div class="game-desc">Abstract strategy in an alien ecosystem. Geometric creatures, procedural behavior. An experimental art-game decades before "indie games" existed as a concept.</div>
+        <span class="game-genre">Strategy / Experimental</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+      </div>
+      <div class="game-card">
+        <img src="img/starfleet-orion.png" alt="Starfleet Orion manual" class="game-cover">
+        <div class="game-year">1978</div>
+        <div class="game-title">Starfleet Orion</div>
+        <div class="game-platform">Commodore PET • TRS-80 • Apple II</div>
+        <div class="game-desc">The very first game published by Automated Simulations — before Epyx even existed. Space fleet tactical combat on 8K of RAM. Where it all began.</div>
+        <span class="game-genre">Strategy / Sci-Fi</span>
+        <div class="game-credit">Cover © Automated Simulations. Historical reference.</div>
+      </div>
+
+      <div class="game-card">
+        <img src="img/sub-battle-simulator.png" alt="Sub Battle Simulator box art" class="game-cover">
+        <div class="game-year">1987</div>
+        <div class="game-title">Sub Battle Simulator</div>
+        <div class="game-platform">IBM PC • Amiga • Atari ST</div>
+        <div class="game-desc">The Masters Collection. WWII submarine warfare. Sonar, torpedoes, convoy hunting. "The new benchmark for simulation programs" — MacWorld, July 1987.</div>
+        <span class="game-genre">Simulation / Military</span>
+        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
       </div>
     </div>
 
@@ -910,6 +1085,34 @@
           <div class="spec-row"><span class="spec-label">Units sold</span><span class="spec-value">~6 million</span></div>
         </div>
         <div class="hw-note">The school computer. The home computer. Temple of Apshai, Summer Games, Winter Games — all ported here. Limited palette, but Epyx made it work.</div>
+      </div>
+    </div>
+
+    <!-- Lynx Deep Dive -->
+    <!-- Hardware & Accessories -->
+    <p class="section-title" id="accessories">THE GEAR</p>
+    <p class="section-subtitle">Epyx didn't just make games — they made the tools to play them.</p>
+
+    <div class="hardware-grid">
+      <div class="hardware-card">
+        <img src="img/epyx-500xj-joystick.png" alt="Epyx 500XJ Joystick" class="game-cover">
+        <div class="hw-name">Epyx 500XJ Joystick</div>
+        <div class="hw-year">1984</div>
+        <div class="hw-note">The legendary 500XJ — the joystick that came with Summer Games and became the de facto standard for C64 gaming. Microswitched, ambidextrous, nearly indestructible. If you grew up with a Commodore 64, you held one of these. Still considered one of the best 8-bit joysticks ever made.</div>
+      </div>
+
+      <div class="hardware-card">
+        <img src="img/fast-load-cartridge.png" alt="Epyx Fast Load Cartridge" class="game-cover">
+        <div class="hw-name">Fast Load Cartridge</div>
+        <div class="hw-year">1984</div>
+        <div class="hw-note">The C64's 1541 disk drive was painfully slow — 20+ minutes to load some games. Epyx solved it with a cartridge that accelerated disk loading by 5×. Plugged into the expansion port and just worked. Sold over 500,000 units. Epyx making hardware utilities before they made the Lynx.</div>
+      </div>
+
+      <div class="hardware-card lynx-card">
+        <img src="img/atari-lynx.png" alt="Atari Lynx handheld" class="game-cover">
+        <div class="hw-name">Atari Lynx (Designed by Epyx)</div>
+        <div class="hw-year">1989</div>
+        <div class="hw-note">Codenamed "Handy." The world's first color backlit handheld gaming device — designed entirely by Epyx engineers Dave Needle and RJ Mical. Hardware sprite scaling, 4,096 colors, ComLynx networking. Sold to Atari when Epyx ran out of cash. A masterpiece they never got full credit for. Full story below.</div>
       </div>
     </div>
 
