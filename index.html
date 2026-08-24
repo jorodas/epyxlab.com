@@ -19,12 +19,104 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
       background: var(--dark-bg);
       color: #e0e0e0;
       font-family: 'Share Tech Mono', monospace;
       overflow-x: hidden;
     }
+
+    /* Sticky Nav */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 9998;
+      background: rgba(10, 10, 15, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #1a1a2a;
+      padding: 0;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .navbar.visible { transform: translateY(0); }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      padding: 0.6rem 1.5rem;
+      gap: 0.5rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-inner::-webkit-scrollbar { display: none; }
+
+    .nav-brand {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.6rem;
+      white-space: nowrap;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+
+    .nav-brand .nb-epyx { color: #fff; }
+    .nav-brand .nb-lab { color: var(--neon-blue); }
+
+    .nav-link {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      color: #666;
+      text-decoration: none;
+      padding: 4px 10px;
+      border-radius: 3px;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .nav-link:hover { color: var(--neon-blue); background: rgba(0, 240, 255, 0.05); }
+    .nav-link.active { color: var(--neon-blue); background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); }
+
+    .nav-divider {
+      width: 1px;
+      height: 16px;
+      background: #2a2a3a;
+      flex-shrink: 0;
+    }
+
+    /* Scroll-to-top */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 9998;
+      width: 44px;
+      height: 44px;
+      background: rgba(10, 10, 15, 0.9);
+      border: 1px solid var(--neon-blue);
+      border-radius: 50%;
+      color: var(--neon-blue);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .scroll-top.visible { opacity: 1; transform: translateY(0); }
+    .scroll-top:hover { background: var(--neon-blue); color: var(--dark-bg); box-shadow: 0 0 15px var(--neon-blue); }
+
+    /* Offset anchor targets below sticky nav */
+    [id] { scroll-margin-top: 60px; }
 
     /* CRT Scanline overlay */
     body::after {
@@ -567,8 +659,28 @@
 </head>
 <body>
 
+  <!-- Sticky Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#top" class="nav-brand"><span class="nb-epyx">Epyx</span><span class="nb-lab">Lab</span></a>
+      <div class="nav-divider"></div>
+      <a href="#numbers" class="nav-link">Numbers</a>
+      <a href="#catalog" class="nav-link">Catalog</a>
+      <a href="#timeline" class="nav-link">Timeline</a>
+      <a href="#machines" class="nav-link">Machines</a>
+      <a href="#lynx" class="nav-link">Lynx</a>
+      <a href="#people" class="nav-link">People</a>
+      <a href="#firsts" class="nav-link">Firsts</a>
+      <a href="#influence" class="nav-link">Influence</a>
+      <a href="#lab" class="nav-link">Lab</a>
+    </div>
+  </nav>
+
+  <!-- Scroll to Top -->
+  <a href="#top" class="scroll-top" id="scrollTop">▲</a>
+
   <!-- Hero -->
-  <section class="hero">
+  <section class="hero" id="top">
     <div class="logo"><span class="epyx">Epyx</span><span class="lab">Lab</span></div>
     <p class="tagline">Where legends were forged. Where they live on.</p>
     <div class="era-badge">● ACTIVE — EST. 1983</div>
@@ -576,7 +688,7 @@
 
   <!-- Stats -->
   <section class="catalog">
-    <p class="section-title">THE NUMBERS</p>
+    <p class="section-title" id="numbers">THE NUMBERS</p>
     <div class="stats">
       <div class="stat-box">
         <div class="stat-number">47</div>
@@ -597,7 +709,7 @@
     </div>
 
     <!-- Game Catalog -->
-    <p class="section-title">THE CATALOG</p>
+    <p class="section-title" id="catalog">THE CATALOG</p>
     <p class="section-subtitle">The games that defined a generation.</p>
 
     <div class="games-grid">
@@ -699,7 +811,7 @@
     </div>
 
     <!-- Timeline -->
-    <p class="section-title">THE TIMELINE</p>
+    <p class="section-title" id="timeline">THE TIMELINE</p>
     <p class="section-subtitle">From garage to legend to legacy.</p>
 
     <div class="timeline">
@@ -739,7 +851,7 @@
   </section>
 
     <!-- Hardware Exhibit -->
-    <p class="section-title">THE MACHINES</p>
+    <p class="section-title" id="machines">THE MACHINES</p>
     <p class="section-subtitle">The hardware that ran the magic.</p>
 
     <div class="hardware-grid">
@@ -801,7 +913,7 @@
     </div>
 
     <!-- Lynx Deep Dive -->
-    <p class="section-title">THE LYNX STORY</p>
+    <p class="section-title" id="lynx">THE LYNX STORY</p>
     <p class="section-subtitle">Epyx's greatest engineering achievement — and their final act.</p>
 
     <div class="lynx-story">
@@ -828,7 +940,7 @@
     </div>
 
     <!-- Key People -->
-    <p class="section-title">THE PEOPLE</p>
+    <p class="section-title" id="people">THE PEOPLE</p>
     <p class="section-subtitle">The humans behind the pixels.</p>
 
     <div class="people-grid">
@@ -875,7 +987,7 @@
     </div>
 
     <!-- Technical Achievements -->
-    <p class="section-title">TECHNICAL FIRSTS</p>
+    <p class="section-title" id="firsts">TECHNICAL FIRSTS</p>
     <p class="section-subtitle">What Epyx did before anyone else.</p>
 
     <div class="achievements-list">
@@ -917,7 +1029,7 @@
     </div>
 
     <!-- Legacy & Influence -->
-    <p class="section-title">THE INFLUENCE</p>
+    <p class="section-title" id="influence">THE INFLUENCE</p>
     <p class="section-subtitle">What came after — because of what came before.</p>
 
     <div class="influence-grid">
@@ -948,7 +1060,7 @@
     </div>
 
     <!-- The Lab Today -->
-    <p class="section-title">THE LAB TODAY</p>
+    <p class="section-title" id="lab">THE LAB TODAY</p>
     <p class="section-subtitle">Same spirit. New medium.</p>
 
     <div class="lab-section">
@@ -991,6 +1103,39 @@
       <span style="color: #333;">No affiliation with the original Epyx Inc. Fan tribute only.</span>
     </div>
   </footer>
+
+  <script>
+    // Show/hide navbar after scrolling past hero
+    const navbar = document.getElementById('navbar');
+    const scrollTop = document.getElementById('scrollTop');
+    const hero = document.querySelector('.hero');
+
+    const observer = new IntersectionObserver(([entry]) => {
+      navbar.classList.toggle('visible', !entry.isIntersecting);
+      scrollTop.classList.toggle('visible', !entry.isIntersecting);
+    }, { threshold: 0.1 });
+
+    observer.observe(hero);
+
+    // Highlight active nav link based on scroll position
+    const sections = document.querySelectorAll('[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -75% 0px' });
+
+    sections.forEach(section => {
+      if (section.classList.contains('section-title')) sectionObserver.observe(section);
+    });
+  </script>
 
 </body>
 </html>
