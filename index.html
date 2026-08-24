@@ -301,6 +301,267 @@
     @media (max-width: 600px) {
       .games-grid { grid-template-columns: 1fr; }
       .stats { grid-template-columns: 1fr 1fr; }
+      .hardware-grid { grid-template-columns: 1fr; }
+      .people-grid { grid-template-columns: 1fr; }
+      .influence-grid { grid-template-columns: 1fr; }
+      .lab-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Hardware Exhibit */
+    .hardware-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .hardware-card {
+      background: var(--card-bg);
+      border: 1px solid #2a2a3a;
+      border-radius: 8px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .hardware-card:hover {
+      border-color: var(--neon-green);
+      box-shadow: 0 0 15px rgba(57, 255, 20, 0.1);
+    }
+
+    .lynx-card {
+      grid-column: 1 / -1;
+      border-color: var(--neon-orange);
+      background: linear-gradient(135deg, #12121a 0%, #1a1510 100%);
+    }
+
+    .lynx-card:hover { border-color: var(--neon-orange); box-shadow: 0 0 20px rgba(255, 102, 0, 0.15); }
+
+    .hw-icon {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 1.2rem;
+      color: var(--neon-green);
+      margin-bottom: 1rem;
+    }
+
+    .hw-name {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.85rem;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+
+    .hw-year {
+      font-size: 0.75rem;
+      color: var(--neon-blue);
+      margin-bottom: 1.2rem;
+    }
+
+    .hw-specs { margin-bottom: 1.2rem; }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+      border-bottom: 1px solid #1a1a2a;
+      font-size: 0.8rem;
+    }
+
+    .spec-label { color: #666; }
+    .spec-value { color: #ccc; text-align: right; }
+
+    .hw-note {
+      color: #888;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      font-style: italic;
+      border-left: 2px solid #2a2a3a;
+      padding-left: 1rem;
+      margin-top: 1rem;
+    }
+
+    /* Lynx Story */
+    .lynx-story {
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+    }
+
+    .lynx-chapter {
+      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      border-left: 3px solid var(--neon-orange);
+      background: rgba(255, 102, 0, 0.03);
+    }
+
+    .lynx-chapter-title {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.7rem;
+      color: var(--neon-orange);
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .lynx-chapter-text {
+      color: #bbb;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    /* People */
+    .people-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .person-card {
+      background: var(--card-bg);
+      border: 1px solid #2a2a3a;
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .person-card:hover { border-color: #444; }
+
+    .person-role {
+      font-size: 0.65rem;
+      color: var(--neon-blue);
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+    }
+
+    .person-name {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.75rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+
+    .person-bio {
+      color: #999;
+      font-size: 0.8rem;
+      line-height: 1.7;
+    }
+
+    /* Achievements */
+    .achievements-list {
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+    }
+
+    .achievement {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      grid-template-rows: auto auto;
+      gap: 0 1.5rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #1a1a2a;
+    }
+
+    .achievement-year {
+      grid-row: 1 / 3;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.55rem;
+      color: var(--neon-green);
+      padding-top: 4px;
+    }
+
+    .achievement-title {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.7rem;
+      color: #fff;
+      margin-bottom: 0.6rem;
+      line-height: 1.5;
+    }
+
+    .achievement-desc {
+      color: #999;
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+
+    /* Influence */
+    .influence-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .influence-card {
+      background: var(--card-bg);
+      border: 1px solid #2a2a3a;
+      border-radius: 8px;
+      padding: 1.5rem;
+    }
+
+    .influence-card:hover { border-color: var(--neon-pink); }
+
+    .influence-arrow {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.6rem;
+      color: var(--neon-pink);
+      margin-bottom: 0.8rem;
+    }
+
+    .influence-text {
+      color: #999;
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+
+    /* Lab Today */
+    .lab-section { margin-bottom: 4rem; }
+
+    .lab-intro {
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      padding: 2rem;
+      text-align: center;
+      color: #bbb;
+      font-size: 1rem;
+      line-height: 1.8;
+      border: 1px solid #2a2a3a;
+      border-radius: 8px;
+      background: var(--card-bg);
+    }
+
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .lab-card {
+      background: var(--card-bg);
+      border: 1px solid #2a2a3a;
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .lab-card:hover { border-color: var(--neon-blue); transform: translateY(-3px); }
+
+    .lab-card-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+    .lab-card-title {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 0.65rem;
+      color: #fff;
+      margin-bottom: 0.8rem;
+    }
+
+    .lab-card-desc {
+      color: #888;
+      font-size: 0.8rem;
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -473,6 +734,248 @@
       <div class="timeline-item">
         <div class="timeline-year">2026</div>
         <div class="timeline-text">EpyxLab. A cloud innovation lab named in tribute. The legacy isn't dead — it evolved. Azure. AI. Infrastructure. Same spirit.</div>
+      </div>
+    </div>
+  </section>
+
+    <!-- Hardware Exhibit -->
+    <p class="section-title">THE MACHINES</p>
+    <p class="section-subtitle">The hardware that ran the magic.</p>
+
+    <div class="hardware-grid">
+      <div class="hardware-card">
+        <div class="hw-icon">▓█▓</div>
+        <div class="hw-name">Commodore 64</div>
+        <div class="hw-year">1982</div>
+        <div class="hw-specs">
+          <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">MOS 6510 @ 1.023 MHz</span></div>
+          <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">64 KB</span></div>
+          <div class="spec-row"><span class="spec-label">Graphics</span><span class="spec-value">VIC-II — 16 colors, 320×200, 8 sprites</span></div>
+          <div class="spec-row"><span class="spec-label">Sound</span><span class="spec-value">SID 6581 — 3 voices, legendary chip</span></div>
+          <div class="spec-row"><span class="spec-label">Units sold</span><span class="spec-value">~17 million</span></div>
+        </div>
+        <div class="hw-note">Epyx's primary platform. Summer Games, California Games, Impossible Mission — all built here first. The SID chip made the medal ceremonies sing.</div>
+      </div>
+
+      <div class="hardware-card">
+        <div class="hw-icon">◢█◣</div>
+        <div class="hw-name">Atari 800 / 400</div>
+        <div class="hw-year">1979</div>
+        <div class="hw-specs">
+          <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">MOS 6502 @ 1.79 MHz</span></div>
+          <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">48 KB (800) / 16 KB (400)</span></div>
+          <div class="spec-row"><span class="spec-label">Graphics</span><span class="spec-value">ANTIC + GTIA — 256 colors, display lists</span></div>
+          <div class="spec-row"><span class="spec-label">Sound</span><span class="spec-value">POKEY — 4 channels, distortion control</span></div>
+          <div class="spec-row"><span class="spec-label">Units sold</span><span class="spec-value">~2 million</span></div>
+        </div>
+        <div class="hw-note">Epyx's first home. Temple of Apshai and Jumpman debuted on Atari hardware. The display list architecture was ahead of its time.</div>
+      </div>
+
+      <div class="hardware-card lynx-card">
+        <div class="hw-icon">◀ ▪▪▪ ▶</div>
+        <div class="hw-name">Atari Lynx</div>
+        <div class="hw-year">1989</div>
+        <div class="hw-specs">
+          <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">WDC 65C02 @ 4 MHz + custom "Mikey" + "Suzy"</span></div>
+          <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">64 KB + 128 KB ROM</span></div>
+          <div class="spec-row"><span class="spec-label">Graphics</span><span class="spec-value">160×102, 4,096 colors, hardware scaling/rotation</span></div>
+          <div class="spec-row"><span class="spec-label">Sound</span><span class="spec-value">4 channels, 8-bit DAC</span></div>
+          <div class="spec-row"><span class="spec-label">Display</span><span class="spec-value">3.5" backlit color LCD — first handheld with color</span></div>
+        </div>
+        <div class="hw-note">DESIGNED BY EPYX. Codenamed "Handy." Engineers Dave Needle and RJ Mical built it in Epyx's offices. The world's first color backlit handheld gaming device. Sold to Atari when Epyx ran out of money. A masterpiece they never got credit for.</div>
+      </div>
+
+      <div class="hardware-card">
+        <div class="hw-icon">█▀▀█</div>
+        <div class="hw-name">Apple II</div>
+        <div class="hw-year">1977</div>
+        <div class="hw-specs">
+          <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">MOS 6502 @ 1.023 MHz</span></div>
+          <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">4–64 KB</span></div>
+          <div class="spec-row"><span class="spec-label">Graphics</span><span class="spec-value">Hi-Res: 280×192, 6 colors</span></div>
+          <div class="spec-row"><span class="spec-label">Sound</span><span class="spec-value">1-bit toggle speaker (beep)</span></div>
+          <div class="spec-row"><span class="spec-label">Units sold</span><span class="spec-value">~6 million</span></div>
+        </div>
+        <div class="hw-note">The school computer. The home computer. Temple of Apshai, Summer Games, Winter Games — all ported here. Limited palette, but Epyx made it work.</div>
+      </div>
+    </div>
+
+    <!-- Lynx Deep Dive -->
+    <p class="section-title">THE LYNX STORY</p>
+    <p class="section-subtitle">Epyx's greatest engineering achievement — and their final act.</p>
+
+    <div class="lynx-story">
+      <div class="lynx-chapter">
+        <div class="lynx-chapter-title">The Problem</div>
+        <div class="lynx-chapter-text">By 1987, Epyx was bleeding money. The games were great but the market was brutal. They needed a moonshot — something that would make them a hardware company, not just a software house dependent on platform holders.</div>
+      </div>
+      <div class="lynx-chapter">
+        <div class="lynx-chapter-title">The Engineers</div>
+        <div class="lynx-chapter-text">Dave Needle and RJ Mical — two engineers who'd previously worked on the Amiga at Commodore — were hired to design a portable gaming system from scratch. They called it "Handy." It would do what no handheld had ever done: color graphics, hardware sprite scaling, and multiplayer via ComLynx cable.</div>
+      </div>
+      <div class="lynx-chapter">
+        <div class="lynx-chapter-title">The Technology</div>
+        <div class="lynx-chapter-text">Two custom chips: "Mikey" handled audio, video, and the math coprocessor. "Suzy" handled the blitter — hardware-accelerated sprite scaling, rotation, and collision detection. In 1989. On a battery-powered handheld. This was engineering from the future.</div>
+      </div>
+      <div class="lynx-chapter">
+        <div class="lynx-chapter-title">The Sale</div>
+        <div class="lynx-chapter-text">Epyx ran out of cash before they could manufacture it. Atari bought the rights for a fraction of its worth. Renamed it the Lynx. Launched it against the Game Boy. The Lynx was technically superior in every measurable way — color screen, hardware scaling, networking. The Game Boy won on battery life and price. History is not always fair.</div>
+      </div>
+      <div class="lynx-chapter">
+        <div class="lynx-chapter-title">The Legacy</div>
+        <div class="lynx-chapter-text">The Lynx sold ~3 million units. A commercial disappointment by Game Boy standards, but a technical landmark. Every color handheld that followed — Game Gear, GBA, PSP, Switch — owes something to what Needle and Mical built in Epyx's offices. Chip's Challenge launched on Lynx. California Games went portable. The DNA is everywhere.</div>
+      </div>
+    </div>
+
+    <!-- Key People -->
+    <p class="section-title">THE PEOPLE</p>
+    <p class="section-subtitle">The humans behind the pixels.</p>
+
+    <div class="people-grid">
+      <div class="person-card">
+        <div class="person-role">CO-FOUNDER</div>
+        <div class="person-name">Jim Connelley</div>
+        <div class="person-bio">Co-founded Automated Simulations in 1978. Business mind behind the early RPG era. Navigated the company through the crash of '83 and the rebrand to Epyx.</div>
+      </div>
+      <div class="person-card">
+        <div class="person-role">CO-FOUNDER / DESIGNER</div>
+        <div class="person-name">Jon Freeman</div>
+        <div class="person-bio">Game designer. Created Temple of Apshai — one of the first graphical CRPGs ever made. Established the company's identity before departing to form Free Fall Associates.</div>
+      </div>
+      <div class="person-card">
+        <div class="person-role">LEAD DESIGNER</div>
+        <div class="person-name">Randy Glover</div>
+        <div class="person-bio">Designed Jumpman (1983) and Jumpman Junior. His level design philosophy — one mechanic per level, always a surprise — was decades ahead of modern indie game design principles.</div>
+      </div>
+      <div class="person-card">
+        <div class="person-role">DESIGNER / PROGRAMMER</div>
+        <div class="person-name">Dennis Caswell</div>
+        <div class="person-bio">Programmed Impossible Mission (1984). Implemented one of the first uses of speech synthesis in a home computer game. "Stay a while... stay FOREVER!" — his code made it possible.</div>
+      </div>
+      <div class="person-card">
+        <div class="person-role">HARDWARE ENGINEER</div>
+        <div class="person-name">Dave Needle</div>
+        <div class="person-bio">Co-designed the Amiga custom chips at Commodore. Then co-designed the Atari Lynx at Epyx. Later co-designed the 3DO. One of the most important hardware engineers in gaming history.</div>
+      </div>
+      <div class="person-card">
+        <div class="person-role">HARDWARE ENGINEER</div>
+        <div class="person-name">RJ Mical</div>
+        <div class="person-bio">Co-architect of the Amiga's Intuition OS. Co-designed the Lynx alongside Needle. Created the Lynx's development tools. Later worked on PlayStation 3's Cell processor at Sony.</div>
+      </div>
+      <div class="person-card">
+        <div class="person-role">PRODUCER / DIRECTOR</div>
+        <div class="person-name">Scott Nelson</div>
+        <div class="person-bio">Directed the Games series — Summer, Winter, World, California. Established the multi-event sports format that became Epyx's signature. Built a genre from nothing.</div>
+      </div>
+      <div class="person-card">
+        <div class="person-role">DESIGNER</div>
+        <div class="person-name">Chuck Sommerville</div>
+        <div class="person-bio">Created Chip's Challenge for the Atari Lynx (1989). 149 levels of puzzle perfection. Later ported to Windows, where it consumed an estimated 100 million cumulative hours of office productivity worldwide.</div>
+      </div>
+    </div>
+
+    <!-- Technical Achievements -->
+    <p class="section-title">TECHNICAL FIRSTS</p>
+    <p class="section-subtitle">What Epyx did before anyone else.</p>
+
+    <div class="achievements-list">
+      <div class="achievement">
+        <div class="achievement-year">1984</div>
+        <div class="achievement-title">Speech Synthesis in Home Computing</div>
+        <div class="achievement-desc">Impossible Mission featured digitized speech on a Commodore 64 — "Another visitor. Stay a while... stay FOREVER!" — using software-driven sample playback on the SID chip. No special hardware. Pure code.</div>
+      </div>
+      <div class="achievement">
+        <div class="achievement-year">1984</div>
+        <div class="achievement-title">Rotoscoped Animation</div>
+        <div class="achievement-desc">Impossible Mission's character animations were traced from live-action video reference — rotoscoping on 8-bit hardware, three years before Prince of Persia made it famous.</div>
+      </div>
+      <div class="achievement">
+        <div class="achievement-year">1984</div>
+        <div class="achievement-title">Split-Screen Multiplayer Racing</div>
+        <div class="achievement-desc">Pitstop II rendered two independent 3D-perspective racetracks simultaneously on a 1 MHz processor. Real-time split-screen with independent scrolling, pit stops, and tire degradation.</div>
+      </div>
+      <div class="achievement">
+        <div class="achievement-year">1984</div>
+        <div class="achievement-title">Procedural Level Generation</div>
+        <div class="achievement-desc">Impossible Mission generated room layouts procedurally — no two playthroughs were identical. Roguelike principles in a platformer, years before the roguelike renaissance.</div>
+      </div>
+      <div class="achievement">
+        <div class="achievement-year">1987</div>
+        <div class="achievement-title">Brand-Integrated Sports Gaming</div>
+        <div class="achievement-desc">California Games featured real sponsor logos (Ocean Pacific, Kawasaki, etc.) — one of the first games to use brand licensing as a revenue model and cultural authenticity signal.</div>
+      </div>
+      <div class="achievement">
+        <div class="achievement-year">1989</div>
+        <div class="achievement-title">First Color Backlit Handheld</div>
+        <div class="achievement-desc">The Atari Lynx — designed by Epyx — was the first portable gaming device with a color backlit LCD screen. Hardware sprite scaling and rotation. Peer-to-peer multiplayer via ComLynx. In 1989.</div>
+      </div>
+      <div class="achievement">
+        <div class="achievement-year">1989</div>
+        <div class="achievement-title">Hardware-Accelerated Sprite Scaling</div>
+        <div class="achievement-desc">The Lynx's "Suzy" chip performed real-time sprite scaling, rotation, and collision detection in hardware — capabilities that wouldn't appear in home consoles until the SNES Mode 7 a year later.</div>
+      </div>
+    </div>
+
+    <!-- Legacy & Influence -->
+    <p class="section-title">THE INFLUENCE</p>
+    <p class="section-subtitle">What came after — because of what came before.</p>
+
+    <div class="influence-grid">
+      <div class="influence-card">
+        <div class="influence-arrow">Epyx → EA Sports</div>
+        <div class="influence-text">The multi-event sports format Epyx pioneered became the template for every Olympic/compilation sports game that followed. EA's entire sports division owes its conceptual DNA to Summer Games.</div>
+      </div>
+      <div class="influence-card">
+        <div class="influence-arrow">Impossible Mission → Prince of Persia</div>
+        <div class="influence-text">Jordan Mechner cited rotoscoped animation in games as inspiration. Caswell did it on C64 in 1984. Mechner refined it on Apple II in 1989. The lineage is direct.</div>
+      </div>
+      <div class="influence-card">
+        <div class="influence-arrow">Lynx → Every Color Handheld</div>
+        <div class="influence-text">Game Gear (1990), GBA (2001), PSP (2004), Switch (2017). The concept of a color, backlit, hardware-accelerated portable gaming device started in Epyx's offices in 1987.</div>
+      </div>
+      <div class="influence-card">
+        <div class="influence-arrow">Chip's Challenge → Puzzle Genre</div>
+        <div class="influence-text">Shipped with Microsoft Windows Entertainment Pack. Introduced millions of office workers to tile-based puzzle games. A gateway drug to Minesweeper, Sokoban, and eventually Portal.</div>
+      </div>
+      <div class="influence-card">
+        <div class="influence-arrow">California Games → Action Sports Culture</div>
+        <div class="influence-text">Before Tony Hawk. Before SSX. Before any "extreme sports" game existed as a category — California Games proved that skateboarding, surfing, and BMX could carry a game. An entire genre started here.</div>
+      </div>
+      <div class="influence-card">
+        <div class="influence-arrow">Temple of Apshai → CRPGs</div>
+        <div class="influence-text">One of the first graphical dungeon crawlers on home computers. The room-description-in-the-manual approach anticipated text-heavy RPGs. Preceded Ultima, Wizardry, and everything that followed.</div>
+      </div>
+    </div>
+
+    <!-- The Lab Today -->
+    <p class="section-title">THE LAB TODAY</p>
+    <p class="section-subtitle">Same spirit. New medium.</p>
+
+    <div class="lab-section">
+      <div class="lab-intro">
+        EpyxLab is a cloud innovation lab named in tribute to the studio that proved you could build extraordinary things with limited resources. The constraints have changed — from 64 KB of RAM to infinite cloud compute — but the philosophy hasn't: build something people remember.
+      </div>
+      <div class="lab-grid">
+        <div class="lab-card">
+          <div class="lab-card-icon">☁️</div>
+          <div class="lab-card-title">Azure Infrastructure</div>
+          <div class="lab-card-desc">Cloud architecture, hybrid connectivity, migration patterns, FinOps cost optimization. Building at scale.</div>
+        </div>
+        <div class="lab-card">
+          <div class="lab-card-icon">🤖</div>
+          <div class="lab-card-title">AI & Copilot</div>
+          <div class="lab-card-desc">AI Foundry, Copilot extensibility, M365 integrations, intelligent automation. The next interface.</div>
+        </div>
+        <div class="lab-card">
+          <div class="lab-card-icon">🔐</div>
+          <div class="lab-card-title">Security & Identity</div>
+          <div class="lab-card-desc">Zero Trust architecture, Entra ID, Defender XDR, conditional access. Protecting the perimeter that no longer exists.</div>
+        </div>
+        <div class="lab-card">
+          <div class="lab-card-icon">⚙️</div>
+          <div class="lab-card-title">DevOps & Automation</div>
+          <div class="lab-card-desc">GitHub Actions, Infrastructure as Code, monitoring pipelines, GitOps patterns. Shipping faster.</div>
+        </div>
       </div>
     </div>
   </section>
