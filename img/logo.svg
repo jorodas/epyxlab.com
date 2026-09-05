@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200" width="640" height="200">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=VT323&amp;display=swap');
+      .term { font-family: 'VT323', 'Courier New', monospace; font-weight: 400; }
+    </style>
+    <filter id="phosphor" x="-5%" y="-10%" width="110%" height="120%">
+      <feGaussianBlur stdDeviation="0.6" result="a"/>
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="a"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="scan" x="0" y="0" width="3" height="3" patternUnits="userSpaceOnUse">
+      <rect width="3" height="1" fill="rgba(0,0,0,0.35)"/>
+    </pattern>
+  </defs>
+
+  <!-- CRT screen -->
+  <rect width="640" height="200" fill="#020604"/>
+
+  <!-- Prompt line -->
+  <text class="term" x="320" y="122" text-anchor="middle" font-size="96" fill="#33ff66" filter="url(#phosphor)">epyxlab.com</text>
+
+  <!-- Scanline overlay -->
+  <rect width="640" height="200" fill="url(#scan)"/>
+</svg>
