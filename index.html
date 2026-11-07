@@ -4,716 +4,356 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EpyxLab — The Legacy Lives On</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <meta name="description" content="EpyxLab: a fan tribute to Epyx Inc. (1978–1993), and a cloud innovation lab that carries the name forward.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
     :root {
-      --neon-blue: #00f0ff;
-      --neon-pink: #ff00ff;
-      --neon-green: #39ff14;
-      --neon-yellow: #ffff00;
-      --neon-orange: #ff6600;
-      --dark-bg: #0a0a0f;
-      --card-bg: #12121a;
-      --scanline: rgba(0, 0, 0, 0.15);
+      --bg: #f0f1f5; --paper: #ffffff; --ink: #28303a; --muted: #6b7380; --line: #e3e5ec; --link: #4374fc;
+      --red: #e60c34; --red-l: #ec5a6e;
+      --orange: #f5661a; --orange-l: #f8945f;
+      --yellow: #d6dd1b; --yellow-l: #e2e75f;
+      --green: #2cc162; --green-l: #6ad48f;
+      --blue: #0070e8; --blue-l: #4d9bf0;
+      --violet: #6c5eb5; --violet-l: #8f84cc;
+      --c64-bg: #352879; --c64-fg: #a7a1e8;
+      --head: 'Outfit', system-ui, sans-serif;
+      --body: Georgia, 'Times New Roman', serif;
+      --pixel: 'Press Start 2P', monospace;
     }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; }
+    [id] { scroll-margin-top: 80px; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-    body {
-      background: 
-        linear-gradient(rgba(10,10,15,0.72), rgba(10,10,15,0.85)),
-        url('img/bg.webp') center/cover fixed no-repeat,
-        var(--dark-bg);
-      color: #e0e0e0;
-      font-family: 'Share Tech Mono', monospace;
-      overflow-x: hidden;
-    }
+    /* Promo banner */
+    .promo { position: relative; background: var(--bg); border-bottom: 2px solid var(--ink); overflow: hidden; }
+    .slide { display: none; padding: 34px 0 0; }
+    .slide.is-active { display: block; animation: fade .6s ease; }
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    .slide-inner { max-width: 900px; margin: 0 auto; padding: 0 24px; text-align: center; }
+    .badge { display: inline-block; font-family: var(--pixel); font-size: 10px; letter-spacing: 1px; color: #1d9a4c; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; margin-bottom: 14px; }
+    .wordmark { display: flex; align-items: center; justify-content: center; gap: 16px; }
+    .wm-text { font-family: var(--head); font-weight: 800; font-size: 64px; letter-spacing: -3px; line-height: 1; color: var(--ink); }
+    .wm-text b { font-weight: 800; color: var(--blue); }
+    .wm-stripes { display: inline-flex; gap: 5px; transform: skewX(-20deg); }
+    .wm-stripes i { display: block; width: 10px; height: 46px; border-radius: 2px; }
+    .wm-stripes i:nth-child(1) { background: var(--red); }
+    .wm-stripes i:nth-child(2) { background: var(--orange); }
+    .wm-stripes i:nth-child(3) { background: var(--yellow); }
+    .wm-stripes i:nth-child(4) { background: var(--green); }
+    .wm-stripes i:nth-child(5) { background: var(--blue); }
+    .promo h1 { font-family: var(--head); font-weight: 600; font-size: 46px; line-height: 1.05; letter-spacing: -1.5px; margin: 22px 0 10px; }
+    .promo h3 { font-family: var(--head); font-weight: 400; font-size: 20px; line-height: 1.4; color: var(--muted); margin: 0 auto; max-width: 720px; }
+    .buttons { margin: 20px 0 4px; }
+    .fancy { display: inline-block; min-width: 170px; height: 50px; line-height: 50px; padding: 0 22px; margin: 8px; border-radius: 10px; color: #fff !important; font-family: var(--head); font-size: 18px; font-weight: 500; text-decoration: none !important; transition: transform .12s, filter .12s; }
+    .fancy:hover { transform: translateY(-2px); filter: brightness(1.06); }
+    .fancy.green { background: var(--green); }
+    .fancy.blue { background: var(--blue); }
+    .shelf { display: flex; justify-content: center; align-items: flex-end; gap: 18px; margin-top: 26px; height: 236px; padding: 0 20px; }
+    .shelf img { height: 214px; width: auto; max-width: 168px; object-fit: contain; border-radius: 6px; background: #fff; box-shadow: 0 14px 26px rgba(40, 48, 58, .22); transform: translateY(20px) rotate(var(--r, 0deg)); }
+    .shelf img:nth-child(1) { --r: -5deg; }
+    .shelf img:nth-child(2) { --r: 3deg; }
+    .shelf img:nth-child(3) { --r: -1deg; }
+    .shelf img:nth-child(4) { --r: 4deg; }
+    .shelf img:nth-child(5) { --r: -3deg; }
+    .tiles { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 26px; padding: 0 20px 44px; }
+    .tile { width: 180px; border-radius: 12px; padding: 16px; color: #fff; font-family: var(--head); text-align: left; }
+    .tile .ico { font-size: 28px; line-height: 1; }
+    .tile .t { font-weight: 600; font-size: 16px; margin-top: 22px; }
+    .tile:nth-child(1) { background: linear-gradient(to bottom, var(--blue-l) 0 58px, var(--blue) 58px 100%); }
+    .tile:nth-child(2) { background: linear-gradient(to bottom, var(--green-l) 0 58px, var(--green) 58px 100%); }
+    .tile:nth-child(3) { background: linear-gradient(to bottom, var(--orange-l) 0 58px, var(--orange) 58px 100%); }
+    .tile:nth-child(4) { background: linear-gradient(to bottom, var(--red-l) 0 58px, var(--red) 58px 100%); }
+    .promo-ctrl { position: absolute; right: 18px; bottom: 14px; display: flex; align-items: center; gap: 10px; z-index: 2; }
+    .dots button { width: 10px; height: 10px; border-radius: 50%; border: 0; padding: 0; margin: 0 3px; background: #c5c9d3; cursor: pointer; }
+    .dots button[aria-current="true"] { background: var(--ink); }
+    @property --p { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+    .ring { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--blue); background: conic-gradient(var(--green) var(--p), transparent var(--p)); }
+    .ring.run { animation: ring 7s linear forwards; }
+    @keyframes ring { to { --p: 360deg; } }
 
-    /* Sticky Nav */
-    .navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 9998;
-      background: rgba(10, 10, 15, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid #1a1a2a;
-      padding: 0;
-      transform: translateY(-100%);
-      transition: transform 0.3s ease;
-    }
+    /* Welcome */
+    .welcome { background: #fff; padding: 56px 0 40px; }
+    .welcome-grid { display: grid; grid-template-columns: 52% 1fr; gap: 34px; align-items: center; }
+    .welcome-photos { position: relative; aspect-ratio: 4 / 3; }
+    .welcome-photos img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .9s; }
+    .welcome-photos img.on { opacity: 1; }
+    .welcome h2 { font-family: var(--head); font-weight: 600; font-size: 42px; line-height: 1.05; letter-spacing: -1.5px; margin: 0 0 16px; }
+    .welcome p { font-size: 18px; line-height: 1.6; margin: 0 0 14px; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 36px; }
+    .stat-box { border-radius: 12px; padding: 18px 10px 16px; text-align: center; color: #fff; }
+    .stat-box:nth-child(1) { background: linear-gradient(to bottom, var(--red-l) 0 50%, var(--red) 50% 100%); }
+    .stat-box:nth-child(2) { background: linear-gradient(to bottom, var(--orange-l) 0 50%, var(--orange) 50% 100%); }
+    .stat-box:nth-child(3) { background: linear-gradient(to bottom, var(--green-l) 0 50%, var(--green) 50% 100%); }
+    .stat-box:nth-child(4) { background: linear-gradient(to bottom, var(--blue-l) 0 50%, var(--blue) 50% 100%); }
+    .stat-number { font-family: var(--pixel); font-size: 26px; line-height: 1.3; }
+    .stat-label { font-family: var(--head); font-size: 14px; letter-spacing: 1px; text-transform: uppercase; margin-top: 6px; }
 
-    .navbar.visible { transform: translateY(0); }
+    /* Rainbow tabs */
+    .tabs { position: sticky; top: 0; z-index: 50; background: #fff; box-shadow: 0 3px 0 rgba(40, 48, 58, .08); }
+    .tabs ul { list-style: none; margin: 0 auto; padding: 0; max-width: 1100px; display: flex; }
+    .tabs li { flex: 1; }
+    .tabs a { display: flex; align-items: center; justify-content: center; height: 60px; font-family: var(--pixel); font-size: 12px; text-transform: uppercase; color: #fff; text-decoration: none; text-shadow: 0 1px 0 rgba(0, 0, 0, .25); }
+    .tabs a:hover { filter: brightness(1.08); }
+    .tabs a.active { box-shadow: inset 0 -5px 0 rgba(255, 255, 255, .85); }
+    .tabs li:nth-child(1) a { background: linear-gradient(to bottom, var(--red-l) 0 50%, var(--red) 50% 100%); }
+    .tabs li:nth-child(2) a { background: linear-gradient(to bottom, var(--orange-l) 0 50%, var(--orange) 50% 100%); }
+    .tabs li:nth-child(3) a { background: linear-gradient(to bottom, var(--yellow-l) 0 50%, var(--yellow) 50% 100%); color: var(--ink); text-shadow: none; }
+    .tabs li:nth-child(4) a { background: linear-gradient(to bottom, var(--green-l) 0 50%, var(--green) 50% 100%); }
+    .tabs li:nth-child(5) a { background: linear-gradient(to bottom, var(--blue-l) 0 50%, var(--blue) 50% 100%); }
+    .tabs li:nth-child(6) a { background: linear-gradient(to bottom, var(--violet-l) 0 50%, var(--violet) 50% 100%); }
+    .tabs li:nth-child(3) a.active { box-shadow: inset 0 -5px 0 rgba(40, 48, 58, .55); }
 
-    .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      padding: 0.6rem 1.5rem;
-      gap: 0.5rem;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
+    /* Section headings */
+    main { padding: 4px 24px 60px; }
+    .group { padding-top: 8px; }
+    .sec-head { margin: 52px 0 24px; }
+    .sec-head::before { content: ""; display: block; width: 90px; height: 8px; margin-bottom: 16px; border-radius: 2px; background: linear-gradient(to right, var(--red) 0 20%, var(--orange) 0 40%, var(--yellow) 0 60%, var(--green) 0 80%, var(--blue) 0); }
+    .sec-head h2 { font-family: var(--head); font-weight: 600; font-size: 44px; letter-spacing: -1.5px; line-height: 1; margin: 0; }
+    .sec-head p { font-style: italic; font-size: 19px; color: var(--muted); margin: 10px 0 0; }
+    .subnav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .subnav a { font-family: var(--head); font-size: 14px; padding: 7px 14px; border-radius: 999px; background: #fff; border: 1px solid var(--line); color: var(--ink); }
+    .subnav a:hover { border-color: var(--blue); color: var(--blue); text-decoration: none; }
 
-    .nav-inner::-webkit-scrollbar { display: none; }
+    /* Catalog */
+    .games-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 22px; }
+    .game-card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 7px; transition: transform .15s, box-shadow .15s; }
+    .game-card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(40, 48, 58, .12); }
+    .game-cover { width: 100%; aspect-ratio: 3 / 4; object-fit: contain; background: var(--bg); border-radius: 8px; cursor: zoom-in; }
+    .hardware-card .game-cover { aspect-ratio: 4 / 3; }
+    .game-year { align-self: flex-start; font-family: var(--pixel); font-size: 10px; color: #fff; background: var(--blue); padding: 6px 8px; border-radius: 4px; margin-top: 4px; }
+    .game-card:nth-child(6n+1) .game-year { background: var(--red); }
+    .game-card:nth-child(6n+2) .game-year { background: var(--orange); }
+    .game-card:nth-child(6n+3) .game-year { background: #a9ae12; }
+    .game-card:nth-child(6n+4) .game-year { background: var(--green); }
+    .game-card:nth-child(6n+5) .game-year { background: var(--blue); }
+    .game-card:nth-child(6n+6) .game-year { background: var(--violet); }
+    .game-title { font-family: var(--head); font-weight: 600; font-size: 21px; letter-spacing: -.3px; line-height: 1.15; }
+    .game-platform { font-family: var(--head); font-size: 13px; color: var(--muted); }
+    .game-desc { font-size: 15.5px; line-height: 1.5; }
+    .game-genre { align-self: flex-start; font-family: var(--head); font-size: 12px; color: #17803f; background: #e8f8ee; border-radius: 999px; padding: 4px 10px; }
+    .game-credit { margin-top: auto; padding-top: 4px; font-family: var(--head); font-size: 11px; font-style: italic; color: #9aa0aa; }
 
-    .nav-brand {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.6rem;
-      white-space: nowrap;
-      margin-right: 1rem;
-      flex-shrink: 0;
-    }
-
-    .nav-brand .nb-epyx { color: #fff; }
-    .nav-brand .nb-lab { color: var(--neon-blue); }
-
-    .nav-link {
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 0.7rem;
-      color: #666;
-      text-decoration: none;
-      padding: 4px 10px;
-      border-radius: 3px;
-      white-space: nowrap;
-      transition: all 0.2s ease;
-      flex-shrink: 0;
-    }
-
-    .nav-link:hover { color: var(--neon-blue); background: rgba(0, 240, 255, 0.05); }
-    .nav-link.active { color: var(--neon-blue); background: rgba(0, 240, 255, 0.1); border: 1px solid rgba(0, 240, 255, 0.2); }
-
-    .nav-divider {
-      width: 1px;
-      height: 16px;
-      background: #2a2a3a;
-      flex-shrink: 0;
-    }
-
-    /* Scroll-to-top */
-    .scroll-top {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      z-index: 9998;
-      width: 44px;
-      height: 44px;
-      background: rgba(10, 10, 15, 0.9);
-      border: 1px solid var(--neon-blue);
-      border-radius: 50%;
-      color: var(--neon-blue);
-      font-size: 1.2rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-
-    .scroll-top.visible { opacity: 1; transform: translateY(0); }
-    .scroll-top:hover { background: var(--neon-blue); color: var(--dark-bg); box-shadow: 0 0 15px var(--neon-blue); }
-
-    /* Offset anchor targets below sticky nav */
-    [id] { scroll-margin-top: 60px; }
-
-    /* CRT Scanline overlay */
-    body::after {
-      content: '';
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: repeating-linear-gradient(
-        0deg,
-        var(--scanline) 0px,
-        var(--scanline) 1px,
-        transparent 1px,
-        transparent 3px
-      );
-      pointer-events: none;
-      z-index: 9999;
-      opacity: 0.3;
-    }
-
-    /* Header */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      background: radial-gradient(ellipse at center, #1a1a2e 0%, #0a0a0f 70%);
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: 
-        linear-gradient(90deg, transparent 49.5%, rgba(0, 240, 255, 0.03) 49.5%, rgba(0, 240, 255, 0.03) 50.5%, transparent 50.5%),
-        linear-gradient(0deg, transparent 49.5%, rgba(0, 240, 255, 0.03) 49.5%, rgba(0, 240, 255, 0.03) 50.5%, transparent 50.5%);
-      background-size: 60px 60px;
-      animation: gridMove 20s linear infinite;
-    }
-
-    @keyframes gridMove {
-      0% { transform: perspective(500px) rotateX(60deg) translateY(0); }
-      100% { transform: perspective(500px) rotateX(60deg) translateY(60px); }
-    }
-
-    .logo {
-      font-family: 'Press Start 2P', cursive;
-      font-size: clamp(2rem, 6vw, 5rem);
-      margin-bottom: 1rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .logo .epyx { color: #ffffff; text-shadow: 0 0 10px #fff, 0 0 40px var(--neon-blue); }
-    .logo .lab { color: var(--neon-blue); text-shadow: 0 0 10px var(--neon-blue), 0 0 40px var(--neon-blue), 0 0 80px var(--neon-blue); }
-
-    .tagline {
-      font-size: 1.1rem;
-      color: #888;
-      margin-bottom: 2rem;
-      position: relative;
-      z-index: 1;
-      letter-spacing: 2px;
-    }
-
-    .era-badge {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.7rem;
-      padding: 8px 20px;
-      border: 2px solid var(--neon-green);
-      color: var(--neon-green);
-      border-radius: 4px;
-      position: relative;
-      z-index: 1;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { box-shadow: 0 0 5px var(--neon-green); }
-      50% { box-shadow: 0 0 20px var(--neon-green), 0 0 40px var(--neon-green); }
-    }
-
-    /* Section titles */
-    .section-title {
-      font-family: 'Press Start 2P', cursive;
-      font-size: clamp(1rem, 2.5vw, 1.5rem);
-      text-align: center;
-      margin: 4rem 0 3rem;
-      color: var(--neon-pink);
-      text-shadow: 0 0 10px var(--neon-pink);
-    }
-
-    .section-subtitle {
-      text-align: center;
-      color: #666;
-      margin-top: -2rem;
-      margin-bottom: 3rem;
-      font-size: 0.9rem;
-    }
-
-    /* Game catalog */
-    .catalog {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-
-    .games-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-      margin-bottom: 4rem;
-    }
-
-    .game-card {
-      background: var(--card-bg);
-      border: 1px solid #2a2a3a;
-      border-radius: 8px;
-      padding: 2rem;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .game-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 3px;
-      background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink), var(--neon-green));
-    }
-
-    .game-card:hover {
-      border-color: var(--neon-blue);
-      box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);
-      transform: translateY(-4px);
-    }
-
-    .game-year {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.6rem;
-      color: var(--neon-green);
-      margin-bottom: 0.5rem;
-    }
-
-    .game-title {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.9rem;
-      color: #fff;
-      margin-bottom: 1rem;
-      line-height: 1.6;
-    }
-
-    .game-platform {
-      font-size: 0.75rem;
-      color: var(--neon-orange);
-      margin-bottom: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .game-desc {
-      color: #999;
-      font-size: 0.85rem;
-      line-height: 1.6;
-    }
-
-    .game-genre {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 4px 10px;
-      border: 1px solid #333;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      color: #666;
-    }
-
-    .game-cover {
-      width: 100%;
-      max-height: 280px;
-      object-fit: contain;
-      border-radius: 4px;
-      margin-bottom: 1rem;
-      border: 1px solid #2a2a3a;
-      transition: transform 0.3s ease;
-    }
-
-    .game-card:hover .game-cover { transform: scale(1.03); }
-
-    .game-credit {
-      font-size: 0.6rem;
-      color: #444;
-      margin-top: 0.8rem;
-      font-style: italic;
-    }
-
-    /* Stats section */
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      max-width: 900px;
-      margin: 3rem auto;
-      padding: 0 2rem;
-    }
-
-    .stat-box {
-      text-align: center;
-      padding: 2rem;
-      border: 1px solid #2a2a3a;
-      border-radius: 8px;
-      background: var(--card-bg);
-    }
-
-    .stat-number {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 1.8rem;
-      color: var(--neon-yellow);
-      text-shadow: 0 0 10px var(--neon-yellow);
-    }
-
-    .stat-label {
-      margin-top: 0.8rem;
-      color: #666;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+    /* Machines and gear */
+    .hardware-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    #machines + .hardware-grid { grid-template-columns: repeat(auto-fit, minmax(min(420px, 100%), 1fr)); }
+    .hardware-card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 18px; }
+    .lynx-card { border: 2px solid var(--orange); }
+    .hw-name { font-family: var(--head); font-weight: 600; font-size: 23px; letter-spacing: -.4px; margin-top: 12px; }
+    .hw-year { font-family: var(--pixel); font-size: 10px; color: var(--muted); margin-top: 8px; }
+    .hw-specs { margin: 14px 0; border-top: 1px solid var(--line); }
+    .spec-row { display: flex; justify-content: space-between; gap: 14px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; }
+    .spec-label { font-family: var(--head); font-weight: 600; font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); white-space: nowrap; padding-top: 2px; }
+    .spec-value { text-align: right; }
+    .hw-note { font-size: 15.5px; line-height: 1.55; margin-top: 12px; }
 
     /* Timeline */
-    .timeline {
-      max-width: 800px;
-      margin: 3rem auto;
-      padding: 0 2rem;
-      border-left: 2px solid #2a2a3a;
-    }
+    .timeline { position: relative; border-left: 4px solid var(--line); margin-left: 10px; padding-left: 30px; }
+    .timeline-item { position: relative; padding: 2px 0 24px; }
+    .timeline-item::before { content: ""; position: absolute; left: -43px; top: 0; width: 18px; height: 18px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 0 2px var(--line); background: var(--red); }
+    .timeline-item:nth-child(6n+2)::before { background: var(--orange); }
+    .timeline-item:nth-child(6n+3)::before { background: var(--yellow); }
+    .timeline-item:nth-child(6n+4)::before { background: var(--green); }
+    .timeline-item:nth-child(6n+5)::before { background: var(--blue); }
+    .timeline-item:nth-child(6n+6)::before { background: var(--violet); }
+    .timeline-year { font-family: var(--pixel); font-size: 13px; line-height: 18px; }
+    .timeline-text { font-size: 17px; line-height: 1.55; margin-top: 6px; max-width: 760px; }
 
-    .timeline-item {
-      padding: 1.5rem 0 1.5rem 2rem;
-      position: relative;
-    }
-
-    .timeline-item::before {
-      content: '▸';
-      position: absolute;
-      left: -8px;
-      color: var(--neon-blue);
-      font-size: 1.2rem;
-    }
-
-    .timeline-year {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.65rem;
-      color: var(--neon-green);
-      margin-bottom: 0.5rem;
-    }
-
-    .timeline-text {
-      color: #bbb;
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      padding: 4rem 2rem;
-      border-top: 1px solid #1a1a2a;
-      margin-top: 4rem;
-    }
-
-    .footer-logo {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 1rem;
-      color: #444;
-      margin-bottom: 1rem;
-    }
-
-    .footer-text {
-      color: #444;
-      font-size: 0.8rem;
-      line-height: 1.8;
-    }
-
-    .footer-text a {
-      color: var(--neon-blue);
-      text-decoration: none;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .games-grid { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: 1fr 1fr; }
-      .hardware-grid { grid-template-columns: 1fr; }
-      .people-grid { grid-template-columns: 1fr; }
-      .influence-grid { grid-template-columns: 1fr; }
-      .lab-grid { grid-template-columns: 1fr; }
-    }
-
-    /* Hardware Exhibit */
-    .hardware-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-bottom: 4rem;
-    }
-
-    .hardware-card {
-      background: var(--card-bg);
-      border: 1px solid #2a2a3a;
-      border-radius: 8px;
-      padding: 2rem;
-      transition: all 0.3s ease;
-    }
-
-    .hardware-card:hover {
-      border-color: var(--neon-green);
-      box-shadow: 0 0 15px rgba(57, 255, 20, 0.1);
-    }
-
-    .lynx-card {
-      grid-column: 1 / -1;
-      border-color: var(--neon-orange);
-      background: linear-gradient(135deg, #12121a 0%, #1a1510 100%);
-    }
-
-    .lynx-card:hover { border-color: var(--neon-orange); box-shadow: 0 0 20px rgba(255, 102, 0, 0.15); }
-
-    .hw-icon {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 1.2rem;
-      color: var(--neon-green);
-      margin-bottom: 1rem;
-    }
-
-    .hw-name {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.85rem;
-      color: #fff;
-      margin-bottom: 0.3rem;
-    }
-
-    .hw-year {
-      font-size: 0.75rem;
-      color: var(--neon-blue);
-      margin-bottom: 1.2rem;
-    }
-
-    .hw-specs { margin-bottom: 1.2rem; }
-
-    .spec-row {
-      display: flex;
-      justify-content: space-between;
-      padding: 4px 0;
-      border-bottom: 1px solid #1a1a2a;
-      font-size: 0.8rem;
-    }
-
-    .spec-label { color: #666; }
-    .spec-value { color: #ccc; text-align: right; }
-
-    .hw-note {
-      color: #888;
-      font-size: 0.8rem;
-      line-height: 1.6;
-      font-style: italic;
-      border-left: 2px solid #2a2a3a;
-      padding-left: 1rem;
-      margin-top: 1rem;
-    }
-
-    /* Lynx Story */
-    .lynx-story {
-      max-width: 800px;
-      margin: 0 auto 4rem;
-      padding: 0 2rem;
-    }
-
-    .lynx-chapter {
-      margin-bottom: 2.5rem;
-      padding: 1.5rem;
-      border-left: 3px solid var(--neon-orange);
-      background: rgba(255, 102, 0, 0.03);
-    }
-
-    .lynx-chapter-title {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.7rem;
-      color: var(--neon-orange);
-      margin-bottom: 0.8rem;
-      text-transform: uppercase;
-    }
-
-    .lynx-chapter-text {
-      color: #bbb;
-      font-size: 0.9rem;
-      line-height: 1.8;
-    }
+    /* Lynx story */
+    .lynx-story { display: grid; gap: 14px; counter-reset: chapter; }
+    .lynx-chapter { position: relative; background: #fff; border: 1px solid var(--line); border-left: 6px solid var(--orange); border-radius: 10px; padding: 16px 20px 16px 70px; }
+    .lynx-chapter::before { counter-increment: chapter; content: counter(chapter); position: absolute; left: 22px; top: 17px; font-family: var(--pixel); font-size: 18px; color: var(--orange); }
+    .lynx-chapter-title { font-family: var(--head); font-weight: 600; font-size: 21px; }
+    .lynx-chapter-text { font-size: 17px; line-height: 1.6; margin-top: 6px; }
 
     /* People */
-    .people-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 4rem;
-    }
+    .people-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px; }
+    .person-card { background: #fff; border: 1px solid var(--line); border-top: 6px solid var(--red); border-radius: 10px; padding: 16px; }
+    .person-card:nth-child(6n+2) { border-top-color: var(--orange); }
+    .person-card:nth-child(6n+3) { border-top-color: var(--yellow); }
+    .person-card:nth-child(6n+4) { border-top-color: var(--green); }
+    .person-card:nth-child(6n+5) { border-top-color: var(--blue); }
+    .person-card:nth-child(6n+6) { border-top-color: var(--violet); }
+    .person-role { font-family: var(--pixel); font-size: 9px; line-height: 1.6; color: var(--muted); }
+    .person-name { font-family: var(--head); font-weight: 600; font-size: 22px; margin: 8px 0 6px; }
+    .person-bio { font-size: 15.5px; line-height: 1.55; }
 
-    .person-card {
-      background: var(--card-bg);
-      border: 1px solid #2a2a3a;
-      border-radius: 8px;
-      padding: 1.5rem;
-      transition: all 0.3s ease;
-    }
-
-    .person-card:hover { border-color: #444; }
-
-    .person-role {
-      font-size: 0.65rem;
-      color: var(--neon-blue);
-      letter-spacing: 2px;
-      margin-bottom: 0.5rem;
-    }
-
-    .person-name {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.75rem;
-      color: #fff;
-      margin-bottom: 0.8rem;
-    }
-
-    .person-bio {
-      color: #999;
-      font-size: 0.8rem;
-      line-height: 1.7;
-    }
-
-    /* Achievements */
-    .achievements-list {
-      max-width: 800px;
-      margin: 0 auto 4rem;
-      padding: 0 2rem;
-    }
-
-    .achievement {
-      display: grid;
-      grid-template-columns: 60px 1fr;
-      grid-template-rows: auto auto;
-      gap: 0 1.5rem;
-      margin-bottom: 2rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid #1a1a2a;
-    }
-
-    .achievement-year {
-      grid-row: 1 / 3;
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.55rem;
-      color: var(--neon-green);
-      padding-top: 4px;
-    }
-
-    .achievement-title {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.7rem;
-      color: #fff;
-      margin-bottom: 0.6rem;
-      line-height: 1.5;
-    }
-
-    .achievement-desc {
-      color: #999;
-      font-size: 0.85rem;
-      line-height: 1.7;
-    }
+    /* Technical firsts */
+    .achievements-list { display: grid; gap: 12px; }
+    .achievement { display: grid; grid-template-columns: 96px 1fr; grid-template-areas: "year title" "year desc"; column-gap: 18px; row-gap: 4px; background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; }
+    .achievement-year { grid-area: year; align-self: start; display: flex; align-items: center; justify-content: center; height: 44px; border-radius: 6px; font-family: var(--pixel); font-size: 12px; color: #fff; background: var(--blue); }
+    .achievement:nth-child(6n+1) .achievement-year { background: var(--red); }
+    .achievement:nth-child(6n+2) .achievement-year { background: var(--orange); }
+    .achievement:nth-child(6n+3) .achievement-year { background: #a9ae12; }
+    .achievement:nth-child(6n+4) .achievement-year { background: var(--green); }
+    .achievement:nth-child(6n+6) .achievement-year { background: var(--violet); }
+    .achievement-title { grid-area: title; font-family: var(--head); font-weight: 600; font-size: 20px; }
+    .achievement-desc { grid-area: desc; font-size: 16px; line-height: 1.55; }
 
     /* Influence */
-    .influence-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 4rem;
+    .influence-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+    .influence-card { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+    .influence-arrow { font-family: var(--head); font-weight: 600; font-size: 18px; color: var(--blue); }
+    .influence-text { font-size: 15.5px; line-height: 1.55; margin-top: 8px; }
+
+    /* Lab */
+    .lab-intro { background: #fff; border: 1px solid var(--line); border-left: 6px solid var(--violet); border-radius: 10px; padding: 18px 22px; font-size: 19px; line-height: 1.6; margin-bottom: 20px; }
+    .lab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+    .lab-card { border-radius: 12px; padding: 16px 20px 20px; color: #fff; }
+    .lab-card:nth-child(1) { background: linear-gradient(to bottom, var(--blue-l) 0 62px, var(--blue) 62px 100%); }
+    .lab-card:nth-child(2) { background: linear-gradient(to bottom, var(--green-l) 0 62px, var(--green) 62px 100%); }
+    .lab-card:nth-child(3) { background: linear-gradient(to bottom, var(--orange-l) 0 62px, var(--orange) 62px 100%); }
+    .lab-card:nth-child(4) { background: linear-gradient(to bottom, var(--red-l) 0 62px, var(--red) 62px 100%); }
+    .lab-card-icon { font-size: 30px; line-height: 1; }
+    .lab-card-title { font-family: var(--head); font-weight: 600; font-size: 20px; margin-top: 26px; }
+    .lab-card-desc { font-family: var(--head); font-size: 15px; line-height: 1.5; margin-top: 8px; opacity: .95; }
+
+    /* C64 READY footer */
+    .ready-wrap { background: var(--c64-fg); padding: 34px; margin-top: 40px; }
+    .ready { max-width: 1040px; margin: 0 auto; background: var(--c64-bg); color: var(--c64-fg); font-family: var(--pixel); font-size: 13px; line-height: 2.2; padding: 26px 30px; }
+    .ready div { margin: 0; }
+    .ready .c { text-align: center; }
+    .ready .gap { height: 1.1em; }
+    .ready a { color: #fff; }
+    .cursor { display: inline-block; width: .9em; height: 1.1em; background: var(--c64-fg); vertical-align: -3px; margin-left: 4px; animation: blink 1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+    .legal { max-width: 1100px; margin: 0 auto; padding: 18px 24px 44px; text-align: center; font-family: var(--head); font-size: 14px; line-height: 1.7; color: var(--muted); }
+
+    .to-top { position: fixed; right: 18px; bottom: 18px; width: 44px; height: 44px; border-radius: 10px; background: var(--ink); color: #fff; display: flex; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity .2s; text-decoration: none !important; z-index: 60; }
+    .to-top.visible { opacity: .85; pointer-events: auto; }
+    .lightbox { position: fixed; inset: 0; background: rgba(20, 24, 30, .88); display: none; align-items: center; justify-content: center; z-index: 100; cursor: zoom-out; padding: 30px; }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 92vw; max-height: 88vh; border-radius: 8px; background: #fff; }
+
+    @media (max-width: 900px) {
+      .welcome-grid { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .promo h1 { font-size: 36px; }
+      .wm-text { font-size: 50px; }
+      .tabs a { font-size: 9px; height: 52px; }
+      .shelf { height: 190px; }
+      .shelf img { height: 170px; max-width: 128px; }
+      .shelf img:nth-child(n+4) { display: none; }
+      .sec-head h2 { font-size: 36px; }
     }
-
-    .influence-card {
-      background: var(--card-bg);
-      border: 1px solid #2a2a3a;
-      border-radius: 8px;
-      padding: 1.5rem;
+    @media (max-width: 560px) {
+      .tabs a { font-size: 7px; height: 46px; }
+      .promo h1 { font-size: 29px; }
+      .promo h3 { font-size: 17px; }
+      .wm-text { font-size: 42px; }
+      .shelf img:nth-child(n+3) { display: none; }
+      .fancy { min-width: 140px; font-size: 16px; }
+      .sec-head h2 { font-size: 30px; }
+      .achievement { grid-template-columns: 1fr; grid-template-areas: "year" "title" "desc"; }
+      .achievement-year { justify-self: start; padding: 0 12px; }
+      .ready { font-size: 10px; padding: 20px; }
+      .ready-wrap { padding: 18px; }
     }
-
-    .influence-card:hover { border-color: var(--neon-pink); }
-
-    .influence-arrow {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.6rem;
-      color: var(--neon-pink);
-      margin-bottom: 0.8rem;
-    }
-
-    .influence-text {
-      color: #999;
-      font-size: 0.85rem;
-      line-height: 1.7;
-    }
-
-    /* Lab Today */
-    .lab-section { margin-bottom: 4rem; }
-
-    .lab-intro {
-      max-width: 800px;
-      margin: 0 auto 2rem;
-      padding: 2rem;
-      text-align: center;
-      color: #bbb;
-      font-size: 1rem;
-      line-height: 1.8;
-      border: 1px solid #2a2a3a;
-      border-radius: 8px;
-      background: var(--card-bg);
-    }
-
-    .lab-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .lab-card {
-      background: var(--card-bg);
-      border: 1px solid #2a2a3a;
-      border-radius: 8px;
-      padding: 1.5rem;
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .lab-card:hover { border-color: var(--neon-blue); transform: translateY(-3px); }
-
-    .lab-card-icon { font-size: 2rem; margin-bottom: 1rem; }
-
-    .lab-card-title {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 0.65rem;
-      color: #fff;
-      margin-bottom: 0.8rem;
-    }
-
-    .lab-card-desc {
-      color: #888;
-      font-size: 0.8rem;
-      line-height: 1.6;
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .slide.is-active, .ring.run, .cursor { animation: none; }
+      .welcome-photos img { transition: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Sticky Navigation -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-inner">
-      <a href="#top" class="nav-brand"><span class="nb-epyx">Epyx</span><span class="nb-lab">Lab</span></a>
-      <div class="nav-divider"></div>
-      <a href="#numbers" class="nav-link">Numbers</a>
-      <a href="#catalog" class="nav-link">Catalog</a>
-      <a href="#timeline" class="nav-link">Timeline</a>
-      <a href="#machines" class="nav-link">Machines</a>
-      <a href="#accessories" class="nav-link">Gear</a>
-      <a href="#lynx" class="nav-link">Lynx</a>
-      <a href="#people" class="nav-link">People</a>
-      <a href="#firsts" class="nav-link">Firsts</a>
-      <a href="#influence" class="nav-link">Influence</a>
-      <a href="#lab" class="nav-link">Lab</a>
-      <a href="#contact" class="nav-link">Contact</a>
+  <!-- Promo banner -->
+  <header class="promo" id="top">
+    <div class="slide is-active">
+      <div class="slide-inner">
+        <div class="badge">● ACTIVE — EST. 1983</div>
+        <div class="wordmark" role="img" aria-label="EpyxLab"><span class="wm-text">Epyx<b>Lab</b></span><span class="wm-stripes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+        <h1>Where legends were forged. Where they live on.</h1>
+        <h3>The legacy isn't dead — it evolved. Azure. AI. Infrastructure. Same spirit.</h3>
+        <div class="buttons"><a class="fancy green" href="#catalog">The Catalog</a><a class="fancy blue" href="#lab">The Lab Today</a></div>
+      </div>
+    <div class="shelf" aria-hidden="true">
+      <img src="img/summer-games.png" alt="">
+      <img src="img/winter-games-amiga.png" alt="" loading="lazy">
+      <img src="img/california-games.png" alt="" loading="lazy">
+      <img src="img/world-games.png" alt="" loading="lazy">
+      <img src="img/summer-games-2.png" alt="" loading="lazy">
     </div>
-  </nav>
+    </div>
 
-  <!-- Scroll to Top -->
-  <a href="#top" class="scroll-top" id="scrollTop">▲</a>
+    <div class="slide" aria-hidden="true">
+      <div class="slide-inner">
+        <div class="wordmark" role="img" aria-label="EpyxLab"><span class="wm-text">Epyx<b>Lab</b></span><span class="wm-stripes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+        <h1>The Lynx story.</h1>
+        <h3>Epyx's greatest engineering achievement — and their final act.</h3>
+        <div class="buttons"><a class="fancy green" href="#lynx">Read the Story</a><a class="fancy blue" href="#machines">The Machines</a></div>
+      </div>
+    <div class="shelf" aria-hidden="true">
+      <img src="img/hw-lynx-ii.png" alt="">
+      <img src="img/chips-challenge.png" alt="" loading="lazy">
+      <img src="img/atari-lynx.png" alt="" loading="lazy">
+    </div>
+    </div>
 
-  <!-- Hero -->
-  <section class="hero" id="top">
-    <div class="logo"><span class="epyx">Epyx</span><span class="lab">Lab</span></div>
-    <p class="tagline">Where legends were forged. Where they live on.</p>
-    <div class="era-badge">● ACTIVE — EST. 1983</div>
-  </section>
+    <div class="slide" aria-hidden="true">
+      <div class="slide-inner">
+        <div class="wordmark" role="img" aria-label="EpyxLab"><span class="wm-text">Epyx<b>Lab</b></span><span class="wm-stripes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+        <h1>The games that defined a generation.</h1>
+        <h3>47 games. 12 platforms. 8 years of gold.</h3>
+        <div class="buttons"><a class="fancy green" href="#catalog">Browse the Catalog</a><a class="fancy blue" href="#timeline">The Timeline</a></div>
+      </div>
+    <div class="shelf" aria-hidden="true">
+      <img src="img/impossible-mission.png" alt="">
+      <img src="img/jumpman.png" alt="" loading="lazy">
+      <img src="img/temple-of-apshai.png" alt="" loading="lazy">
+      <img src="img/pitstop-2.png" alt="" loading="lazy">
+      <img src="img/international-karate.png" alt="" loading="lazy">
+    </div>
+    </div>
 
-  <!-- Stats -->
-  <section class="catalog">
-    <p class="section-title" id="numbers">THE NUMBERS</p>
-    <div class="stats">
+    <div class="slide" aria-hidden="true">
+      <div class="slide-inner">
+        <div class="wordmark" role="img" aria-label="EpyxLab"><span class="wm-text">Epyx<b>Lab</b></span><span class="wm-stripes" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div>
+        <h1>Same spirit. New medium.</h1>
+        <h3>The constraints have changed — from 64 KB of RAM to infinite cloud compute — but the philosophy hasn't: build something people remember.</h3>
+        <div class="buttons"><a class="fancy green" href="#lab">The Lab Today</a><a class="fancy blue" href="#contact">Contact</a></div>
+      </div>
+      <div class="tiles" aria-hidden="true">
+        <div class="tile"><div class="ico">☁️</div><div class="t">Azure Infrastructure</div></div>
+        <div class="tile"><div class="ico">🤖</div><div class="t">AI &amp; Copilot</div></div>
+        <div class="tile"><div class="ico">🔐</div><div class="t">Security &amp; Identity</div></div>
+        <div class="tile"><div class="ico">⚙️</div><div class="t">DevOps &amp; Automation</div></div>
+      </div>
+    </div>
+
+    <div class="promo-ctrl">
+      <div class="dots">
+        <button type="button" aria-label="Show slide 1"></button><button type="button" aria-label="Show slide 2"></button><button type="button" aria-label="Show slide 3"></button><button type="button" aria-label="Show slide 4"></button>
+      </div>
+      <span class="ring run" aria-hidden="true"></span>
+    </div>
+  </header>
+
+  <!-- Welcome -->
+  <section class="welcome" id="welcome" data-group="welcome">
+    <div class="wrap">
+      <div class="welcome-grid">
+        <div class="welcome-photos">
+          <img class="on" src="img/hw-commodore-64.png" alt="Commodore 64 with 1702 monitor">
+          <img src="img/hw-atari-800.png" alt="Atari 800 with Sony Trinitron" loading="lazy">
+          <img src="img/hw-lynx-ii.png" alt="Atari Lynx II" loading="lazy">
+        </div>
+        <div>
+          <h2>Welcome to EpyxLab.</h2>
+          <p>A tribute to Epyx Inc. (1978–1993) — the studio that made sports games an art form.</p>
+          <p>This lab carries the name forward: cloud architecture, AI, and modern infrastructure.</p>
+          <p>Browse <a href="#catalog">the catalog</a>, meet <a href="#machines">the machines</a> and <a href="#people">the people</a>, read <a href="#lynx">the Lynx story</a>, and see what <a href="#lab">the lab</a> is building today.</p>
+        </div>
+      </div>
+      <div id="numbers">
+        <div class="stats">
       <div class="stat-box">
         <div class="stat-number">47</div>
         <div class="stat-label">Games Published</div>
@@ -731,14 +371,31 @@
         <div class="stat-label">Legacy</div>
       </div>
     </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Game Catalog -->
-    <p class="section-title" id="catalog">THE CATALOG</p>
-    <p class="section-subtitle">The games that defined a generation.</p>
+  <!-- Rainbow tabs -->
+  <nav class="tabs" aria-label="Sections">
+    <ul>
+      <li><a href="#welcome" data-group="welcome">Welcome</a></li>
+      <li><a href="#catalog" data-group="catalog">Catalog</a></li>
+      <li><a href="#machines" data-group="machines">Machines</a></li>
+      <li><a href="#timeline" data-group="history">History</a></li>
+      <li><a href="#lab" data-group="lab">Lab</a></li>
+      <li><a href="#contact" data-group="contact">Contact</a></li>
+    </ul>
+  </nav>
 
-    <div class="games-grid">
+  <main class="wrap">
+    <section class="group" data-group="catalog">
+      <div class="sec-head" id="catalog">
+        <h2>THE CATALOG</h2>
+        <p>The games that defined a generation.</p>
+      </div>
+      <div class="games-grid">
       <div class="game-card">
-        <img src="img/summer-games.png" alt="Summer Games box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/summer-games.png" alt="Summer Games box art" class="game-cover">
         <div class="game-year">1984</div>
         <div class="game-title">Summer Games</div>
         <div class="game-platform">C64 • Apple II • Atari • Sega</div>
@@ -748,7 +405,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/summer-games-2.png" alt="Summer Games II box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/summer-games-2.png" alt="Summer Games II box art" class="game-cover">
         <div class="game-year">1985</div>
         <div class="game-title">Summer Games II</div>
         <div class="game-platform">C64 • Apple II • Atari • Amiga</div>
@@ -758,7 +415,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/winter-games-amiga.png" alt="Winter Games box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/winter-games-amiga.png" alt="Winter Games box art" class="game-cover">
         <div class="game-year">1985</div>
         <div class="game-title">Winter Games</div>
         <div class="game-platform">C64 • Apple II • Atari • Amiga • NES</div>
@@ -768,7 +425,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/world-games.png" alt="World Games box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/world-games.png" alt="World Games box art" class="game-cover">
         <div class="game-year">1986</div>
         <div class="game-title">World Games</div>
         <div class="game-platform">C64 • Amiga • Atari ST • Apple IIgs</div>
@@ -778,7 +435,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/california-games.png" alt="California Games box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/california-games.png" alt="California Games box art" class="game-cover">
         <div class="game-year">1987</div>
         <div class="game-title">California Games</div>
         <div class="game-platform">C64 • NES • Lynx • Sega • DOS</div>
@@ -788,7 +445,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/california-games-2.png" alt="California Games II box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/california-games-2.png" alt="California Games II box art" class="game-cover">
         <div class="game-year">1990</div>
         <div class="game-title">California Games II</div>
         <div class="game-platform">DOS • SNES • Sega Master System</div>
@@ -798,7 +455,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/impossible-mission.png" alt="Impossible Mission box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/impossible-mission.png" alt="Impossible Mission box art" class="game-cover">
         <div class="game-year">1984</div>
         <div class="game-title">Impossible Mission</div>
         <div class="game-platform">C64 • Atari 7800 • Sega • NES</div>
@@ -808,7 +465,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/impossible-mission-2.png" alt="Impossible Mission II box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/impossible-mission-2.png" alt="Impossible Mission II box art" class="game-cover">
         <div class="game-year">1988</div>
         <div class="game-title">Impossible Mission II</div>
         <div class="game-platform">C64 • Spectrum • Amiga • DOS • NES</div>
@@ -818,7 +475,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/pitstop.png" alt="Pit Stop box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/pitstop.png" alt="Pit Stop box art" class="game-cover">
         <div class="game-year">1983</div>
         <div class="game-title">Pit Stop</div>
         <div class="game-platform">C64 • ColecoVision</div>
@@ -828,7 +485,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/pitstop-2.png" alt="Pitstop II box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/pitstop-2.png" alt="Pitstop II box art" class="game-cover">
         <div class="game-year">1984</div>
         <div class="game-title">Pitstop II</div>
         <div class="game-platform">C64 • Atari • ColecoVision</div>
@@ -838,7 +495,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/jumpman.png" alt="Jumpman box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/jumpman.png" alt="Jumpman box art" class="game-cover">
         <div class="game-year">1983</div>
         <div class="game-title">Jumpman</div>
         <div class="game-platform">C64 • Atari 400/800 • DOS</div>
@@ -848,7 +505,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/temple-of-apshai.png" alt="Temple of Apshai box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/temple-of-apshai.png" alt="Temple of Apshai box art" class="game-cover">
         <div class="game-year">1979</div>
         <div class="game-title">Temple of Apshai</div>
         <div class="game-platform">TRS-80 • Apple II • C64 • Atari</div>
@@ -858,7 +515,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/games-summer-edition.png" alt="The Games: Summer Edition" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/games-summer-edition.png" alt="The Games: Summer Edition" class="game-cover">
         <div class="game-year">1988</div>
         <div class="game-title">The Games: Summer Edition</div>
         <div class="game-platform">C64 • Amiga • DOS • Apple IIGS</div>
@@ -868,7 +525,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/chips-challenge.png" alt="Chip's Challenge box art and gameplay" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/chips-challenge.png" alt="Chip's Challenge box art and gameplay" class="game-cover">
         <div class="game-year">1990</div>
         <div class="game-title">Chip's Challenge</div>
         <div class="game-platform">Lynx • DOS • Windows</div>
@@ -878,7 +535,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/street-sports-soccer.png" alt="Street Sports Soccer box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/street-sports-soccer.png" alt="Street Sports Soccer box art" class="game-cover">
         <div class="game-year">1988</div>
         <div class="game-title">Street Sports Soccer</div>
         <div class="game-platform">C64 • Apple II • DOS</div>
@@ -888,7 +545,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/street-sports-baseball.png" alt="Street Sports Baseball box art and gameplay" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/street-sports-baseball.png" alt="Street Sports Baseball box art and gameplay" class="game-cover">
         <div class="game-year">1986</div>
         <div class="game-title">Street Sports Baseball</div>
         <div class="game-platform">C64 • Apple II • DOS</div>
@@ -898,7 +555,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/super-cycle.png" alt="Super Cycle box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/super-cycle.png" alt="Super Cycle box art" class="game-cover">
         <div class="game-year">1986</div>
         <div class="game-title">Super Cycle</div>
         <div class="game-platform">C64 • Amstrad • DOS</div>
@@ -908,7 +565,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/4x4-offroad-racing.png" alt="4x4 Off-Road Racing box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/4x4-offroad-racing.png" alt="4x4 Off-Road Racing box art" class="game-cover">
         <div class="game-year">1988</div>
         <div class="game-title">4x4 Off-Road Racing</div>
         <div class="game-platform">C64 • DOS • Amiga • Atari ST</div>
@@ -918,7 +575,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/destroyer.png" alt="Destroyer box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/destroyer.png" alt="Destroyer box art" class="game-cover">
         <div class="game-year">1986</div>
         <div class="game-title">Destroyer</div>
         <div class="game-platform">C64 • DOS • Apple II</div>
@@ -928,7 +585,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/international-karate.png" alt="International Karate box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/international-karate.png" alt="International Karate box art" class="game-cover">
         <div class="game-year">1985</div>
         <div class="game-title">International Karate</div>
         <div class="game-platform">C64 • Spectrum • Amstrad • Atari</div>
@@ -938,7 +595,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/hot-wheels.png" alt="Hot Wheels box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/hot-wheels.png" alt="Hot Wheels box art" class="game-cover">
         <div class="game-year">1987</div>
         <div class="game-title">Hot Wheels</div>
         <div class="game-platform">C64 • Spectrum • Amstrad</div>
@@ -948,7 +605,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/gi-joe.png" alt="G.I. Joe box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/gi-joe.png" alt="G.I. Joe box art" class="game-cover">
         <div class="game-year">1985</div>
         <div class="game-title">G.I. Joe: A Real American Hero</div>
         <div class="game-platform">C64 • Apple II • Atari</div>
@@ -958,7 +615,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/armor-assault.png" alt="Armor Assault box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/armor-assault.png" alt="Armor Assault box art" class="game-cover">
         <div class="game-year">1982</div>
         <div class="game-title">Armor Assault</div>
         <div class="game-platform">Atari 400/800</div>
@@ -968,7 +625,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/alien-garden.png" alt="Alien Garden box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/alien-garden.png" alt="Alien Garden box art" class="game-cover">
         <div class="game-year">1982</div>
         <div class="game-title">Alien Garden</div>
         <div class="game-platform">Atari 400/800 • C64</div>
@@ -977,7 +634,7 @@
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
       </div>
       <div class="game-card">
-        <img src="img/starfleet-orion.png" alt="Starfleet Orion manual" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/starfleet-orion.png" alt="Starfleet Orion manual" class="game-cover">
         <div class="game-year">1978</div>
         <div class="game-title">Starfleet Orion</div>
         <div class="game-platform">Commodore PET • TRS-80 • Apple II</div>
@@ -987,7 +644,7 @@
       </div>
 
       <div class="game-card">
-        <img src="img/sub-battle-simulator.png" alt="Sub Battle Simulator box art" class="game-cover">
+        <img loading="lazy" decoding="async" src="img/sub-battle-simulator.png" alt="Sub Battle Simulator box art" class="game-cover">
         <div class="game-year">1987</div>
         <div class="game-title">Sub Battle Simulator</div>
         <div class="game-platform">IBM PC • Amiga • Atari ST</div>
@@ -996,12 +653,106 @@
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
       </div>
     </div>
+    </section>
 
-    <!-- Timeline -->
-    <p class="section-title" id="timeline">THE TIMELINE</p>
-    <p class="section-subtitle">From garage to legend to legacy.</p>
+    <section class="group" data-group="machines">
+      <div class="sec-head" id="machines">
+        <h2>THE MACHINES</h2>
+        <p>The hardware that ran the magic.</p>
+      </div>
+      <div class="hardware-grid">
+      <div class="hardware-card">
+        <img loading="lazy" decoding="async" src="img/hw-commodore-64.png" alt="Commodore 64 with 1702 monitor" class="game-cover">
+        <div class="hw-name">Commodore 64</div>
+        <div class="hw-year">1982</div>
+        <div class="hw-specs">
+          <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">MOS 6510 @ 1.023 MHz</span></div>
+          <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">64 KB</span></div>
+          <div class="spec-row"><span class="spec-label">Graphics</span><span class="spec-value">VIC-II — 16 colors, 320×200, 8 sprites</span></div>
+          <div class="spec-row"><span class="spec-label">Sound</span><span class="spec-value">SID 6581 — 3 voices, legendary chip</span></div>
+          <div class="spec-row"><span class="spec-label">Units sold</span><span class="spec-value">~17 million</span></div>
+        </div>
+        <div class="hw-note">Epyx's primary platform. Summer Games, California Games, Impossible Mission — all built here first. The SID chip made the medal ceremonies sing.</div>
+      </div>
 
-    <div class="timeline">
+      <div class="hardware-card">
+        <img loading="lazy" decoding="async" src="img/hw-atari-800.png" alt="Atari 800 with Sony Trinitron" class="game-cover">
+        <div class="hw-name">Atari 800 / 400</div>
+        <div class="hw-year">1979</div>
+        <div class="hw-specs">
+          <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">MOS 6502 @ 1.79 MHz</span></div>
+          <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">48 KB (800) / 16 KB (400)</span></div>
+          <div class="spec-row"><span class="spec-label">Graphics</span><span class="spec-value">ANTIC + GTIA — 256 colors, display lists</span></div>
+          <div class="spec-row"><span class="spec-label">Sound</span><span class="spec-value">POKEY — 4 channels, distortion control</span></div>
+          <div class="spec-row"><span class="spec-label">Units sold</span><span class="spec-value">~2 million</span></div>
+        </div>
+        <div class="hw-note">Epyx's first home. Temple of Apshai and Jumpman debuted on Atari hardware. The display list architecture was ahead of its time.</div>
+      </div>
+
+      <div class="hardware-card lynx-card">
+        <img loading="lazy" decoding="async" src="img/hw-lynx-ii.png" alt="Atari Lynx II" class="game-cover">
+        <div class="hw-name">Atari Lynx</div>
+        <div class="hw-year">1989</div>
+        <div class="hw-specs">
+          <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">WDC 65C02 @ 4 MHz + custom "Mikey" + "Suzy"</span></div>
+          <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">64 KB + 128 KB ROM</span></div>
+          <div class="spec-row"><span class="spec-label">Graphics</span><span class="spec-value">160×102, 4,096 colors, hardware scaling/rotation</span></div>
+          <div class="spec-row"><span class="spec-label">Sound</span><span class="spec-value">4 channels, 8-bit DAC</span></div>
+          <div class="spec-row"><span class="spec-label">Display</span><span class="spec-value">3.5" backlit color LCD — first handheld with color</span></div>
+        </div>
+        <div class="hw-note">DESIGNED BY EPYX. Codenamed "Handy." Engineers Dave Needle and RJ Mical built it in Epyx's offices. The world's first color backlit handheld gaming device. Sold to Atari when Epyx ran out of money. A masterpiece they never got credit for.</div>
+      </div>
+
+      <div class="hardware-card">
+        <img loading="lazy" decoding="async" src="img/hw-apple-iie.png" alt="Apple IIe with Monitor III and Disk II" class="game-cover">
+        <div class="hw-name">Apple II</div>
+        <div class="hw-year">1977</div>
+        <div class="hw-specs">
+          <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">MOS 6502 @ 1.023 MHz</span></div>
+          <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">4–64 KB</span></div>
+          <div class="spec-row"><span class="spec-label">Graphics</span><span class="spec-value">Hi-Res: 280×192, 6 colors</span></div>
+          <div class="spec-row"><span class="spec-label">Sound</span><span class="spec-value">1-bit toggle speaker (beep)</span></div>
+          <div class="spec-row"><span class="spec-label">Units sold</span><span class="spec-value">~6 million</span></div>
+        </div>
+        <div class="hw-note">The school computer. The home computer. Temple of Apshai, Summer Games, Winter Games — all ported here. Limited palette, but Epyx made it work.</div>
+      </div>
+    </div>
+
+      <div class="sec-head" id="accessories">
+        <h2>THE GEAR</h2>
+        <p>Epyx didn't just make games — they made the tools to play them.</p>
+      </div>
+      <div class="hardware-grid">
+      <div class="hardware-card">
+        <img loading="lazy" decoding="async" src="img/epyx-500xj-joystick.png" alt="Epyx 500XJ Joystick" class="game-cover">
+        <div class="hw-name">Epyx 500XJ Joystick</div>
+        <div class="hw-year">1984</div>
+        <div class="hw-note">The legendary 500XJ — the joystick that came with Summer Games and became the de facto standard for C64 gaming. Microswitched, ambidextrous, nearly indestructible. If you grew up with a Commodore 64, you held one of these. Still considered one of the best 8-bit joysticks ever made.</div>
+      </div>
+
+      <div class="hardware-card">
+        <img loading="lazy" decoding="async" src="img/fast-load-cartridge.png" alt="Epyx Fast Load Cartridge" class="game-cover">
+        <div class="hw-name">Fast Load Cartridge</div>
+        <div class="hw-year">1984</div>
+        <div class="hw-note">The C64's 1541 disk drive was painfully slow — 20+ minutes to load some games. Epyx solved it with a cartridge that accelerated disk loading by 5×. Plugged into the expansion port and just worked. Sold over 500,000 units. Epyx making hardware utilities before they made the Lynx.</div>
+      </div>
+
+      <div class="hardware-card lynx-card">
+        <img loading="lazy" decoding="async" src="img/atari-lynx.png" alt="Atari Lynx handheld" class="game-cover">
+        <div class="hw-name">Atari Lynx (Designed by Epyx)</div>
+        <div class="hw-year">1989</div>
+        <div class="hw-note">Codenamed "Handy." The world's first color backlit handheld gaming device — designed entirely by Epyx engineers Dave Needle and RJ Mical. Hardware sprite scaling, 4,096 colors, ComLynx networking. Sold to Atari when Epyx ran out of cash. A masterpiece they never got full credit for. Full story below.</div>
+      </div>
+    </div>
+    </section>
+
+    <section class="group" data-group="history">
+      <div class="sec-head" id="timeline">
+        <h2>THE TIMELINE</h2>
+        <p>From garage to legend to legacy.</p>
+        <nav class="subnav" aria-label="History"><a href="#timeline">Timeline</a><a href="#lynx">Lynx Story</a><a href="#people">People</a><a href="#firsts">Technical Firsts</a><a href="#influence">Influence</a></nav>
+      </div>
+      <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-year">1978</div>
         <div class="timeline-text">Founded as Automated Simulations by Jim Connelley and Jon Freeman in Sunnyvale, California.</div>
@@ -1035,103 +786,12 @@
         <div class="timeline-text">EpyxLab. A cloud innovation lab named in tribute. The legacy isn't dead — it evolved. Azure. AI. Infrastructure. Same spirit.</div>
       </div>
     </div>
-  </section>
 
-    <!-- Hardware Exhibit -->
-    <p class="section-title" id="machines">THE MACHINES</p>
-    <p class="section-subtitle">The hardware that ran the magic.</p>
-
-    <div class="hardware-grid">
-      <div class="hardware-card">
-        <img src="img/hw-commodore-64.png" alt="Commodore 64 with 1702 monitor" class="game-cover">
-        <div class="hw-name">Commodore 64</div>
-        <div class="hw-year">1982</div>
-        <div class="hw-specs">
-          <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">MOS 6510 @ 1.023 MHz</span></div>
-          <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">64 KB</span></div>
-          <div class="spec-row"><span class="spec-label">Graphics</span><span class="spec-value">VIC-II — 16 colors, 320×200, 8 sprites</span></div>
-          <div class="spec-row"><span class="spec-label">Sound</span><span class="spec-value">SID 6581 — 3 voices, legendary chip</span></div>
-          <div class="spec-row"><span class="spec-label">Units sold</span><span class="spec-value">~17 million</span></div>
-        </div>
-        <div class="hw-note">Epyx's primary platform. Summer Games, California Games, Impossible Mission — all built here first. The SID chip made the medal ceremonies sing.</div>
+      <div class="sec-head" id="lynx">
+        <h2>THE LYNX STORY</h2>
+        <p>Epyx's greatest engineering achievement — and their final act.</p>
       </div>
-
-      <div class="hardware-card">
-        <img src="img/hw-atari-800.png" alt="Atari 800 with Sony Trinitron" class="game-cover">
-        <div class="hw-name">Atari 800 / 400</div>
-        <div class="hw-year">1979</div>
-        <div class="hw-specs">
-          <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">MOS 6502 @ 1.79 MHz</span></div>
-          <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">48 KB (800) / 16 KB (400)</span></div>
-          <div class="spec-row"><span class="spec-label">Graphics</span><span class="spec-value">ANTIC + GTIA — 256 colors, display lists</span></div>
-          <div class="spec-row"><span class="spec-label">Sound</span><span class="spec-value">POKEY — 4 channels, distortion control</span></div>
-          <div class="spec-row"><span class="spec-label">Units sold</span><span class="spec-value">~2 million</span></div>
-        </div>
-        <div class="hw-note">Epyx's first home. Temple of Apshai and Jumpman debuted on Atari hardware. The display list architecture was ahead of its time.</div>
-      </div>
-
-      <div class="hardware-card lynx-card">
-        <img src="img/hw-lynx-ii.png" alt="Atari Lynx II" class="game-cover">
-        <div class="hw-name">Atari Lynx</div>
-        <div class="hw-year">1989</div>
-        <div class="hw-specs">
-          <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">WDC 65C02 @ 4 MHz + custom "Mikey" + "Suzy"</span></div>
-          <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">64 KB + 128 KB ROM</span></div>
-          <div class="spec-row"><span class="spec-label">Graphics</span><span class="spec-value">160×102, 4,096 colors, hardware scaling/rotation</span></div>
-          <div class="spec-row"><span class="spec-label">Sound</span><span class="spec-value">4 channels, 8-bit DAC</span></div>
-          <div class="spec-row"><span class="spec-label">Display</span><span class="spec-value">3.5" backlit color LCD — first handheld with color</span></div>
-        </div>
-        <div class="hw-note">DESIGNED BY EPYX. Codenamed "Handy." Engineers Dave Needle and RJ Mical built it in Epyx's offices. The world's first color backlit handheld gaming device. Sold to Atari when Epyx ran out of money. A masterpiece they never got credit for.</div>
-      </div>
-
-      <div class="hardware-card">
-        <img src="img/hw-apple-iie.png" alt="Apple IIe with Monitor III and Disk II" class="game-cover">
-        <div class="hw-name">Apple II</div>
-        <div class="hw-year">1977</div>
-        <div class="hw-specs">
-          <div class="spec-row"><span class="spec-label">CPU</span><span class="spec-value">MOS 6502 @ 1.023 MHz</span></div>
-          <div class="spec-row"><span class="spec-label">RAM</span><span class="spec-value">4–64 KB</span></div>
-          <div class="spec-row"><span class="spec-label">Graphics</span><span class="spec-value">Hi-Res: 280×192, 6 colors</span></div>
-          <div class="spec-row"><span class="spec-label">Sound</span><span class="spec-value">1-bit toggle speaker (beep)</span></div>
-          <div class="spec-row"><span class="spec-label">Units sold</span><span class="spec-value">~6 million</span></div>
-        </div>
-        <div class="hw-note">The school computer. The home computer. Temple of Apshai, Summer Games, Winter Games — all ported here. Limited palette, but Epyx made it work.</div>
-      </div>
-    </div>
-
-    <!-- Lynx Deep Dive -->
-    <!-- Hardware & Accessories -->
-    <p class="section-title" id="accessories">THE GEAR</p>
-    <p class="section-subtitle">Epyx didn't just make games — they made the tools to play them.</p>
-
-    <div class="hardware-grid">
-      <div class="hardware-card">
-        <img src="img/epyx-500xj-joystick.png" alt="Epyx 500XJ Joystick" class="game-cover">
-        <div class="hw-name">Epyx 500XJ Joystick</div>
-        <div class="hw-year">1984</div>
-        <div class="hw-note">The legendary 500XJ — the joystick that came with Summer Games and became the de facto standard for C64 gaming. Microswitched, ambidextrous, nearly indestructible. If you grew up with a Commodore 64, you held one of these. Still considered one of the best 8-bit joysticks ever made.</div>
-      </div>
-
-      <div class="hardware-card">
-        <img src="img/fast-load-cartridge.png" alt="Epyx Fast Load Cartridge" class="game-cover">
-        <div class="hw-name">Fast Load Cartridge</div>
-        <div class="hw-year">1984</div>
-        <div class="hw-note">The C64's 1541 disk drive was painfully slow — 20+ minutes to load some games. Epyx solved it with a cartridge that accelerated disk loading by 5×. Plugged into the expansion port and just worked. Sold over 500,000 units. Epyx making hardware utilities before they made the Lynx.</div>
-      </div>
-
-      <div class="hardware-card lynx-card">
-        <img src="img/atari-lynx.png" alt="Atari Lynx handheld" class="game-cover">
-        <div class="hw-name">Atari Lynx (Designed by Epyx)</div>
-        <div class="hw-year">1989</div>
-        <div class="hw-note">Codenamed "Handy." The world's first color backlit handheld gaming device — designed entirely by Epyx engineers Dave Needle and RJ Mical. Hardware sprite scaling, 4,096 colors, ComLynx networking. Sold to Atari when Epyx ran out of cash. A masterpiece they never got full credit for. Full story below.</div>
-      </div>
-    </div>
-
-    <!-- Lynx Deep Dive -->
-    <p class="section-title" id="lynx">THE LYNX STORY</p>
-    <p class="section-subtitle">Epyx's greatest engineering achievement — and their final act.</p>
-
-    <div class="lynx-story">
+      <div class="lynx-story">
       <div class="lynx-chapter">
         <div class="lynx-chapter-title">The Problem</div>
         <div class="lynx-chapter-text">By 1987, Epyx was bleeding money. The games were great but the market was brutal. They needed a moonshot — something that would make them a hardware company, not just a software house dependent on platform holders.</div>
@@ -1154,11 +814,11 @@
       </div>
     </div>
 
-    <!-- Key People -->
-    <p class="section-title" id="people">THE PEOPLE</p>
-    <p class="section-subtitle">The humans behind the pixels.</p>
-
-    <div class="people-grid">
+      <div class="sec-head" id="people">
+        <h2>THE PEOPLE</h2>
+        <p>The humans behind the pixels.</p>
+      </div>
+      <div class="people-grid">
       <div class="person-card">
         <div class="person-role">CO-FOUNDER</div>
         <div class="person-name">Jim Connelley</div>
@@ -1201,11 +861,11 @@
       </div>
     </div>
 
-    <!-- Technical Achievements -->
-    <p class="section-title" id="firsts">TECHNICAL FIRSTS</p>
-    <p class="section-subtitle">What Epyx did before anyone else.</p>
-
-    <div class="achievements-list">
+      <div class="sec-head" id="firsts">
+        <h2>TECHNICAL FIRSTS</h2>
+        <p>What Epyx did before anyone else.</p>
+      </div>
+      <div class="achievements-list">
       <div class="achievement">
         <div class="achievement-year">1984</div>
         <div class="achievement-title">Speech Synthesis in Home Computing</div>
@@ -1243,11 +903,11 @@
       </div>
     </div>
 
-    <!-- Legacy & Influence -->
-    <p class="section-title" id="influence">THE INFLUENCE</p>
-    <p class="section-subtitle">What came after — because of what came before.</p>
-
-    <div class="influence-grid">
+      <div class="sec-head" id="influence">
+        <h2>THE INFLUENCE</h2>
+        <p>What came after — because of what came before.</p>
+      </div>
+      <div class="influence-grid">
       <div class="influence-card">
         <div class="influence-arrow">Epyx → EA Sports</div>
         <div class="influence-text">The multi-event sports format Epyx pioneered became the template for every Olympic/compilation sports game that followed. EA's entire sports division owes its conceptual DNA to Summer Games.</div>
@@ -1273,12 +933,14 @@
         <div class="influence-text">One of the first graphical dungeon crawlers on home computers. The room-description-in-the-manual approach anticipated text-heavy RPGs. Preceded Ultima, Wizardry, and everything that followed.</div>
       </div>
     </div>
+    </section>
 
-    <!-- The Lab Today -->
-    <p class="section-title" id="lab">THE LAB TODAY</p>
-    <p class="section-subtitle">Same spirit. New medium.</p>
-
-    <div class="lab-section">
+    <section class="group" data-group="lab">
+      <div class="sec-head" id="lab">
+        <h2>THE LAB TODAY</h2>
+        <p>Same spirit. New medium.</p>
+      </div>
+      <div class="lab-section">
       <div class="lab-intro">
         EpyxLab is a cloud innovation lab named in tribute to the studio that proved you could build extraordinary things with limited resources. The constraints have changed — from 64 KB of RAM to infinite cloud compute — but the philosophy hasn't: build something people remember.
       </div>
@@ -1305,52 +967,79 @@
         </div>
       </div>
     </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <footer class="footer" id="contact">
-    <div class="footer-logo">EpyxLab</div>
-    <div class="footer-text">
-      A tribute to Epyx Inc. (1978–1993) — the studio that made sports games an art form.<br>
-      This lab carries the name forward: cloud architecture, AI, and modern infrastructure.<br><br>
-      <a href="mailto:epyxlab@outlook.com">epyxlab@outlook.com</a><br><br>
+  <!-- Contact -->
+  <footer id="contact" data-group="contact">
+    <div class="ready-wrap">
+      <div class="ready">
+        <div class="c">**** EPYXLAB CLOUD V2 ****</div>
+        <div class="c">64K RAM SYSTEM&nbsp;&nbsp;38911 BASIC BYTES FREE</div>
+        <div class="gap"></div>
+        <div>READY.</div>
+        <div>LOAD "CONTACT",8,1</div>
+        <div>SEARCHING FOR CONTACT</div>
+        <div>LOADING</div>
+        <div>READY.</div>
+        <div><a href="mailto:epyxlab@outlook.com">epyxlab@outlook.com</a></div>
+        <div>RUN<span class="cursor" aria-hidden="true"></span></div>
+      </div>
+    </div>
+    <div class="legal">
       Built with respect. Powered by memory.<br>
-      <span style="color: #333;">No affiliation with the original Epyx Inc. Fan tribute only.</span>
+      No affiliation with the original Epyx Inc. Fan tribute only.
     </div>
   </footer>
 
+  <a href="#top" class="to-top" id="toTop" aria-label="Back to top">▲</a>
+  <div class="lightbox" id="lightbox" role="dialog" aria-label="Image viewer"><img alt=""></div>
+
   <script>
-    // Show/hide navbar after scrolling past hero
-    const navbar = document.getElementById('navbar');
-    const scrollTop = document.getElementById('scrollTop');
-    const hero = document.querySelector('.hero');
+    (() => {
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    const observer = new IntersectionObserver(([entry]) => {
-      navbar.classList.toggle('visible', !entry.isIntersecting);
-      scrollTop.classList.toggle('visible', !entry.isIntersecting);
-    }, { threshold: 0.1 });
+      const slides = [...document.querySelectorAll('.promo .slide')];
+      const dots = [...document.querySelectorAll('.promo .dots button')];
+      const ring = document.querySelector('.promo .ring');
+      let current = 0, timer = null;
+      const show = (n) => {
+        current = (n + slides.length) % slides.length;
+        slides.forEach((s, k) => { const on = k === current; s.classList.toggle('is-active', on); s.setAttribute('aria-hidden', on ? 'false' : 'true'); });
+        dots.forEach((d, k) => d.setAttribute('aria-current', k === current ? 'true' : 'false'));
+        if (ring && !reduce) { ring.classList.remove('run'); void ring.offsetWidth; ring.classList.add('run'); }
+      };
+      const start = () => { if (reduce) return; clearInterval(timer); timer = setInterval(() => show(current + 1), 7000); };
+      dots.forEach((d, k) => d.addEventListener('click', () => { show(k); start(); }));
+      show(0); start();
 
-    observer.observe(hero);
+      const photos = [...document.querySelectorAll('.welcome-photos img')];
+      if (photos.length > 1 && !reduce) {
+        let w = 0;
+        setInterval(() => { photos[w].classList.remove('on'); w = (w + 1) % photos.length; photos[w].classList.add('on'); }, 3500);
+      }
 
-    // Highlight active nav link based on scroll position
-    const sections = document.querySelectorAll('[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
+      const tabs = [...document.querySelectorAll('.tabs a')];
+      const groups = [...document.querySelectorAll('section[data-group], footer[data-group]')];
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) tabs.forEach((a) => a.classList.toggle('active', a.dataset.group === e.target.dataset.group));
+        });
+      }, { rootMargin: '-35% 0px -60% 0px' });
+      groups.forEach((g) => io.observe(g));
 
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id;
-          navLinks.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
-          });
-        }
-      });
-    }, { rootMargin: '-20% 0px -75% 0px' });
+      const toTop = document.getElementById('toTop');
+      new IntersectionObserver(([e]) => toTop.classList.toggle('visible', !e.isIntersecting)).observe(document.querySelector('.promo'));
 
-    sections.forEach(section => {
-      if (section.classList.contains('section-title')) sectionObserver.observe(section);
-    });
+      const box = document.getElementById('lightbox');
+      const boxImg = box.querySelector('img');
+      document.querySelectorAll('main img.game-cover').forEach((img) => img.addEventListener('click', () => {
+        boxImg.src = img.currentSrc || img.src; boxImg.alt = img.alt; box.classList.add('open');
+      }));
+      const close = () => { box.classList.remove('open'); boxImg.removeAttribute('src'); };
+      box.addEventListener('click', close);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    })();
   </script>
-
 </body>
 </html>
