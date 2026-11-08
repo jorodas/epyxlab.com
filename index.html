@@ -61,10 +61,9 @@
     .slide.is-active { display: block; animation: fade .6s ease; }
     @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
     .slide-inner { max-width: 900px; margin: 0 auto; padding: 0 24px; text-align: center; }
-    .badge { display: inline-block; font-family: var(--pixel); font-size: 10px; letter-spacing: 1px; color: var(--muted); background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 7px 12px; margin-bottom: 14px; }
     .logo { margin: 2px 0 0; }
     .c64badge { display: inline-flex; align-items: center; gap: 18px; height: 64px; padding: 0 30px; border-radius: 999px; background: #5b534d; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .10), 0 1px 2px rgba(40, 48, 58, .18); }
-    .c64badge .name { font-family: var(--head); font-weight: 500; font-size: 36px; letter-spacing: .5px; line-height: 1; color: #fff; padding-bottom: 6px; }
+    .c64badge .name { font-family: var(--head); font-weight: 400; font-size: 36px; letter-spacing: .5px; line-height: 1; color: #fff; padding-bottom: 6px; }
     .c64badge .bars { display: flex; flex-direction: column; gap: 3px; width: 120px; }
     .c64badge .bars i { display: block; height: 4px; }
     .c64badge .bars i:nth-child(1) { background: #d9413a; }
@@ -72,7 +71,7 @@
     .c64badge .bars i:nth-child(3) { background: #f0c233; }
     .c64badge .bars i:nth-child(4) { background: #3fa45a; }
     .c64badge .bars i:nth-child(5) { background: #2f86c8; }
-    .c64badge .num { font-family: var(--head); font-weight: 700; font-size: 33px; letter-spacing: 2px; line-height: 1; color: #fff; }
+    .c64badge .num { font-family: var(--head); font-weight: 400; font-size: 33px; letter-spacing: 2px; line-height: 1; color: #fff; }
     .c64badge.small { gap: 10px; height: 34px; padding: 0 16px; box-shadow: none; }
     .c64badge.small .name { font-size: 19px; padding-bottom: 3px; }
     .c64badge.small .bars { width: 56px; gap: 2px; }
@@ -318,7 +317,6 @@
   <header class="promo" id="top">
     <div class="slide is-active">
       <div class="slide-inner">
-        <div class="badge">A TRIBUTE TO EPYX · 1978-1993</div>
         <div class="logo"><div class="c64badge" role="img" aria-label="EpyxLab"><span class="name">epyx</span><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="num">lab</span></div></div>
         <h1>A tribute to Epyx. A lab for what's next.</h1>
         <h3>History, hardware, and modern cloud engineering.</h3>
