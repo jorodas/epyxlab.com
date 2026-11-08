@@ -161,6 +161,17 @@
     .game-card { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 7px; transition: transform .15s, box-shadow .15s; }
     .game-card:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(40, 48, 58, .12); }
     .game-cover { width: 100%; aspect-ratio: 3 / 4; object-fit: contain; background: var(--bg); border-radius: 8px; cursor: zoom-in; }
+    .game-cover-text { display: flex; flex-direction: column; justify-content: space-between; padding: 18px; color: #fff; font-family: var(--head); background: linear-gradient(145deg, var(--c64-bg), #5c4eb0); cursor: default; }
+    .game-card:nth-child(6n+1) .game-cover-text { background: linear-gradient(145deg, #c70f37, #7d1b70); }
+    .game-card:nth-child(6n+2) .game-cover-text { background: linear-gradient(145deg, #d95b16, #8f2d4d); }
+    .game-card:nth-child(6n+3) .game-cover-text { background: linear-gradient(145deg, #767c12, #24694a); }
+    .game-card:nth-child(6n+4) .game-cover-text { background: linear-gradient(145deg, #17803f, #145d83); }
+    .game-card:nth-child(6n+5) .game-cover-text { background: linear-gradient(145deg, #0062c7, #352879); }
+    .game-card:nth-child(6n+6) .game-cover-text { background: linear-gradient(145deg, #5c4eb0, #9b2b67); }
+    .cover-kicker, .cover-footer { font-family: var(--pixel); font-size: 9px; line-height: 1.4; }
+    .cover-kicker { color: var(--yellow); }
+    .cover-title { max-width: 100%; font-size: clamp(24px, 3vw, 34px); font-weight: 700; line-height: 1; letter-spacing: -1px; overflow-wrap: anywhere; }
+    .cover-footer { color: var(--c64-fg); }
     .hardware-card .game-cover { aspect-ratio: 4 / 3; }
     .game-year { align-self: flex-start; font-family: var(--pixel); font-size: 10px; color: #fff; background: var(--blue); padding: 6px 8px; border-radius: 4px; margin-top: 4px; }
     .game-card:nth-child(6n+1) .game-year { background: var(--red); }
@@ -589,7 +600,7 @@
       <div class="sec-head" id="catalog">
         <h2>THE CATALOG</h2>
         <p>The games that defined a generation.</p>
-        <p class="catalog-play-note">PLAY links open the matching C64online emulator in a new tab. Cards without a matching entry are marked clearly.</p>
+        <p class="catalog-play-note">PLAY links open the matching C64online emulator in a new tab. Unlinked slots now use sourced Top 100 C64 picks.</p>
       </div>
       <div class="games-grid">
       <div class="game-card">
@@ -648,14 +659,18 @@
       </div>
 
       <div class="game-card">
-        <img loading="lazy" decoding="async" src="img/california-games-2.png" alt="California Games II box art" class="game-cover">
-        <div class="game-year">1990</div>
-        <div class="game-title">California Games II</div>
-        <div class="game-platform">DOS • SNES • Sega Master System</div>
-        <div class="game-desc">Hang gliding. Jet surfing. Snowboarding before snowboarding was an Olympic sport. The sequel that proved California never goes out of style.</div>
-        <span class="game-genre">Sports / Extreme</span>
-        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
-        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
+        <div class="game-cover game-cover-text" role="img" aria-label="Gauntlet title card">
+          <span class="cover-kicker">TOP 100 / #51</span>
+          <strong class="cover-title">GAUNTLET</strong>
+          <span class="cover-footer">C64ONLINE PLAYABLE</span>
+        </div>
+        <div class="game-year">RANK #51</div>
+        <div class="game-title">Gauntlet</div>
+        <div class="game-platform">C64 • Arcade • Co-op</div>
+        <div class="game-desc">Four heroes. One dungeon. A C64 dungeon crawler built around arcade action and cooperative chaos.</div>
+        <span class="game-genre">Action / Dungeon</span>
+        <div class="game-credit">C64online editorial pick · rank #51.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/gaunlet/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
@@ -670,14 +685,18 @@
       </div>
 
       <div class="game-card">
-        <img loading="lazy" decoding="async" src="img/impossible-mission-2.png" alt="Impossible Mission II box art" class="game-cover">
-        <div class="game-year">1988</div>
-        <div class="game-title">Impossible Mission II</div>
-        <div class="game-platform">C64 • Spectrum • Amiga • DOS • NES</div>
-        <div class="game-desc">"Elvin Atombender is back in power." Eight towers. New puzzles. New security systems. The sequel that brought the mad professor back from the dead.</div>
-        <span class="game-genre">Action / Puzzle</span>
-        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
-        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
+        <div class="game-cover game-cover-text" role="img" aria-label="Ikari Warriors title card">
+          <span class="cover-kicker">TOP 100 / #52</span>
+          <strong class="cover-title">IKARI WARRIORS</strong>
+          <span class="cover-footer">C64ONLINE PLAYABLE</span>
+        </div>
+        <div class="game-year">RANK #52</div>
+        <div class="game-title">Ikari Warriors</div>
+        <div class="game-platform">C64 • Run &amp; Gun • Two Player</div>
+        <div class="game-desc">Ralf and Clark fight through enemy territory in a demanding top-down run-and-gun conversion.</div>
+        <span class="game-genre">Action / Run &amp; Gun</span>
+        <div class="game-credit">C64online editorial pick · rank #52.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/ikari-warriors/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
@@ -714,91 +733,123 @@
       </div>
 
       <div class="game-card">
-        <img loading="lazy" decoding="async" src="img/temple-of-apshai.png" alt="Temple of Apshai box art" class="game-cover">
-        <div class="game-year">1979</div>
-        <div class="game-title">Temple of Apshai</div>
-        <div class="game-platform">TRS-80 • Apple II • C64 • Atari</div>
-        <div class="game-desc">One of the first graphical RPGs ever made. Dungeon crawling before Diablo was a concept. Room descriptions read from the manual. Pure imagination fuel.</div>
-        <span class="game-genre">RPG / Dungeon Crawler</span>
-        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
-        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
+        <div class="game-cover game-cover-text" role="img" aria-label="Spelunker title card">
+          <span class="cover-kicker">TOP 100 / #53</span>
+          <strong class="cover-title">SPELUNKER</strong>
+          <span class="cover-footer">C64ONLINE PLAYABLE</span>
+        </div>
+        <div class="game-year">RANK #53</div>
+        <div class="game-title">Spelunker</div>
+        <div class="game-platform">C64 • Exploration • Platform</div>
+        <div class="game-desc">Caves, ropes, flares, bombs, and a dwindling air supply turn exploration into a race against time.</div>
+        <span class="game-genre">Action / Exploration</span>
+        <div class="game-credit">C64online editorial pick · rank #53.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/spelunker/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
-        <img loading="lazy" decoding="async" src="img/games-summer-edition.png" alt="The Games: Summer Edition" class="game-cover">
-        <div class="game-year">1988</div>
-        <div class="game-title">The Games: Summer Edition</div>
-        <div class="game-platform">C64 • Amiga • DOS • Apple IIGS</div>
-        <div class="game-desc">The evolution. Velodrome cycling. Uneven bars. Rings. Diving with full rotation control. The last great Olympic game before Epyx's light went dark.</div>
-        <span class="game-genre">Sports / Olympic</span>
-        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
-        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
+        <div class="game-cover game-cover-text" role="img" aria-label="Times of Lore title card">
+          <span class="cover-kicker">TOP 100 / #54</span>
+          <strong class="cover-title">TIMES OF LORE</strong>
+          <span class="cover-footer">C64ONLINE PLAYABLE</span>
+        </div>
+        <div class="game-year">RANK #54</div>
+        <div class="game-title">Times of Lore</div>
+        <div class="game-platform">C64 • RPG • Open World</div>
+        <div class="game-desc">Explore a war-torn kingdom, battle enemies, and solve the mystery behind a land falling apart.</div>
+        <span class="game-genre">RPG / Adventure</span>
+        <div class="game-credit">C64online editorial pick · rank #54.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/times-of-lore/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
-        <img loading="lazy" decoding="async" src="img/chips-challenge.png" alt="Chip's Challenge box art and gameplay" class="game-cover">
-        <div class="game-year">1990</div>
-        <div class="game-title">Chip's Challenge</div>
-        <div class="game-platform">Lynx • DOS • Windows</div>
-        <div class="game-desc">149 levels of pure puzzle addiction. Collect chips, avoid monsters, find the exit. Shipped with Windows Entertainment Pack and consumed millions of office hours worldwide.</div>
-        <span class="game-genre">Puzzle / Logic</span>
-        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
-        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
+        <div class="game-cover game-cover-text" role="img" aria-label="Eye of the Beholder title card">
+          <span class="cover-kicker">TOP 100 / #55</span>
+          <strong class="cover-title">EYE OF THE BEHOLDER</strong>
+          <span class="cover-footer">C64ONLINE PLAYABLE</span>
+        </div>
+        <div class="game-year">RANK #55</div>
+        <div class="game-title">Eye of the Beholder</div>
+        <div class="game-platform">C64 • RPG • Dungeon</div>
+        <div class="game-desc">A fan-made dungeon crawl that brings party-based exploration, monsters, and puzzles to the C64.</div>
+        <span class="game-genre">RPG / Dungeon</span>
+        <div class="game-credit">C64online editorial pick · rank #55.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/eye-of-the-beholder/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
-        <img loading="lazy" decoding="async" src="img/street-sports-soccer.png" alt="Street Sports Soccer box art" class="game-cover">
-        <div class="game-year">1988</div>
-        <div class="game-title">Street Sports Soccer</div>
-        <div class="game-platform">C64 • Apple II • DOS</div>
-        <div class="game-desc">Street-level soccer on cracked asphalt and dirt lots. Pick your team from the neighborhood. Part of the Street Sports series that made sandlot competition a genre.</div>
-        <span class="game-genre">Sports / Street</span>
-        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
-        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
+        <div class="game-cover game-cover-text" role="img" aria-label="Blue Max title card">
+          <span class="cover-kicker">TOP 100 / #56</span>
+          <strong class="cover-title">BLUE MAX</strong>
+          <span class="cover-footer">C64ONLINE PLAYABLE</span>
+        </div>
+        <div class="game-year">RANK #56</div>
+        <div class="game-title">Blue Max</div>
+        <div class="game-platform">C64 • Flight • Shooter</div>
+        <div class="game-desc">Take a World War I fighter into a 3D-style combat run against aircraft and ground targets.</div>
+        <span class="game-genre">Shooter / Flight</span>
+        <div class="game-credit">C64online editorial pick · rank #56.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/blue-max/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
-        <img loading="lazy" decoding="async" src="img/street-sports-baseball.png" alt="Street Sports Baseball box art and gameplay" class="game-cover">
-        <div class="game-year">1986</div>
-        <div class="game-title">Street Sports Baseball</div>
-        <div class="game-platform">C64 • Apple II • DOS</div>
-        <div class="game-desc">No stadiums. No uniforms. Just kids picking teams on a sandlot with a chain-link backstop. Street-level sports before EA made everything corporate.</div>
-        <span class="game-genre">Sports / Street</span>
-        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
-        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
+        <div class="game-cover game-cover-text" role="img" aria-label="Arkanoid title card">
+          <span class="cover-kicker">TOP 100 / #57</span>
+          <strong class="cover-title">ARKANOID</strong>
+          <span class="cover-footer">C64ONLINE PLAYABLE</span>
+        </div>
+        <div class="game-year">RANK #57</div>
+        <div class="game-title">Arkanoid</div>
+        <div class="game-platform">C64 • Arcade • Breakout</div>
+        <div class="game-desc">Control the paddle, catch power-ups, and clear the brick formations in this arcade classic.</div>
+        <span class="game-genre">Arcade / Breakout</span>
+        <div class="game-credit">C64online editorial pick · rank #57.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/arkanoid/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
-        <img loading="lazy" decoding="async" src="img/super-cycle.png" alt="Super Cycle box art" class="game-cover">
-        <div class="game-year">1986</div>
-        <div class="game-title">Super Cycle</div>
-        <div class="game-platform">C64 • Amstrad • DOS</div>
-        <div class="game-desc">Motorcycle racing with a behind-the-rider perspective. Lean into curves, dodge traffic, hit the throttle. Pure arcade speed on home hardware.</div>
-        <span class="game-genre">Racing / Arcade</span>
-        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
-        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
+        <div class="game-cover game-cover-text" role="img" aria-label="Thrust title card">
+          <span class="cover-kicker">TOP 100 / #58</span>
+          <strong class="cover-title">THRUST</strong>
+          <span class="cover-footer">C64ONLINE PLAYABLE</span>
+        </div>
+        <div class="game-year">RANK #58</div>
+        <div class="game-title">Thrust</div>
+        <div class="game-platform">C64 • Physics • Action</div>
+        <div class="game-desc">Pilot through caverns, fight gravity, and retrieve the orbs without losing control of your ship.</div>
+        <span class="game-genre">Action / Physics</span>
+        <div class="game-credit">C64online editorial pick · rank #58.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/thrust/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
-        <img loading="lazy" decoding="async" src="img/4x4-offroad-racing.png" alt="4x4 Off-Road Racing box art" class="game-cover">
-        <div class="game-year">1988</div>
-        <div class="game-title">4x4 Off-Road Racing</div>
-        <div class="game-platform">C64 • DOS • Amiga • Atari ST</div>
-        <div class="game-desc">Baja desert, mud trails, and monster trucks. Vehicle customization before it was standard. Win a Kawasaki KDX200 — details inside. Peak 80s box marketing.</div>
-        <span class="game-genre">Racing / Off-Road</span>
-        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
-        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
+        <div class="game-cover game-cover-text" role="img" aria-label="Katakis title card">
+          <span class="cover-kicker">TOP 100 / #59</span>
+          <strong class="cover-title">KATAKIS</strong>
+          <span class="cover-footer">C64ONLINE PLAYABLE</span>
+        </div>
+        <div class="game-year">RANK #59</div>
+        <div class="game-title">Katakis</div>
+        <div class="game-platform">C64 • Shooter • Arcade</div>
+        <div class="game-desc">A fast side-scrolling shooter with upgradeable weapons, enemy waves, and giant boss encounters.</div>
+        <span class="game-genre">Shooter / Arcade</span>
+        <div class="game-credit">C64online editorial pick · rank #59.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/katakis/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
-        <img loading="lazy" decoding="async" src="img/destroyer.png" alt="Destroyer box art" class="game-cover">
-        <div class="game-year">1986</div>
-        <div class="game-title">Destroyer</div>
-        <div class="game-platform">C64 • DOS • Apple II</div>
-        <div class="game-desc">Naval warfare simulation. Command a destroyer through WWII scenarios. Radar, sonar, depth charges. Epyx proving they could do serious military sims alongside sports.</div>
-        <span class="game-genre">Simulation / Military</span>
-        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
-        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
+        <div class="game-cover game-cover-text" role="img" aria-label="Gyruss title card">
+          <span class="cover-kicker">TOP 100 / #60</span>
+          <strong class="cover-title">GYRUSS</strong>
+          <span class="cover-footer">C64ONLINE PLAYABLE</span>
+        </div>
+        <div class="game-year">RANK #60</div>
+        <div class="game-title">Gyruss</div>
+        <div class="game-platform">C64 • Space • Shooter</div>
+        <div class="game-desc">Blast your way through the solar system on a circular flight path inspired by arcade spectacle.</div>
+        <span class="game-genre">Shooter / Space</span>
+        <div class="game-credit">C64online editorial pick · rank #60.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/gyruss/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
@@ -824,57 +875,78 @@
       </div>
 
       <div class="game-card">
-        <img loading="lazy" decoding="async" src="img/gi-joe.png" alt="G.I. Joe box art" class="game-cover">
-        <div class="game-year">1985</div>
-        <div class="game-title">G.I. Joe: A Real American Hero</div>
-        <div class="game-platform">C64 • Apple II • Atari</div>
-        <div class="game-desc">Hasbro-licensed action. Command the G.I. Joe team against Cobra. Another example of Epyx turning toy brands into playable games on home computers.</div>
-        <span class="game-genre">Action / Licensed</span>
-        <div class="game-credit">Box art © Epyx Inc. / Hasbro. Historical reference.</div>
-        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
+        <div class="game-cover game-cover-text" role="img" aria-label="Barbarian title card">
+          <span class="cover-kicker">TOP 100 / #61</span>
+          <strong class="cover-title">BARBARIAN</strong>
+          <span class="cover-footer">C64ONLINE PLAYABLE</span>
+        </div>
+        <div class="game-year">RANK #61</div>
+        <div class="game-title">Barbarian: The Ultimate Warrior</div>
+        <div class="game-platform">C64 • Fighting • Fantasy</div>
+        <div class="game-desc">Sword fights, kicks, and brutal timing define this iconic one-on-one fantasy combat game.</div>
+        <span class="game-genre">Fighting / Action</span>
+        <div class="game-credit">C64online editorial pick · rank #61.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/barbarian-1-the-ultimate-warrior/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
-        <img loading="lazy" decoding="async" src="img/armor-assault.png" alt="Armor Assault box art" class="game-cover">
-        <div class="game-year">1982</div>
-        <div class="game-title">Armor Assault</div>
-        <div class="game-platform">Atari 400/800</div>
-        <div class="game-desc">Hex-based tank warfare strategy. "Computer Games Thinkers Play." Early Epyx before the sports era — proving they could do deep strategy on home hardware.</div>
-        <span class="game-genre">Strategy / Wargame</span>
-        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
-        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
+        <div class="game-cover game-cover-text" role="img" aria-label="Pool of Radiance title card">
+          <span class="cover-kicker">TOP 100 / #62</span>
+          <strong class="cover-title">POOL OF RADIANCE</strong>
+          <span class="cover-footer">C64ONLINE PLAYABLE</span>
+        </div>
+        <div class="game-year">RANK #62</div>
+        <div class="game-title">Pool of Radiance</div>
+        <div class="game-platform">C64 • RPG • Gold Box</div>
+        <div class="game-desc">Build a party, explore Phlan, and fight turn-based battles in the first Gold Box adventure.</div>
+        <span class="game-genre">RPG / Dungeon</span>
+        <div class="game-credit">C64online editorial pick · rank #62.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/pool-of-radiance/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
-        <img loading="lazy" decoding="async" src="img/alien-garden.png" alt="Alien Garden box art" class="game-cover">
-        <div class="game-year">1982</div>
-        <div class="game-title">Alien Garden</div>
-        <div class="game-platform">Atari 400/800 • C64</div>
-        <div class="game-desc">Abstract strategy in an alien ecosystem. Geometric creatures, procedural behavior. An experimental art-game decades before "indie games" existed as a concept.</div>
-        <span class="game-genre">Strategy / Experimental</span>
-        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
-        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
-      </div>
-      <div class="game-card">
-        <img loading="lazy" decoding="async" src="img/starfleet-orion.png" alt="Starfleet Orion manual" class="game-cover">
-        <div class="game-year">1978</div>
-        <div class="game-title">Starfleet Orion</div>
-        <div class="game-platform">Commodore PET • TRS-80 • Apple II</div>
-        <div class="game-desc">The very first game published by Automated Simulations — before Epyx even existed. Space fleet tactical combat on 8K of RAM. Where it all began.</div>
-        <span class="game-genre">Strategy / Sci-Fi</span>
-        <div class="game-credit">Cover © Automated Simulations. Historical reference.</div>
-        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
+        <div class="game-cover game-cover-text" role="img" aria-label="North and South title card">
+          <span class="cover-kicker">TOP 100 / #63</span>
+          <strong class="cover-title">NORTH &amp; SOUTH</strong>
+          <span class="cover-footer">C64ONLINE PLAYABLE</span>
+        </div>
+        <div class="game-year">RANK #63</div>
+        <div class="game-title">North &amp; South</div>
+        <div class="game-platform">C64 • Strategy • Tactics</div>
+        <div class="game-desc">Manage a Civil War campaign through turn-based planning and real-time battlefield clashes.</div>
+        <span class="game-genre">Strategy / Action</span>
+        <div class="game-credit">C64online editorial pick · rank #63.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/north-south/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
-        <img loading="lazy" decoding="async" src="img/sub-battle-simulator.png" alt="Sub Battle Simulator box art" class="game-cover">
-        <div class="game-year">1987</div>
-        <div class="game-title">Sub Battle Simulator</div>
-        <div class="game-platform">IBM PC • Amiga • Atari ST</div>
-        <div class="game-desc">The Masters Collection. WWII submarine warfare. Sonar, torpedoes, convoy hunting. "The new benchmark for simulation programs" — MacWorld, July 1987.</div>
-        <span class="game-genre">Simulation / Military</span>
-        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
-        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
+        <div class="game-cover game-cover-text" role="img" aria-label="Kikstart title card">
+          <span class="cover-kicker">TOP 100 / #64</span>
+          <strong class="cover-title">KIKSTART</strong>
+          <span class="cover-footer">C64ONLINE PLAYABLE</span>
+        </div>
+        <div class="game-year">RANK #64</div>
+        <div class="game-title">Kikstart</div>
+        <div class="game-platform">C64 • Motorcycle • Racing</div>
+        <div class="game-desc">Balance a motorcycle through obstacle courses where precision matters more than raw speed.</div>
+        <span class="game-genre">Racing / Motorcycle</span>
+        <div class="game-credit">C64online editorial pick · rank #64.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/kikstart/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
+      </div>
+
+      <div class="game-card">
+        <div class="game-cover game-cover-text" role="img" aria-label="Marble Madness title card">
+          <span class="cover-kicker">TOP 100 / #65</span>
+          <strong class="cover-title">MARBLE MADNESS</strong>
+          <span class="cover-footer">C64ONLINE PLAYABLE</span>
+        </div>
+        <div class="game-year">RANK #65</div>
+        <div class="game-title">Marble Madness</div>
+        <div class="game-platform">C64 • Arcade • Isometric</div>
+        <div class="game-desc">Guide a marble through isometric obstacle courses before the clock and the level itself beat you.</div>
+        <span class="game-genre">Arcade / Physics</span>
+        <div class="game-credit">C64online editorial pick · rank #65.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/marble-madness/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
@@ -889,20 +961,24 @@
       </div>
 
       <div class="game-card">
-        <img loading="lazy" decoding="async" src="img/crush-crumble-and-chomp.png" alt="Crush, Crumble, and Chomp! box art" class="game-cover">
-        <div class="game-year">1981</div>
-        <div class="game-title">Crush, Crumble, and Chomp!</div>
-        <div class="game-platform">Atari 8-bit • Apple II • C64</div>
-        <div class="game-desc">Design a monster, stomp a city, and outlast the military. A darkly funny strategy-action game for anyone who roots for the creature.</div>
-        <span class="game-genre">Action / Strategy</span>
-        <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
-        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
+        <div class="game-cover game-cover-text" role="img" aria-label="The Hobbit title card">
+          <span class="cover-kicker">TOP 100 / #66</span>
+          <strong class="cover-title">THE HOBBIT</strong>
+          <span class="cover-footer">C64ONLINE PLAYABLE</span>
+        </div>
+        <div class="game-year">RANK #66</div>
+        <div class="game-title">The Hobbit</div>
+        <div class="game-platform">C64 • Text Adventure • Fantasy</div>
+        <div class="game-desc">Type your way through Middle-earth as Bilbo in a landmark adventure with graphics, sound, and characters.</div>
+        <span class="game-genre">Adventure / Text</span>
+        <div class="game-credit">C64online editorial pick · rank #66.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/hobbit-the/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
     </div>
     <div class="catalog-library-cta">
       <div>
         <h3>WANT MORE THAN THE EPYX SHELF?</h3>
-        <p>Open the sourced Top 50 C64 library: one page, fifty browser-playable classics.</p>
+        <p>Open the sourced Top 100 C64 library: one page, one hundred browser-playable classics.</p>
       </div>
       <a href="games.html">OPEN GAME LIBRARY ↗</a>
     </div>
