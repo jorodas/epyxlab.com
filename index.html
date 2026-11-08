@@ -325,6 +325,33 @@
     .lab-workbench-service { padding: 6px 8px; border: 1px solid rgba(167, 161, 232, .7); border-radius: 999px; color: #fff; font-family: var(--head); font-size: 13px; }
     .lab-workbench-handoff { display: flex; align-items: baseline; gap: 12px; margin-top: 14px; padding: 12px 14px; border: 1px dashed rgba(167, 161, 232, .7); border-radius: 8px; font-family: var(--head); font-size: 14px; line-height: 1.45; }
     .lab-workbench-handoff-label { flex: 0 0 auto; color: var(--yellow-l); }
+    .lab-game { margin-top: 20px; padding: 22px; border-radius: 12px; background: var(--c64-bg); color: var(--c64-fg); box-shadow: 0 12px 24px rgba(53, 40, 121, .18); }
+    .lab-game-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+    .lab-game-label, .lab-game-status, .lab-game-stat-label, .lab-game-help-label { font-family: var(--pixel); font-size: 10px; letter-spacing: .5px; }
+    .lab-game-label { color: #fff; }
+    .lab-game h3 { margin: 10px 0 4px; color: #fff; font-family: var(--head); font-size: 28px; font-weight: 600; }
+    .lab-game-head p { margin: 0; font-family: var(--head); font-size: 15px; }
+    .lab-game-status { flex: 0 0 auto; padding: 8px 10px; border: 1px solid var(--green-l); border-radius: 6px; color: var(--green-l); }
+    .lab-game-layout { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(220px, .8fr); gap: 14px; margin-top: 20px; }
+    .lab-game-cabinet { padding: 12px; border: 1px solid rgba(167, 161, 232, .7); border-radius: 8px; background: #17133a; }
+    .lab-game-canvas { display: block; width: 100%; aspect-ratio: 16 / 9; border: 4px solid #5b534d; border-radius: 4px; background: var(--c64-bg); image-rendering: pixelated; image-rendering: crisp-edges; }
+    .lab-game-cabinet-line { margin-top: 8px; color: var(--yellow-l); font-family: var(--pixel); font-size: 9px; letter-spacing: .5px; text-align: center; }
+    .lab-game-side { padding: 14px; border-radius: 8px; background: var(--paper); color: var(--ink); }
+    .lab-game-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .lab-game-stat { padding: 9px 5px; border-radius: 6px; background: var(--bg); text-align: center; }
+    .lab-game-stat-value { display: block; margin-top: 6px; font-family: var(--head); font-size: 20px; font-weight: 600; }
+    .lab-game-start { width: 100%; margin-top: 14px; padding: 12px; border: 0; border-radius: 6px; background: var(--green); color: #fff; cursor: pointer; font-family: var(--head); font-size: 16px; font-weight: 600; }
+    .lab-game-start:hover { filter: brightness(1.06); }
+    .lab-game-help { margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); font-family: var(--head); font-size: 14px; line-height: 1.45; }
+    .lab-game-help-label { display: block; margin-bottom: 6px; color: var(--violet); }
+    .lab-game-dpad { display: grid; grid-template-columns: repeat(3, 42px); grid-template-rows: repeat(2, 36px); justify-content: center; gap: 5px; margin-top: 12px; }
+    .lab-game-pad { border: 1px solid var(--line); border-radius: 5px; background: var(--bg); color: var(--ink); cursor: pointer; font-size: 18px; }
+    .lab-game-pad:active { background: var(--c64-fg); }
+    .lab-game-pad.up { grid-column: 2; }
+    .lab-game-pad.left { grid-column: 1; grid-row: 2; }
+    .lab-game-pad.down { grid-column: 2; grid-row: 2; }
+    .lab-game-pad.right { grid-column: 3; grid-row: 2; }
+    .lab-game-original { display: block; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--blue); font-family: var(--head); font-size: 14px; line-height: 1.4; }
 
     /* C64 READY footer */
     .ready-wrap { background: var(--c64-fg); padding: 34px; margin-top: 40px; }
@@ -402,6 +429,10 @@
       .lab-workbench-card:not(:last-child)::after { display: none; }
       .lab-workbench-handoff { display: block; }
       .lab-workbench-handoff-label { display: block; margin-bottom: 6px; }
+      .lab-game { padding: 18px; }
+      .lab-game-head { display: block; }
+      .lab-game-status { display: inline-block; margin-top: 14px; }
+      .lab-game-layout { grid-template-columns: 1fr; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -1319,6 +1350,44 @@
           <span data-workbench-handoff>You choose the option, review the plan, and approve what ships.</span>
         </div>
       </div>
+      <div class="lab-game" id="stackRunner">
+        <div class="lab-game-head">
+          <div>
+            <div class="lab-game-label">**** C64 SOFTWARE LAB ****</div>
+            <h3>STACK RUNNER</h3>
+            <p>An original little machine-room game. Collect the packets. Dodge the bugs. Keep the system alive.</p>
+          </div>
+          <div class="lab-game-status" data-game-status aria-live="polite">READY.</div>
+        </div>
+        <div class="lab-game-layout">
+          <div class="lab-game-cabinet">
+            <canvas class="lab-game-canvas" data-game-canvas width="640" height="360" role="img" aria-label="Stack Runner game screen"></canvas>
+            <div class="lab-game-cabinet-line">LOAD "STACK RUNNER",8,1&nbsp;&nbsp;·&nbsp;&nbsp;RUN</div>
+          </div>
+          <div class="lab-game-side">
+            <div class="lab-game-stats" aria-label="Game status">
+              <div class="lab-game-stat"><span class="lab-game-stat-label">SCORE</span><strong class="lab-game-stat-value" data-game-score>0000</strong></div>
+              <div class="lab-game-stat"><span class="lab-game-stat-label">LIVES</span><strong class="lab-game-stat-value" data-game-lives>03</strong></div>
+              <div class="lab-game-stat"><span class="lab-game-stat-label">TIME</span><strong class="lab-game-stat-value" data-game-time>45</strong></div>
+            </div>
+            <button class="lab-game-start" type="button" data-game-start>START / RESET</button>
+            <div class="lab-game-help">
+              <span class="lab-game-help-label">CONTROLS</span>
+              W A S D or arrow keys · collect the Azure packets · avoid the red bugs.
+              <div class="lab-game-dpad" aria-label="Touch controls">
+                <button class="lab-game-pad up" type="button" data-game-key="arrowup" aria-label="Move up">▲</button>
+                <button class="lab-game-pad left" type="button" data-game-key="arrowleft" aria-label="Move left">◀</button>
+                <button class="lab-game-pad down" type="button" data-game-key="arrowdown" aria-label="Move down">▼</button>
+                <button class="lab-game-pad right" type="button" data-game-key="arrowright" aria-label="Move right">▶</button>
+              </div>
+            </div>
+            <a class="lab-game-original" href="https://c64online.com/c64-games/impossible-mission/#jumptothegame" target="_blank" rel="noopener noreferrer">
+              PLAY THE REAL C64 IMPOSSIBLE MISSION ↗
+              <small>1984 · Epyx · original emulator opens in a new tab</small>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
     </section>
   </main>
@@ -1461,6 +1530,210 @@
       };
       missionTabs.forEach((tab) => tab.addEventListener('click', () => setMission(tab.dataset.mission)));
       setMission('ship');
+
+      const runner = document.getElementById('stackRunner');
+      if (runner) {
+        const canvas = runner.querySelector('[data-game-canvas]');
+        const ctx = canvas && canvas.getContext('2d');
+        if (ctx) {
+          const scoreOutput = runner.querySelector('[data-game-score]');
+          const livesOutput = runner.querySelector('[data-game-lives]');
+          const timeOutput = runner.querySelector('[data-game-time]');
+          const statusOutput = runner.querySelector('[data-game-status]');
+          const startButton = runner.querySelector('[data-game-start]');
+          const colors = ['#7df1c5', '#65c9ff', '#ffd166', '#f39ac2', '#b9a7ff'];
+          const state = {
+            active: false,
+            finished: false,
+            score: 0,
+            lives: 3,
+            time: 45,
+            last: 0,
+            invulnerable: 0,
+            runId: 0,
+            keys: new Set(),
+            player: { x: 320, y: 280, size: 14 },
+            packets: [],
+            bugs: []
+          };
+
+          const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+          const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+          const randomSpot = () => ({
+            x: 28 + Math.random() * (canvas.width - 56),
+            y: 64 + Math.random() * (canvas.height - 96)
+          });
+          const updateHud = () => {
+            scoreOutput.textContent = String(state.score).padStart(4, '0');
+            livesOutput.textContent = String(state.lives).padStart(2, '0');
+            timeOutput.textContent = String(Math.ceil(Math.max(0, state.time))).padStart(2, '0');
+          };
+          const setStatus = (text) => { statusOutput.textContent = text; };
+          const createPackets = () => Array.from({ length: 10 }, (_, index) => {
+            const spot = randomSpot();
+            return { ...spot, label: ['A', 'I', 'D', 'O'][index % 4], color: colors[index % colors.length] };
+          });
+          const createBugs = () => [
+            { x: 110, y: 112, vx: 72, vy: 44 },
+            { x: 486, y: 116, vx: -58, vy: 68 },
+            { x: 430, y: 282, vx: 66, vy: -52 }
+          ];
+          const resetGame = () => {
+            state.active = false;
+            state.runId += 1;
+            state.finished = false;
+            state.score = 0;
+            state.lives = 3;
+            state.time = 45;
+            state.invulnerable = 0;
+            state.player = { x: canvas.width / 2, y: canvas.height - 58, size: 14 };
+            state.packets = createPackets();
+            state.bugs = createBugs();
+            updateHud();
+            setStatus('READY.');
+            draw();
+          };
+          const finishGame = (won, reason) => {
+            state.active = false;
+            state.finished = true;
+            if (won) state.score += Math.ceil(state.time) * 10;
+            setStatus(reason);
+            updateHud();
+            draw();
+          };
+          const drawText = (text, x, y, size, color, align = 'left') => {
+            ctx.font = `${size}px monospace`;
+            ctx.fillStyle = color;
+            ctx.textAlign = align;
+            ctx.fillText(text, x, y);
+          };
+          const draw = () => {
+            ctx.imageSmoothingEnabled = false;
+            ctx.fillStyle = '#352879';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.strokeStyle = 'rgba(201, 196, 255, .12)';
+            ctx.lineWidth = 1;
+            for (let x = 0; x <= canvas.width; x += 32) {
+              ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
+            }
+            for (let y = 0; y <= canvas.height; y += 32) {
+              ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+            }
+            ctx.fillStyle = '#1b1744';
+            ctx.fillRect(0, 0, canvas.width, 40);
+            drawText(`SCORE ${String(state.score).padStart(4, '0')}`, 16, 25, 14, '#f4f0ff');
+            drawText(`PACKETS ${String(state.packets.length).padStart(2, '0')}`, canvas.width / 2, 25, 14, '#ffd166', 'center');
+            drawText(`TIME ${String(Math.ceil(Math.max(0, state.time))).padStart(2, '0')}`, canvas.width - 16, 25, 14, '#7df1c5', 'right');
+
+            state.packets.forEach((packet) => {
+              ctx.fillStyle = packet.color;
+              ctx.fillRect(packet.x - 8, packet.y - 8, 16, 16);
+              drawText(packet.label, packet.x, packet.y + 5, 12, '#352879', 'center');
+            });
+            state.bugs.forEach((bug) => {
+              ctx.fillStyle = '#ef6685';
+              ctx.fillRect(bug.x - 10, bug.y - 10, 20, 20);
+              ctx.fillStyle = '#352879';
+              ctx.fillRect(bug.x - 6, bug.y - 3, 3, 3);
+              ctx.fillRect(bug.x + 3, bug.y - 3, 3, 3);
+              ctx.fillRect(bug.x - 5, bug.y + 4, 10, 3);
+            });
+            if (state.invulnerable <= 0 || Math.floor(state.invulnerable * 12) % 2 === 0) {
+              ctx.fillStyle = '#7df1c5';
+              ctx.fillRect(state.player.x - state.player.size, state.player.y - state.player.size, state.player.size * 2, state.player.size * 2);
+              ctx.fillStyle = '#352879';
+              ctx.fillRect(state.player.x - 7, state.player.y - 3, 4, 4);
+              ctx.fillRect(state.player.x + 3, state.player.y - 3, 4, 4);
+              ctx.fillRect(state.player.x - 6, state.player.y + 5, 12, 3);
+            }
+            if (!state.active) {
+              ctx.fillStyle = 'rgba(23, 19, 58, .86)';
+              ctx.fillRect(70, 105, canvas.width - 140, 145);
+              drawText(state.finished ? (state.packets.length === 0 ? 'STACK LOADED' : 'SYSTEM HALTED') : 'STACK RUNNER', canvas.width / 2, 155, 24, '#fff', 'center');
+              drawText(state.finished ? 'PRESS START TO RUN AGAIN' : 'PRESS START OR SPACE', canvas.width / 2, 194, 15, '#ffd166', 'center');
+              drawText('COLLECT EVERY PACKET / AVOID THE BUGS', canvas.width / 2, 222, 12, '#c9c4ff', 'center');
+            }
+          };
+          const update = (delta) => {
+            const left = state.keys.has('arrowleft') || state.keys.has('a');
+            const right = state.keys.has('arrowright') || state.keys.has('d');
+            const up = state.keys.has('arrowup') || state.keys.has('w');
+            const down = state.keys.has('arrowdown') || state.keys.has('s');
+            let dx = (right ? 1 : 0) - (left ? 1 : 0);
+            let dy = (down ? 1 : 0) - (up ? 1 : 0);
+            if (dx || dy) {
+              const magnitude = Math.hypot(dx, dy);
+              state.player.x = clamp(state.player.x + (dx / magnitude) * 190 * delta, 18, canvas.width - 18);
+              state.player.y = clamp(state.player.y + (dy / magnitude) * 190 * delta, 58, canvas.height - 18);
+            }
+            state.invulnerable = Math.max(0, state.invulnerable - delta);
+            state.bugs.forEach((bug) => {
+              bug.x += bug.vx * delta;
+              bug.y += bug.vy * delta;
+              if (bug.x < 14 || bug.x > canvas.width - 14) bug.vx *= -1;
+              if (bug.y < 54 || bug.y > canvas.height - 14) bug.vy *= -1;
+            });
+            if (state.invulnerable <= 0) {
+              const hit = state.bugs.some((bug) => distance(state.player, bug) < 27);
+              if (hit) {
+                state.lives -= 1;
+                state.invulnerable = 1.2;
+                state.player.x = canvas.width / 2;
+                state.player.y = canvas.height - 58;
+                if (state.lives <= 0) { finishGame(false, 'SYSTEM HALTED'); return; }
+              }
+            }
+            state.packets = state.packets.filter((packet) => {
+              if (distance(state.player, packet) < 23) {
+                state.score += 100;
+                return false;
+              }
+              return true;
+            });
+            state.time -= delta;
+            if (!state.packets.length) finishGame(true, 'STACK LOADED');
+            else if (state.time <= 0) finishGame(false, 'TIME EXPIRED');
+            updateHud();
+          };
+          const loop = (timestamp, runId) => {
+            if (!state.active || runId !== state.runId) return;
+            const delta = Math.min(.05, (timestamp - state.last) / 1000 || 0);
+            state.last = timestamp;
+            update(delta);
+            draw();
+            if (state.active) requestAnimationFrame((nextTimestamp) => loop(nextTimestamp, runId));
+          };
+          const startGame = () => {
+            resetGame();
+            state.active = true;
+            setStatus('RUNNING');
+            state.last = performance.now();
+            const runId = state.runId;
+            requestAnimationFrame((timestamp) => loop(timestamp, runId));
+          };
+          const normalizeKey = (event) => event.code === 'Space' ? 'space' : event.key.toLowerCase();
+          window.addEventListener('keydown', (event) => {
+            const key = normalizeKey(event);
+            if (['arrowleft', 'arrowright', 'arrowup', 'arrowdown', 'a', 'd', 'w', 's', 'space'].includes(key)) {
+              event.preventDefault();
+              state.keys.add(key);
+              if (key === 'space' && !state.active && !event.repeat) startGame();
+            }
+          });
+          window.addEventListener('keyup', (event) => state.keys.delete(normalizeKey(event)));
+          runner.querySelectorAll('[data-game-key]').forEach((button) => {
+            const key = button.dataset.gameKey;
+            const press = (event) => { event.preventDefault(); state.keys.add(key); };
+            const release = (event) => { event.preventDefault(); state.keys.delete(key); };
+            button.addEventListener('pointerdown', press);
+            button.addEventListener('pointerup', release);
+            button.addEventListener('pointercancel', release);
+            button.addEventListener('pointerleave', release);
+          });
+          startButton.addEventListener('click', startGame);
+          resetGame();
+        }
+      }
 
       const photos = [...document.querySelectorAll('.welcome-photos img')];
       if (photos.length > 1 && !reduce) {
