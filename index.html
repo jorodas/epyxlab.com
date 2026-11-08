@@ -264,6 +264,34 @@
     .lab-azure-bus-label { flex: 0 0 auto; color: var(--yellow-l); }
     .lab-azure-status { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
     .lab-azure-status span { padding: 7px 9px; border: 1px solid rgba(167, 161, 232, .7); border-radius: 999px; color: #fff; }
+    .lab-telemetry { margin-top: 20px; padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+    .lab-telemetry-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+    .lab-telemetry-head h3 { margin: 0; font-family: var(--head); font-size: 24px; font-weight: 600; }
+    .lab-telemetry-note, .lab-chart-label, .lab-layer-count { font-family: var(--pixel); font-size: 10px; letter-spacing: .5px; color: var(--violet); }
+    .lab-telemetry-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: 14px; margin-top: 16px; }
+    .lab-chart { padding: 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); }
+    .lab-chart-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+    .lab-chart-title { font-family: var(--head); font-size: 18px; font-weight: 600; }
+    .lab-chart svg { display: block; width: 100%; height: auto; margin-top: 12px; }
+    .lab-chart-gridline { stroke: var(--line); stroke-width: 1; }
+    .lab-chart-axis { fill: var(--muted); font-family: var(--head); font-size: 12px; }
+    .lab-chart-area { fill: url(#labSignalFill); opacity: .24; }
+    .lab-chart-line { fill: none; stroke: var(--blue); stroke-linecap: round; stroke-linejoin: round; stroke-width: 4; }
+    .lab-chart-point { fill: var(--green); stroke: var(--paper); stroke-width: 3; }
+    .lab-chart-key { margin-top: 6px; color: var(--muted); font-family: var(--head); font-size: 13px; }
+    .lab-layer-list { margin-top: 14px; }
+    .lab-layer-row { display: grid; grid-template-columns: 76px 1fr 22px; align-items: center; gap: 8px; margin-top: 11px; }
+    .lab-layer-row:first-child { margin-top: 0; }
+    .lab-layer-name { font-family: var(--head); font-size: 13px; font-weight: 600; }
+    .lab-layer-track { height: 10px; overflow: hidden; border-radius: 999px; background: var(--line); }
+    .lab-layer-fill { display: block; height: 100%; border-radius: 999px; }
+    .lab-layer-fill.edge { width: 68%; background: var(--blue); }
+    .lab-layer-fill.identity { width: 82%; background: var(--green); }
+    .lab-layer-fill.compute { width: 76%; background: var(--orange); }
+    .lab-layer-fill.data { width: 72%; background: var(--red); }
+    .lab-layer-fill.ai { width: 90%; background: var(--violet); }
+    .lab-layer-fill.ops { width: 86%; background: var(--blue); }
+    .lab-telemetry-foot { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-family: var(--head); font-size: 13px; }
 
     /* C64 READY footer */
     .ready-wrap { background: var(--c64-fg); padding: 34px; margin-top: 40px; }
@@ -298,6 +326,7 @@
       .sec-head h2 { font-size: 36px; }
       .lab-azure-stack { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .lab-azure-module:not(:last-child)::after { display: none; }
+      .lab-telemetry-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
       .tabs a { font-size: 7px; height: 46px; }
@@ -324,6 +353,10 @@
       .lab-azure-module { min-height: 0; }
       .lab-azure-bus { display: block; }
       .lab-azure-bus-label { display: block; margin-bottom: 6px; }
+      .lab-telemetry { padding: 16px; }
+      .lab-telemetry-head { display: block; }
+      .lab-telemetry-note { display: block; margin-top: 8px; }
+      .lab-layer-row { grid-template-columns: 68px 1fr 22px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -1121,6 +1154,70 @@
           <span>OBSERVABLE</span>
           <span>REPEATABLE</span>
           <span>AI-READY</span>
+        </div>
+      </div>
+      <div class="lab-telemetry">
+        <div class="lab-telemetry-head">
+          <h3>THE TELEMETRY SCREEN</h3>
+          <span class="lab-telemetry-note">REFERENCE READOUT / NOT LIVE METRICS</span>
+        </div>
+        <div class="lab-telemetry-grid">
+          <div class="lab-chart">
+            <div class="lab-chart-head">
+              <span class="lab-chart-label">AZURE MONITOR / SIGNAL PATH</span>
+              <span class="lab-chart-label">READY</span>
+            </div>
+            <div class="lab-chart-title">DEPLOYMENT SIGNAL</div>
+            <svg viewBox="0 0 610 230" role="img" aria-labelledby="lab-signal-title lab-signal-desc">
+              <title id="lab-signal-title">Illustrative deployment signal</title>
+              <desc id="lab-signal-desc">A reference signal moving from plan through build, test, release, and observe.</desc>
+              <defs>
+                <linearGradient id="labSignalFill" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0" stop-color="#0070e8"></stop>
+                  <stop offset="1" stop-color="#6c5eb5" stop-opacity="0"></stop>
+                </linearGradient>
+              </defs>
+              <line class="lab-chart-gridline" x1="42" y1="54" x2="590" y2="54"></line>
+              <line class="lab-chart-gridline" x1="42" y1="96" x2="590" y2="96"></line>
+              <line class="lab-chart-gridline" x1="42" y1="138" x2="590" y2="138"></line>
+              <line class="lab-chart-gridline" x1="42" y1="180" x2="590" y2="180"></line>
+              <path class="lab-chart-area" d="M48 174 L150 142 L252 151 L354 106 L456 116 L558 62 L558 180 L48 180 Z"></path>
+              <polyline class="lab-chart-line" points="48,174 150,142 252,151 354,106 456,116 558,62"></polyline>
+              <circle class="lab-chart-point" cx="48" cy="174" r="6"></circle>
+              <circle class="lab-chart-point" cx="150" cy="142" r="6"></circle>
+              <circle class="lab-chart-point" cx="252" cy="151" r="6"></circle>
+              <circle class="lab-chart-point" cx="354" cy="106" r="6"></circle>
+              <circle class="lab-chart-point" cx="456" cy="116" r="6"></circle>
+              <circle class="lab-chart-point" cx="558" cy="62" r="6"></circle>
+              <text class="lab-chart-axis" x="48" y="207" text-anchor="middle">PLAN</text>
+              <text class="lab-chart-axis" x="150" y="207" text-anchor="middle">BUILD</text>
+              <text class="lab-chart-axis" x="252" y="207" text-anchor="middle">TEST</text>
+              <text class="lab-chart-axis" x="354" y="207" text-anchor="middle">SHIP</text>
+              <text class="lab-chart-axis" x="456" y="207" text-anchor="middle">WATCH</text>
+              <text class="lab-chart-axis" x="558" y="207" text-anchor="middle">LEARN</text>
+            </svg>
+            <div class="lab-chart-key">GitHub Actions → Bicep → Azure Monitor</div>
+          </div>
+          <div class="lab-chart">
+            <div class="lab-chart-head">
+              <span class="lab-chart-label">SERVICE MAP / 6 LAYERS</span>
+              <span class="lab-chart-label">03 EACH</span>
+            </div>
+            <div class="lab-chart-title">AZURE LAYER PROFILE</div>
+            <div class="lab-layer-list">
+              <div class="lab-layer-row"><span class="lab-layer-name">EDGE</span><span class="lab-layer-track"><span class="lab-layer-fill edge"></span></span><span class="lab-layer-count">03</span></div>
+              <div class="lab-layer-row"><span class="lab-layer-name">IDENTITY</span><span class="lab-layer-track"><span class="lab-layer-fill identity"></span></span><span class="lab-layer-count">03</span></div>
+              <div class="lab-layer-row"><span class="lab-layer-name">COMPUTE</span><span class="lab-layer-track"><span class="lab-layer-fill compute"></span></span><span class="lab-layer-count">03</span></div>
+              <div class="lab-layer-row"><span class="lab-layer-name">DATA</span><span class="lab-layer-track"><span class="lab-layer-fill data"></span></span><span class="lab-layer-count">03</span></div>
+              <div class="lab-layer-row"><span class="lab-layer-name">AI</span><span class="lab-layer-track"><span class="lab-layer-fill ai"></span></span><span class="lab-layer-count">03</span></div>
+              <div class="lab-layer-row"><span class="lab-layer-name">OPS</span><span class="lab-layer-track"><span class="lab-layer-fill ops"></span></span><span class="lab-layer-count">03</span></div>
+            </div>
+            <div class="lab-chart-key">Front Door · Entra · Container Apps · Storage · Foundry · Monitor</div>
+          </div>
+        </div>
+        <div class="lab-telemetry-foot">
+          <span>READOUT: 6 LAYERS / 1 CONTROL BUS</span>
+          <span>DESIGNED FOR SECURE, OBSERVABLE, REPEATABLE BUILDS</span>
         </div>
       </div>
     </div>
