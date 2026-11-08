@@ -301,6 +301,30 @@
     .lab-layer-fill.ai { width: 90%; background: var(--violet); }
     .lab-layer-fill.ops { width: 86%; background: var(--blue); }
     .lab-telemetry-foot { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); color: var(--muted); font-family: var(--head); font-size: 13px; }
+    .lab-workbench { margin-top: 20px; padding: 22px; border-radius: 12px; background: var(--c64-bg); color: var(--c64-fg); box-shadow: 0 12px 24px rgba(53, 40, 121, .18); }
+    .lab-workbench-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+    .lab-workbench-label, .lab-workbench-ready, .lab-workbench-code, .lab-workbench-stack-label, .lab-workbench-handoff-label { font-family: var(--pixel); font-size: 10px; letter-spacing: .5px; }
+    .lab-workbench-label { color: #fff; }
+    .lab-workbench h3 { margin: 10px 0 4px; color: #fff; font-family: var(--head); font-size: 28px; font-weight: 600; }
+    .lab-workbench-head p { margin: 0; font-family: var(--head); font-size: 15px; }
+    .lab-workbench-ready { flex: 0 0 auto; padding: 8px 10px; border: 1px solid var(--yellow-l); border-radius: 6px; color: var(--yellow-l); }
+    .lab-mission-controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 20px; }
+    .lab-mission-tab { min-height: 46px; padding: 8px 6px; border: 1px solid rgba(167, 161, 232, .7); border-radius: 6px; background: transparent; color: var(--c64-fg); cursor: pointer; font-family: var(--pixel); font-size: 9px; }
+    .lab-mission-tab:hover, .lab-mission-tab[aria-selected="true"] { border-color: #fff; background: #fff; color: var(--c64-bg); }
+    .lab-workbench-flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 14px; }
+    .lab-workbench-card { position: relative; min-height: 172px; padding: 16px 14px; border-radius: 8px; background: var(--paper); color: var(--ink); }
+    .lab-workbench-card:not(:last-child)::after { content: '→'; position: absolute; top: 50%; right: -14px; z-index: 1; color: var(--yellow-l); font-family: var(--head); font-size: 22px; font-weight: 700; transform: translateY(-50%); }
+    .lab-workbench-card:nth-child(1) { border-top: 5px solid var(--green); }
+    .lab-workbench-card:nth-child(2) { border-top: 5px solid var(--blue); }
+    .lab-workbench-card:nth-child(3) { border-top: 5px solid var(--violet); }
+    .lab-workbench-code { color: var(--muted); }
+    .lab-workbench-title { margin-top: 16px; font-family: var(--head); font-size: 19px; font-weight: 600; }
+    .lab-workbench-copy { margin-top: 8px; font-family: var(--head); font-size: 14px; line-height: 1.5; }
+    .lab-workbench-stack { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 14px; }
+    .lab-workbench-stack-label { color: var(--yellow-l); }
+    .lab-workbench-service { padding: 6px 8px; border: 1px solid rgba(167, 161, 232, .7); border-radius: 999px; color: #fff; font-family: var(--head); font-size: 13px; }
+    .lab-workbench-handoff { display: flex; align-items: baseline; gap: 12px; margin-top: 14px; padding: 12px 14px; border: 1px dashed rgba(167, 161, 232, .7); border-radius: 8px; font-family: var(--head); font-size: 14px; line-height: 1.45; }
+    .lab-workbench-handoff-label { flex: 0 0 auto; color: var(--yellow-l); }
 
     /* C64 READY footer */
     .ready-wrap { background: var(--c64-fg); padding: 34px; margin-top: 40px; }
@@ -369,6 +393,15 @@
       .lab-signal-controls { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .lab-signal-readout { grid-template-columns: 1fr; }
       .lab-signal-readout-code { grid-row: auto; }
+      .lab-workbench { padding: 18px; }
+      .lab-workbench-head { display: block; }
+      .lab-workbench-ready { display: inline-block; margin-top: 14px; }
+      .lab-mission-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .lab-workbench-flow { grid-template-columns: 1fr; gap: 10px; }
+      .lab-workbench-card { min-height: 0; }
+      .lab-workbench-card:not(:last-child)::after { display: none; }
+      .lab-workbench-handoff { display: block; }
+      .lab-workbench-handoff-label { display: block; margin-bottom: 6px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -1245,6 +1278,47 @@
           <span>DESIGNED FOR SECURE, OBSERVABLE, REPEATABLE BUILDS</span>
         </div>
       </div>
+      <div class="lab-workbench" id="labWorkbench">
+        <div class="lab-workbench-head">
+          <div>
+            <div class="lab-workbench-label">**** HUMAN + AI WORKBENCH ****</div>
+            <h3>YOU SET THE MISSION.</h3>
+            <p>AI loads the options. A person makes the call.</p>
+          </div>
+          <div class="lab-workbench-ready">HUMAN IN LOOP</div>
+        </div>
+        <div class="lab-mission-controls" role="tablist" aria-label="Human and AI missions">
+          <button class="lab-mission-tab" type="button" role="tab" data-mission="ship" aria-selected="true">SHIP A SERVICE</button>
+          <button class="lab-mission-tab" type="button" role="tab" data-mission="secure" aria-selected="false">PROTECT ACCESS</button>
+          <button class="lab-mission-tab" type="button" role="tab" data-mission="teach" aria-selected="false">TEACH A MODEL</button>
+          <button class="lab-mission-tab" type="button" role="tab" data-mission="explain" aria-selected="false">EXPLAIN A SIGNAL</button>
+        </div>
+        <div class="lab-workbench-flow">
+          <div class="lab-workbench-card">
+            <div class="lab-workbench-code">01 / HUMAN INPUT</div>
+            <div class="lab-workbench-title" data-workbench-human-title>Choose the outcome</div>
+            <div class="lab-workbench-copy" data-workbench-human-copy>Set the user, the risk, the budget, and what good looks like.</div>
+          </div>
+          <div class="lab-workbench-card">
+            <div class="lab-workbench-code">02 / AI CONTRIBUTION</div>
+            <div class="lab-workbench-title" data-workbench-ai-title>Draft the first pass</div>
+            <div class="lab-workbench-copy" data-workbench-ai-copy>Generate architecture options, IaC, and trade-offs—not a final decision.</div>
+          </div>
+          <div class="lab-workbench-card">
+            <div class="lab-workbench-code">03 / AZURE BUILD</div>
+            <div class="lab-workbench-title" data-workbench-azure-title>Run it visibly</div>
+            <div class="lab-workbench-copy" data-workbench-azure-copy>Container Apps, API Management, Bicep, and Azure Monitor.</div>
+          </div>
+        </div>
+        <div class="lab-workbench-stack">
+          <span class="lab-workbench-stack-label">STACK</span>
+          <span class="lab-workbench-service" data-workbench-stack>Azure Container Apps · API Management · Bicep · Azure Monitor</span>
+        </div>
+        <div class="lab-workbench-handoff">
+          <span class="lab-workbench-handoff-label">FINAL HANDOFF</span>
+          <span data-workbench-handoff>You choose the option, review the plan, and approve what ships.</span>
+        </div>
+      </div>
     </div>
     </section>
   </main>
@@ -1327,6 +1401,66 @@
         });
       });
       setSignal('plan');
+
+      const workbenchData = {
+        ship: {
+          humanTitle: 'Choose the outcome',
+          humanCopy: 'Set the user, the risk, the budget, and what good looks like.',
+          aiTitle: 'Draft the first pass',
+          aiCopy: 'Generate architecture options, IaC, and trade-offs—not a final decision.',
+          azureTitle: 'Run it visibly',
+          azureCopy: 'Container Apps, API Management, Bicep, and Azure Monitor.',
+          stack: 'Azure Container Apps · API Management · Bicep · Azure Monitor',
+          handoff: 'You choose the option, review the plan, and approve what ships.'
+        },
+        secure: {
+          humanTitle: 'Define who should trust whom',
+          humanCopy: 'Set the people, workloads, boundaries, and exceptions that matter.',
+          aiTitle: 'Surface the gaps',
+          aiCopy: 'Review access paths, explain policy choices, and flag risky assumptions.',
+          azureTitle: 'Put identity first',
+          azureCopy: 'Microsoft Entra ID, Conditional Access, Key Vault, and Defender for Cloud.',
+          stack: 'Microsoft Entra ID · Conditional Access · Key Vault · Defender for Cloud',
+          handoff: 'You decide the policy, accept or reject exceptions, and own the accountability.'
+        },
+        teach: {
+          humanTitle: 'Set the quality bar',
+          humanCopy: 'Choose the domain, data boundaries, audience, and failure modes.',
+          aiTitle: 'Prototype and challenge',
+          aiCopy: 'Draft prompts, generate test cases, summarize evidence, and find edge cases.',
+          azureTitle: 'Build the intelligence layer',
+          azureCopy: 'Azure AI Foundry, Azure OpenAI Service, Content Safety, and Monitor.',
+          stack: 'Azure AI Foundry · Azure OpenAI Service · Content Safety · Azure Monitor',
+          handoff: 'You set the evaluation standard, approve the data, and decide whether it is ready.'
+        },
+        explain: {
+          humanTitle: 'Ask the useful question',
+          humanCopy: 'Name the signal, the threshold, the impact, and the decision it should inform.',
+          aiTitle: 'Correlate the clues',
+          aiCopy: 'Connect traces, logs, changes, and context into hypotheses worth checking.',
+          azureTitle: 'Turn telemetry into action',
+          azureCopy: 'Azure Monitor, Application Insights, Log Analytics, and Copilot.',
+          stack: 'Azure Monitor · Application Insights · Log Analytics · Copilot',
+          handoff: 'You test the hypothesis, choose the response, and decide what changes next.'
+        }
+      };
+      const workbench = document.getElementById('labWorkbench');
+      const missionTabs = [...document.querySelectorAll('.lab-mission-tab')];
+      const setMission = (key) => {
+        const data = workbenchData[key];
+        if (!data || !workbench) return;
+        missionTabs.forEach((tab) => tab.setAttribute('aria-selected', tab.dataset.mission === key ? 'true' : 'false'));
+        workbench.querySelector('[data-workbench-human-title]').textContent = data.humanTitle;
+        workbench.querySelector('[data-workbench-human-copy]').textContent = data.humanCopy;
+        workbench.querySelector('[data-workbench-ai-title]').textContent = data.aiTitle;
+        workbench.querySelector('[data-workbench-ai-copy]').textContent = data.aiCopy;
+        workbench.querySelector('[data-workbench-azure-title]').textContent = data.azureTitle;
+        workbench.querySelector('[data-workbench-azure-copy]').textContent = data.azureCopy;
+        workbench.querySelector('[data-workbench-stack]').textContent = data.stack;
+        workbench.querySelector('[data-workbench-handoff]').textContent = data.handoff;
+      };
+      missionTabs.forEach((tab) => tab.addEventListener('click', () => setMission(tab.dataset.mission)));
+      setMission('ship');
 
       const photos = [...document.querySelectorAll('.welcome-photos img')];
       if (photos.length > 1 && !reduce) {
