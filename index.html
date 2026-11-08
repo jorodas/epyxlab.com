@@ -151,6 +151,7 @@
     .sec-head::before { content: ""; display: block; width: 90px; height: 8px; margin-bottom: 16px; border-radius: 2px; background: linear-gradient(to right, var(--red) 0 20%, var(--orange) 0 40%, var(--yellow) 0 60%, var(--green) 0 80%, var(--blue) 0); }
     .sec-head h2 { font-family: var(--head); font-weight: 600; font-size: 44px; letter-spacing: -1.5px; line-height: 1; margin: 0; }
     .sec-head p { font-style: italic; font-size: 19px; color: var(--muted); margin: 10px 0 0; }
+    .sec-head .catalog-play-note { margin-top: 6px; font-family: var(--head); font-size: 12px; font-style: normal; }
     .subnav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
     .subnav a { font-family: var(--head); font-size: 14px; padding: 7px 14px; border-radius: 999px; background: var(--paper); border: 1px solid var(--line); color: var(--ink); }
     .subnav a:hover { border-color: var(--blue); color: var(--blue); text-decoration: none; }
@@ -173,6 +174,9 @@
     .game-desc { font-size: 15.5px; line-height: 1.5; }
     .game-genre { align-self: flex-start; font-family: var(--head); font-size: 12px; color: #17803f; background: #e8f8ee; border-radius: 999px; padding: 4px 10px; }
     .game-credit { margin-top: auto; padding-top: 4px; font-family: var(--head); font-size: 11px; font-style: italic; color: #9aa0aa; }
+    .game-play { display: block; margin-top: 8px; padding: 9px 10px; border: 1px solid var(--blue); border-radius: 6px; background: #eef5ff; color: var(--blue); font-family: var(--head); font-size: 12px; font-weight: 600; text-align: center; }
+    .game-play:hover { background: var(--blue); color: #fff; text-decoration: none; }
+    .game-play.unavailable { border-color: var(--line); background: var(--bg); color: #9aa0aa; cursor: default; }
 
     /* Machines and gear */
     .hardware-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
@@ -577,6 +581,7 @@
       <div class="sec-head" id="catalog">
         <h2>THE CATALOG</h2>
         <p>The games that defined a generation.</p>
+        <p class="catalog-play-note">PLAY links open the matching C64online emulator in a new tab. Cards without a matching entry are marked clearly.</p>
       </div>
       <div class="games-grid">
       <div class="game-card">
@@ -587,6 +592,7 @@
         <div class="game-desc">The one that started it all. Eight Olympic events, fluid animation, and a medal ceremony that made you feel like a champion. The joystick waggler that launched a franchise.</div>
         <span class="game-genre">Sports / Olympic</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/summer-games/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
@@ -597,6 +603,7 @@
         <div class="game-desc">Eight new events: triple jump, rowing, javelin, equestrian, kayaking, cycling, fencing, and high jump. The sequel that proved the format had legs.</div>
         <span class="game-genre">Sports / Olympic</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/summer-games-ii/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
@@ -607,6 +614,7 @@
         <div class="game-desc">Hot Dog Aerials. Biathlon. Figure Skating with a 6.0 perfect score system. Seven events of frozen glory on 8-bit hardware that had no business looking this good.</div>
         <span class="game-genre">Sports / Olympic</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/winter-games/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
@@ -617,6 +625,7 @@
         <div class="game-desc">Bull riding in Mexico. Cliff diving in Acapulco. Sumo in Japan. Caber toss in Scotland. Eight events from eight countries — before the internet made the world small.</div>
         <span class="game-genre">Sports / International</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/world-games/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
@@ -627,6 +636,7 @@
         <div class="game-desc">Hacky sack. BMX. Surfing. Half-pipe skateboarding. Six events of pure SoCal sunshine. The best-selling game in the series — and the one everyone remembers.</div>
         <span class="game-genre">Sports / Lifestyle</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/california-games/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
@@ -637,6 +647,7 @@
         <div class="game-desc">Hang gliding. Jet surfing. Snowboarding before snowboarding was an Olympic sport. The sequel that proved California never goes out of style.</div>
         <span class="game-genre">Sports / Extreme</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
       </div>
 
       <div class="game-card">
@@ -647,6 +658,7 @@
         <div class="game-desc">"Another visitor. Stay a while... stay FOREVER!" Professor Elvin Atombender's tower. 36 rooms. Puzzles. Platforming. The voice synthesis that haunted a generation.</div>
         <span class="game-genre">Action / Puzzle</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/impossible-mission/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
@@ -657,6 +669,7 @@
         <div class="game-desc">"Elvin Atombender is back in power." Eight towers. New puzzles. New security systems. The sequel that brought the mad professor back from the dead.</div>
         <span class="game-genre">Action / Puzzle</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
       </div>
 
       <div class="game-card">
@@ -667,6 +680,7 @@
         <div class="game-desc">The original. Formula racing with actual pit stops — tire changes and fuel management. Strategy meets speed. The foundation for what came next.</div>
         <span class="game-genre">Racing / Strategy</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/pitstop/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
@@ -677,6 +691,7 @@
         <div class="game-desc">Split-screen racing before split-screen racing was cool. Tire wear. Pit strategy. Two-player head-to-head on a Commodore 64. Revolutionary.</div>
         <span class="game-genre">Racing / Strategy</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/pitstop-ii/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
@@ -687,6 +702,7 @@
         <div class="game-desc">30 levels. Bombs to defuse. Ladders, ropes, and pixel-perfect jumps. Before Mario was Mario in the West, there was Jumpman — and it wasn't Nintendo's.</div>
         <span class="game-genre">Platformer / Action</span>
         <div class="game-credit">Box art © Epyx Inc. / CBS Electronics. Historical reference.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/jumpman/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
@@ -697,6 +713,7 @@
         <div class="game-desc">One of the first graphical RPGs ever made. Dungeon crawling before Diablo was a concept. Room descriptions read from the manual. Pure imagination fuel.</div>
         <span class="game-genre">RPG / Dungeon Crawler</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
       </div>
 
       <div class="game-card">
@@ -707,6 +724,7 @@
         <div class="game-desc">The evolution. Velodrome cycling. Uneven bars. Rings. Diving with full rotation control. The last great Olympic game before Epyx's light went dark.</div>
         <span class="game-genre">Sports / Olympic</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
       </div>
 
       <div class="game-card">
@@ -717,6 +735,7 @@
         <div class="game-desc">149 levels of pure puzzle addiction. Collect chips, avoid monsters, find the exit. Shipped with Windows Entertainment Pack and consumed millions of office hours worldwide.</div>
         <span class="game-genre">Puzzle / Logic</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
       </div>
 
       <div class="game-card">
@@ -727,6 +746,7 @@
         <div class="game-desc">Street-level soccer on cracked asphalt and dirt lots. Pick your team from the neighborhood. Part of the Street Sports series that made sandlot competition a genre.</div>
         <span class="game-genre">Sports / Street</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
       </div>
 
       <div class="game-card">
@@ -737,6 +757,7 @@
         <div class="game-desc">No stadiums. No uniforms. Just kids picking teams on a sandlot with a chain-link backstop. Street-level sports before EA made everything corporate.</div>
         <span class="game-genre">Sports / Street</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
       </div>
 
       <div class="game-card">
@@ -747,6 +768,7 @@
         <div class="game-desc">Motorcycle racing with a behind-the-rider perspective. Lean into curves, dodge traffic, hit the throttle. Pure arcade speed on home hardware.</div>
         <span class="game-genre">Racing / Arcade</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
       </div>
 
       <div class="game-card">
@@ -757,6 +779,7 @@
         <div class="game-desc">Baja desert, mud trails, and monster trucks. Vehicle customization before it was standard. Win a Kawasaki KDX200 — details inside. Peak 80s box marketing.</div>
         <span class="game-genre">Racing / Off-Road</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
       </div>
 
       <div class="game-card">
@@ -767,6 +790,7 @@
         <div class="game-desc">Naval warfare simulation. Command a destroyer through WWII scenarios. Radar, sonar, depth charges. Epyx proving they could do serious military sims alongside sports.</div>
         <span class="game-genre">Simulation / Military</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
       </div>
 
       <div class="game-card">
@@ -777,6 +801,7 @@
         <div class="game-desc">One-on-one martial arts with exotic backgrounds. Scored by judges like real competition. Before Street Fighter II, this was how you settled it on 8-bit.</div>
         <span class="game-genre">Fighting / Martial Arts</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/international-karate/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
@@ -787,6 +812,7 @@
         <div class="game-desc">Mattel-licensed racing on miniature tracks. Brand integration done right. Epyx was doing licensed IP games before it became the entire industry's business model.</div>
         <span class="game-genre">Racing / Licensed</span>
         <div class="game-credit">Box art © Epyx Inc. / Mattel. Historical reference.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/hot-wheels/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
@@ -797,6 +823,7 @@
         <div class="game-desc">Hasbro-licensed action. Command the G.I. Joe team against Cobra. Another example of Epyx turning toy brands into playable games on home computers.</div>
         <span class="game-genre">Action / Licensed</span>
         <div class="game-credit">Box art © Epyx Inc. / Hasbro. Historical reference.</div>
+        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
       </div>
 
       <div class="game-card">
@@ -807,6 +834,7 @@
         <div class="game-desc">Hex-based tank warfare strategy. "Computer Games Thinkers Play." Early Epyx before the sports era — proving they could do deep strategy on home hardware.</div>
         <span class="game-genre">Strategy / Wargame</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
       </div>
 
       <div class="game-card">
@@ -817,6 +845,7 @@
         <div class="game-desc">Abstract strategy in an alien ecosystem. Geometric creatures, procedural behavior. An experimental art-game decades before "indie games" existed as a concept.</div>
         <span class="game-genre">Strategy / Experimental</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
       </div>
       <div class="game-card">
         <img loading="lazy" decoding="async" src="img/starfleet-orion.png" alt="Starfleet Orion manual" class="game-cover">
@@ -826,6 +855,7 @@
         <div class="game-desc">The very first game published by Automated Simulations — before Epyx even existed. Space fleet tactical combat on 8K of RAM. Where it all began.</div>
         <span class="game-genre">Strategy / Sci-Fi</span>
         <div class="game-credit">Cover © Automated Simulations. Historical reference.</div>
+        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
       </div>
 
       <div class="game-card">
@@ -836,6 +866,7 @@
         <div class="game-desc">The Masters Collection. WWII submarine warfare. Sonar, torpedoes, convoy hunting. "The new benchmark for simulation programs" — MacWorld, July 1987.</div>
         <span class="game-genre">Simulation / Military</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
       </div>
 
       <div class="game-card">
@@ -846,6 +877,7 @@
         <div class="game-desc">Six monsters. Four cities. Destroy landmarks, rescue the monster's child, or eat the city. Epyx's campy answer to the monster movie.</div>
         <span class="game-genre">Action / Strategy</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <a class="game-play" href="https://c64online.com/c64-games/movie-monster/" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
       </div>
 
       <div class="game-card">
@@ -856,6 +888,7 @@
         <div class="game-desc">Design a monster, stomp a city, and outlast the military. A darkly funny strategy-action game for anyone who roots for the creature.</div>
         <span class="game-genre">Action / Strategy</span>
         <div class="game-credit">Box art © Epyx Inc. Historical reference.</div>
+        <span class="game-play unavailable">NO C64ONLINE MATCH</span>
       </div>
     </div>
     </section>
