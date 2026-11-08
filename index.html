@@ -247,6 +247,27 @@
     .lab-card-icon { font-size: 30px; line-height: 1; }
     .lab-card-title { font-family: var(--head); font-weight: 600; font-size: 20px; margin-top: 26px; }
     .lab-card-desc { font-family: var(--head); font-size: 15px; line-height: 1.5; margin-top: 8px; opacity: .95; }
+    .lab-architecture { margin-top: 24px; padding: 22px; border-radius: 12px; background: var(--c64-bg); color: var(--c64-fg); box-shadow: 0 12px 24px rgba(53, 40, 121, .18); }
+    .lab-architecture-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+    .lab-prompt, .lab-ready, .lab-node-code, .lab-bus-label { font-family: var(--pixel); font-size: 10px; letter-spacing: .5px; }
+    .lab-prompt { color: #fff; }
+    .lab-architecture h3 { margin: 10px 0 4px; color: #fff; font-family: var(--head); font-size: 28px; font-weight: 600; }
+    .lab-architecture-head p { margin: 0; font-family: var(--head); font-size: 15px; }
+    .lab-ready { flex: 0 0 auto; padding: 8px 10px; border: 1px solid var(--green-l); border-radius: 6px; color: var(--green-l); }
+    .lab-map { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+    .lab-node { position: relative; min-height: 150px; padding: 14px 12px; border-radius: 8px; background: var(--paper); color: var(--ink); }
+    .lab-node:not(:last-child)::after { content: '→'; position: absolute; top: 50%; right: -14px; z-index: 1; color: var(--yellow-l); font-family: var(--head); font-size: 22px; font-weight: 700; transform: translateY(-50%); }
+    .lab-node:nth-child(1) { border-top: 5px solid var(--blue); }
+    .lab-node:nth-child(2) { border-top: 5px solid var(--green); }
+    .lab-node:nth-child(3) { border-top: 5px solid var(--orange); }
+    .lab-node:nth-child(4) { border-top: 5px solid var(--red); }
+    .lab-node:nth-child(5) { border-top: 5px solid var(--violet); }
+    .lab-node:nth-child(6) { border-top: 5px solid var(--blue); }
+    .lab-node-code { color: var(--muted); }
+    .lab-node-title { margin-top: 16px; font-family: var(--head); font-size: 18px; font-weight: 600; }
+    .lab-node-desc { margin-top: 7px; font-family: var(--head); font-size: 14px; line-height: 1.45; }
+    .lab-bus { display: flex; align-items: center; gap: 14px; margin-top: 14px; padding: 12px 14px; border: 1px dashed rgba(167, 161, 232, .7); border-radius: 8px; font-family: var(--head); font-size: 14px; line-height: 1.45; }
+    .lab-bus-label { flex: 0 0 auto; color: var(--yellow-l); }
 
     /* C64 READY footer */
     .ready-wrap { background: var(--c64-fg); padding: 34px; margin-top: 40px; }
@@ -279,6 +300,8 @@
       .shelf-more img { height: 170px; max-width: 128px; }
       .shelf-more img:nth-child(n+4) { display: none; }
       .sec-head h2 { font-size: 36px; }
+      .lab-map { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .lab-node:not(:last-child)::after { display: none; }
     }
     @media (max-width: 560px) {
       .tabs a { font-size: 7px; height: 46px; }
@@ -298,6 +321,13 @@
       .achievement-year { justify-self: start; padding: 0 12px; }
       .ready { font-size: 10px; padding: 20px; }
       .ready-wrap { padding: 18px; }
+      .lab-architecture { padding: 18px; }
+      .lab-architecture-head { display: block; }
+      .lab-ready { display: inline-block; margin-top: 14px; }
+      .lab-map { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .lab-node { min-height: 138px; }
+      .lab-bus { display: block; }
+      .lab-bus-label { display: block; margin-bottom: 6px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -1034,6 +1064,52 @@
           <div class="lab-card-icon">⚙️</div>
           <div class="lab-card-title">DevOps & Automation</div>
           <div class="lab-card-desc">GitHub Actions, Infrastructure as Code, monitoring pipelines, GitOps patterns. Shipping faster.</div>
+        </div>
+      </div>
+      <div class="lab-architecture">
+        <div class="lab-architecture-head">
+          <div>
+            <div class="lab-prompt">LOAD "EPYXLAB CLOUD",8,1</div>
+            <h3>THE CLOUD MEMORY MAP</h3>
+            <p>Old-school flow. Current stack.</p>
+          </div>
+          <div class="lab-ready">READY.</div>
+        </div>
+        <div class="lab-map" aria-label="EpyxLab modern cloud architecture">
+          <div class="lab-node">
+            <div class="lab-node-code">01 / INPUT</div>
+            <div class="lab-node-title">People & Signals</div>
+            <div class="lab-node-desc">Users, APIs, and telemetry entering the system.</div>
+          </div>
+          <div class="lab-node">
+            <div class="lab-node-code">02 / FAST LOAD</div>
+            <div class="lab-node-title">Connectivity</div>
+            <div class="lab-node-desc">Hybrid connectivity and migration patterns.</div>
+          </div>
+          <div class="lab-node">
+            <div class="lab-node-code">03 / MEMORY MAP</div>
+            <div class="lab-node-title">Guardrails</div>
+            <div class="lab-node-desc">Entra ID, Zero Trust, and Defender XDR.</div>
+          </div>
+          <div class="lab-node">
+            <div class="lab-node-code">04 / RUN</div>
+            <div class="lab-node-title">Cloud Engine</div>
+            <div class="lab-node-desc">Azure infrastructure, scale, and automation.</div>
+          </div>
+          <div class="lab-node">
+            <div class="lab-node-code">05 / SID</div>
+            <div class="lab-node-title">Intelligence</div>
+            <div class="lab-node-desc">AI Foundry, Copilot, and intelligent automation.</div>
+          </div>
+          <div class="lab-node">
+            <div class="lab-node-code">06 / DISPLAY</div>
+            <div class="lab-node-title">Experience</div>
+            <div class="lab-node-desc">M365 integrations, dashboards, and digital experiences.</div>
+          </div>
+        </div>
+        <div class="lab-bus">
+          <span class="lab-bus-label">CONTROL BUS</span>
+          <span>GitHub Actions · Infrastructure as Code · GitOps · monitoring pipelines</span>
         </div>
       </div>
     </div>
