@@ -63,7 +63,7 @@
     .slide-inner { max-width: 900px; margin: 0 auto; padding: 0 24px; text-align: center; }
     .logo { margin: 2px 0 0; }
     .c64badge { display: inline-flex; align-items: center; gap: 18px; height: 64px; padding: 0 30px; border-radius: 999px; background: #5b534d; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .10), 0 1px 2px rgba(40, 48, 58, .18); }
-    .c64badge .name { font-family: var(--head); font-weight: 400; font-size: 36px; letter-spacing: .5px; line-height: 1; color: #fff; padding-bottom: 6px; }
+    .c64badge .wordmark { font-family: var(--head); font-weight: 400; font-size: 36px; letter-spacing: .5px; line-height: 1; color: #fff; padding-bottom: 6px; }
     .c64badge .bars { display: flex; flex-direction: column; gap: 3px; width: 120px; }
     .c64badge .bars i { display: block; height: 4px; }
     .c64badge .bars i:nth-child(1) { background: #d9413a; }
@@ -71,12 +71,10 @@
     .c64badge .bars i:nth-child(3) { background: #f0c233; }
     .c64badge .bars i:nth-child(4) { background: #3fa45a; }
     .c64badge .bars i:nth-child(5) { background: #2f86c8; }
-    .c64badge .num { font-family: var(--head); font-weight: 400; font-size: 33px; letter-spacing: 2px; line-height: 1; color: #fff; }
     .c64badge.small { gap: 10px; height: 34px; padding: 0 16px; box-shadow: none; }
-    .c64badge.small .name { font-size: 19px; padding-bottom: 3px; }
+    .c64badge.small .wordmark { font-size: 19px; padding-bottom: 3px; }
     .c64badge.small .bars { width: 56px; gap: 2px; }
     .c64badge.small .bars i { height: 2px; }
-    .c64badge.small .num { font-size: 17px; letter-spacing: 1px; }
     .promo h1 { font-family: var(--head); font-weight: 600; font-size: 46px; line-height: 1.05; letter-spacing: -1.5px; margin: 22px 0 10px; }
     .promo h3 { font-family: var(--head); font-weight: 400; font-size: 20px; line-height: 1.4; color: var(--muted); margin: 0 auto; max-width: 720px; }
     .buttons { margin: 20px 0 4px; }
@@ -272,8 +270,7 @@
       .stats { grid-template-columns: repeat(2, 1fr); }
       .promo h1 { font-size: 36px; }
       .c64badge { height: 56px; gap: 14px; padding: 0 24px; }
-      .c64badge .name { font-size: 30px; padding-bottom: 5px; }
-      .c64badge .num { font-size: 27px; }
+      .c64badge .wordmark { font-size: 30px; padding-bottom: 5px; }
       .c64badge .bars { width: 92px; }
       .tabs a { font-size: 9px; height: 52px; }
       .shelf { height: 190px; }
@@ -289,8 +286,7 @@
       .promo h1 { font-size: 29px; }
       .promo h3 { font-size: 17px; }
       .c64badge { height: 46px; gap: 10px; padding: 0 18px; }
-      .c64badge .name { font-size: 24px; padding-bottom: 4px; }
-      .c64badge .num { font-size: 21px; letter-spacing: 1.5px; }
+      .c64badge .wordmark { font-size: 24px; padding-bottom: 4px; }
       .c64badge .bars { width: 62px; gap: 2px; }
       .c64badge .bars i { height: 3px; }
       .shelf img:nth-child(n+3) { display: none; }
@@ -317,7 +313,7 @@
   <header class="promo" id="top">
     <div class="slide is-active">
       <div class="slide-inner">
-        <div class="logo"><div class="c64badge" role="img" aria-label="EpyxLab"><span class="name">epyx</span><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="num">lab</span></div></div>
+        <div class="logo"><div class="c64badge" role="img" aria-label="EpyxLab"><span class="wordmark">epyxlab</span><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div></div>
         <h1>A workshop for ideas.</h1>
         <h3>History, hardware, and modern cloud engineering.</h3>
         <div class="buttons"><a class="fancy green" href="#catalog">The Catalog</a><a class="fancy blue" href="#lab">The Lab Today</a></div>
@@ -340,7 +336,7 @@
 
     <div class="slide" aria-hidden="true">
       <div class="slide-inner">
-        <div class="logo"><div class="c64badge" role="img" aria-label="EpyxLab"><span class="name">epyx</span><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="num">lab</span></div></div>
+        <div class="logo"><div class="c64badge" role="img" aria-label="EpyxLab"><span class="wordmark">epyxlab</span><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div></div>
         <h1>The Lynx story.</h1>
         <h3>Epyx's greatest engineering achievement — and their final act.</h3>
         <div class="buttons"><a class="fancy green" href="#lynx">Read the Story</a><a class="fancy blue" href="#machines">The Machines</a></div>
@@ -354,7 +350,7 @@
 
     <div class="slide" aria-hidden="true">
       <div class="slide-inner">
-        <div class="logo"><div class="c64badge" role="img" aria-label="EpyxLab"><span class="name">epyx</span><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="num">lab</span></div></div>
+        <div class="logo"><div class="c64badge" role="img" aria-label="EpyxLab"><span class="wordmark">epyxlab</span><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div></div>
         <h1>The games that defined a generation.</h1>
         <h3>47 games. 12 platforms. 8 years of gold.</h3>
         <div class="buttons"><a class="fancy green" href="#catalog">Browse the Catalog</a><a class="fancy blue" href="#timeline">The Timeline</a></div>
@@ -370,7 +366,7 @@
 
     <div class="slide" aria-hidden="true">
       <div class="slide-inner">
-        <div class="logo"><div class="c64badge" role="img" aria-label="EpyxLab"><span class="name">epyx</span><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="num">lab</span></div></div>
+        <div class="logo"><div class="c64badge" role="img" aria-label="EpyxLab"><span class="wordmark">epyxlab</span><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div></div>
         <h1>Same spirit. New medium.</h1>
         <h3>The constraints have changed — from 64 KB of RAM to infinite cloud compute — but the philosophy hasn't: build something people remember.</h3>
         <div class="buttons"><a class="fancy green" href="#lab">The Lab Today</a><a class="fancy blue" href="#contact">Contact</a></div>
@@ -1062,7 +1058,7 @@
       </div>
     </div>
     <div class="legal">
-      <div class="logo" style="margin-bottom: 14px;"><div class="c64badge small" role="img" aria-label="EpyxLab"><span class="name">epyx</span><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="num">lab</span></div></div>
+      <div class="logo" style="margin-bottom: 14px;"><div class="c64badge small" role="img" aria-label="EpyxLab"><span class="wordmark">epyxlab</span><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></div></div>
       Built with respect. Powered by memory.<br>
       No affiliation with the original Epyx Inc. Fan tribute only.<br>
       Visits are counted with Azure Application Insights: city-level location only, no cookies, no IP addresses stored.
