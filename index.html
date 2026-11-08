@@ -57,7 +57,7 @@
 
     /* Promo banner */
     .promo { position: relative; background: var(--bg); border-bottom: 2px solid var(--ink); overflow: hidden; }
-    .slide { display: none; padding: 34px 0 0; }
+    .slide { display: none; padding: 28px 0 18px; }
     .slide.is-active { display: block; animation: fade .6s ease; }
     @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
     .slide-inner { max-width: 900px; margin: 0 auto; padding: 0 24px; text-align: center; }
@@ -85,8 +85,8 @@
     .fancy:hover { transform: translateY(-2px); filter: brightness(1.06); }
     .fancy.green { background: var(--green); }
     .fancy.blue { background: var(--blue); }
-    .shelf { display: flex; justify-content: center; align-items: flex-end; gap: 18px; margin-top: 26px; height: 236px; padding: 0 20px; }
-    .shelf img { height: 214px; width: auto; max-width: 168px; object-fit: contain; border-radius: 6px; background: #fff; box-shadow: 0 14px 26px rgba(40, 48, 58, .22); transform: translateY(20px) rotate(var(--r, 0deg)); }
+    .shelf { display: flex; justify-content: center; align-items: flex-end; gap: 16px; max-width: 1040px; margin: 18px auto 0; height: 214px; padding: 0 20px 8px; }
+    .shelf img { height: 200px; width: auto; max-width: 168px; object-fit: contain; border-radius: 6px; background: #fff; box-shadow: 0 14px 26px rgba(40, 48, 58, .22); transform: rotate(var(--r, 0deg)); }
     .shelf img:nth-child(1) { --r: -5deg; }
     .shelf img:nth-child(2) { --r: 3deg; }
     .shelf img:nth-child(3) { --r: -1deg; }
@@ -109,8 +109,8 @@
     @keyframes ring { to { --p: 360deg; } }
 
     /* Welcome */
-    .welcome { background: #fff; padding: 56px 0 40px; }
-    .welcome-grid { display: grid; grid-template-columns: 52% 1fr; gap: 34px; align-items: center; }
+    .welcome { background: #fff; padding: 44px 0 34px; }
+    .welcome-grid { display: grid; grid-template-columns: 52% 1fr; gap: 34px; align-items: start; }
     .welcome-photos { position: relative; aspect-ratio: 4 / 3; }
     .welcome-photos img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .9s; }
     .welcome-photos img.on { opacity: 1; }
@@ -307,8 +307,8 @@
       <div class="slide-inner">
         <div class="badge">A TRIBUTE TO EPYX · 1978-1993</div>
         <div class="logo"><div class="c64badge" role="img" aria-label="EpyxLab"><span class="name">epyx</span><span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="num">LAB</span></div></div>
-        <h1>Press fire to deploy.</h1>
-        <h3>8-bit soul. Cloud-scale muscle.</h3>
+        <h1>A tribute to Epyx. A lab for what's next.</h1>
+        <h3>History, hardware, and modern cloud engineering.</h3>
         <div class="buttons"><a class="fancy green" href="#catalog">The Catalog</a><a class="fancy blue" href="#lab">The Lab Today</a></div>
       </div>
     <div class="shelf" aria-hidden="true">
