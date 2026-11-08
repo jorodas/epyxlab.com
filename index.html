@@ -238,45 +238,32 @@
 
     /* Lab */
     .lab-intro { background: var(--paper); border: 1px solid var(--line); border-left: 6px solid var(--violet); border-radius: 10px; padding: 18px 22px; font-size: 19px; line-height: 1.6; margin-bottom: 20px; }
-    .lab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
-    .lab-card { border-radius: 12px; padding: 16px 20px 20px; color: #fff; }
-    .lab-card:nth-child(1) { background: linear-gradient(to bottom, var(--blue-l) 0 62px, var(--blue) 62px 100%); }
-    .lab-card:nth-child(2) { background: linear-gradient(to bottom, var(--green-l) 0 62px, var(--green) 62px 100%); }
-    .lab-card:nth-child(3) { background: linear-gradient(to bottom, var(--orange-l) 0 62px, var(--orange) 62px 100%); }
-    .lab-card:nth-child(4) { background: linear-gradient(to bottom, var(--red-l) 0 62px, var(--red) 62px 100%); }
-    .lab-card-icon { font-size: 30px; line-height: 1; }
-    .lab-card-title { font-family: var(--head); font-weight: 600; font-size: 20px; margin-top: 26px; }
-    .lab-card-desc { font-family: var(--head); font-size: 15px; line-height: 1.5; margin-top: 8px; opacity: .95; }
-    .lab-architecture { margin-top: 24px; padding: 22px; border-radius: 12px; background: var(--c64-bg); color: var(--c64-fg); box-shadow: 0 12px 24px rgba(53, 40, 121, .18); }
-    .lab-architecture-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
-    .lab-prompt, .lab-ready, .lab-node-code, .lab-bus-label { font-family: var(--pixel); font-size: 10px; letter-spacing: .5px; }
-    .lab-prompt { color: #fff; }
-    .lab-architecture h3 { margin: 10px 0 4px; color: #fff; font-family: var(--head); font-size: 28px; font-weight: 600; }
-    .lab-architecture-head p { margin: 0; font-family: var(--head); font-size: 15px; }
-    .lab-ready { flex: 0 0 auto; padding: 8px 10px; border: 1px solid var(--green-l); border-radius: 6px; color: var(--green-l); }
-    .lab-map { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
-    .lab-node { position: relative; min-height: 150px; padding: 14px 12px; border-radius: 8px; background: var(--paper); color: var(--ink); }
-    .lab-node:not(:last-child)::after { content: '→'; position: absolute; top: 50%; right: -14px; z-index: 1; color: var(--yellow-l); font-family: var(--head); font-size: 22px; font-weight: 700; transform: translateY(-50%); }
-    .lab-node:nth-child(1) { border-top: 5px solid var(--blue); }
-    .lab-node:nth-child(2) { border-top: 5px solid var(--green); }
-    .lab-node:nth-child(3) { border-top: 5px solid var(--orange); }
-    .lab-node:nth-child(4) { border-top: 5px solid var(--red); }
-    .lab-node:nth-child(5) { border-top: 5px solid var(--violet); }
-    .lab-node:nth-child(6) { border-top: 5px solid var(--blue); }
-    .lab-node-code { color: var(--muted); }
-    .lab-node-title { margin-top: 16px; font-family: var(--head); font-size: 18px; font-weight: 600; }
-    .lab-node-desc { margin-top: 7px; font-family: var(--head); font-size: 14px; line-height: 1.45; }
-    .lab-bus { display: flex; align-items: center; gap: 14px; margin-top: 14px; padding: 12px 14px; border: 1px dashed rgba(167, 161, 232, .7); border-radius: 8px; font-family: var(--head); font-size: 14px; line-height: 1.45; }
-    .lab-bus-label { flex: 0 0 auto; color: var(--yellow-l); }
-    .lab-translation { margin-top: 20px; padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
-    .lab-translation-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
-    .lab-translation-head h3 { margin: 0; font-family: var(--head); font-size: 24px; font-weight: 600; }
-    .lab-translation-head span { font-family: var(--pixel); font-size: 10px; color: var(--violet); }
-    .lab-translation-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
-    .lab-translation-card { padding: 14px 12px; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); }
-    .lab-translation-old { font-family: var(--pixel); font-size: 10px; color: var(--violet); }
-    .lab-translation-new { margin-top: 8px; font-family: var(--head); font-size: 18px; font-weight: 600; color: var(--blue); }
-    .lab-translation-desc { margin-top: 6px; font-size: 14px; line-height: 1.45; }
+    .lab-azure { margin-top: 24px; padding: 22px; border-radius: 12px; background: var(--c64-bg); color: var(--c64-fg); box-shadow: 0 12px 24px rgba(53, 40, 121, .18); }
+    .lab-azure-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 20px; }
+    .lab-azure-prompt, .lab-azure-load, .lab-azure-ready, .lab-azure-code, .lab-azure-bus-label, .lab-azure-status { font-family: var(--pixel); font-size: 10px; letter-spacing: .5px; }
+    .lab-azure-prompt { color: #fff; }
+    .lab-azure-load { margin-top: 10px; color: var(--yellow-l); }
+    .lab-azure h3 { margin: 10px 0 4px; color: #fff; font-family: var(--head); font-size: 28px; font-weight: 600; }
+    .lab-azure-head p { margin: 0; font-family: var(--head); font-size: 15px; }
+    .lab-azure-ready { flex: 0 0 auto; padding: 8px 10px; border: 1px solid var(--green-l); border-radius: 6px; color: var(--green-l); }
+    .lab-azure-stack { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin-top: 20px; }
+    .lab-azure-module { position: relative; min-height: 205px; padding: 14px 12px; border-radius: 8px; background: var(--paper); color: var(--ink); }
+    .lab-azure-module:not(:last-child)::after { content: '→'; position: absolute; top: 50%; right: -13px; z-index: 1; color: var(--yellow-l); font-family: var(--head); font-size: 22px; font-weight: 700; transform: translateY(-50%); }
+    .lab-azure-module:nth-child(1) { border-top: 5px solid var(--blue); }
+    .lab-azure-module:nth-child(2) { border-top: 5px solid var(--green); }
+    .lab-azure-module:nth-child(3) { border-top: 5px solid var(--orange); }
+    .lab-azure-module:nth-child(4) { border-top: 5px solid var(--red); }
+    .lab-azure-module:nth-child(5) { border-top: 5px solid var(--violet); }
+    .lab-azure-module:nth-child(6) { border-top: 5px solid var(--blue); }
+    .lab-azure-code { color: var(--muted); }
+    .lab-azure-title { margin-top: 16px; font-family: var(--head); font-size: 18px; font-weight: 600; }
+    .lab-azure-role { margin-top: 6px; color: var(--muted); font-size: 14px; line-height: 1.35; }
+    .lab-azure-list { list-style: none; margin: 12px 0 0; padding: 0; font-family: var(--head); font-size: 13px; line-height: 1.5; }
+    .lab-azure-list li::before { content: '> '; color: var(--blue); font-family: var(--pixel); font-size: 9px; }
+    .lab-azure-bus { display: flex; align-items: center; gap: 14px; margin-top: 14px; padding: 12px 14px; border: 1px dashed rgba(167, 161, 232, .7); border-radius: 8px; font-family: var(--head); font-size: 14px; line-height: 1.45; }
+    .lab-azure-bus-label { flex: 0 0 auto; color: var(--yellow-l); }
+    .lab-azure-status { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .lab-azure-status span { padding: 7px 9px; border: 1px solid rgba(167, 161, 232, .7); border-radius: 999px; color: #fff; }
 
     /* C64 READY footer */
     .ready-wrap { background: var(--c64-fg); padding: 34px; margin-top: 40px; }
@@ -309,9 +296,8 @@
       .shelf-more img { height: 170px; max-width: 128px; }
       .shelf-more img:nth-child(n+4) { display: none; }
       .sec-head h2 { font-size: 36px; }
-      .lab-map { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .lab-node:not(:last-child)::after { display: none; }
-      .lab-translation-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .lab-azure-stack { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .lab-azure-module:not(:last-child)::after { display: none; }
     }
     @media (max-width: 560px) {
       .tabs a { font-size: 7px; height: 46px; }
@@ -331,17 +317,13 @@
       .achievement-year { justify-self: start; padding: 0 12px; }
       .ready { font-size: 10px; padding: 20px; }
       .ready-wrap { padding: 18px; }
-      .lab-architecture { padding: 18px; }
-      .lab-architecture-head { display: block; }
-      .lab-ready { display: inline-block; margin-top: 14px; }
-      .lab-map { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-      .lab-node { min-height: 138px; }
-      .lab-bus { display: block; }
-      .lab-bus-label { display: block; margin-bottom: 6px; }
-      .lab-translation { padding: 16px; }
-      .lab-translation-head { display: block; }
-      .lab-translation-head span { display: block; margin-top: 8px; }
-      .lab-translation-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .lab-azure { padding: 18px; }
+      .lab-azure-head { display: block; }
+      .lab-azure-ready { display: inline-block; margin-top: 14px; }
+      .lab-azure-stack { grid-template-columns: 1fr; gap: 10px; }
+      .lab-azure-module { min-height: 0; }
+      .lab-azure-bus { display: block; }
+      .lab-azure-bus-label { display: block; margin-bottom: 6px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -1052,111 +1034,93 @@
     <section class="group" data-group="lab">
       <div class="sec-head" id="lab">
         <h2>THE LAB TODAY</h2>
-        <p>LOAD the old vocabulary. RUN it on today's stack.</p>
+        <p>LOAD THE PLATFORM. RUN THE WORKLOAD.</p>
       </div>
       <div class="lab-section">
       <div class="lab-intro">
-        The vocabulary is old: load, run, memory, bus. The work is current: connect people, protect identity, teach machines, and ship systems that hold up under pressure.
+        Azure is the modern machine room: identity at the edge, workloads in motion, intelligence on demand, and telemetry over the whole stack.
       </div>
-      <div class="lab-grid">
-        <div class="lab-card">
-          <div class="lab-card-icon">☁️</div>
-          <div class="lab-card-title">Azure Infrastructure</div>
-          <div class="lab-card-desc">Cloud architecture, hybrid connectivity, migration patterns, FinOps cost optimization. Building at scale.</div>
-        </div>
-        <div class="lab-card">
-          <div class="lab-card-icon">🤖</div>
-          <div class="lab-card-title">AI & Copilot</div>
-          <div class="lab-card-desc">AI Foundry, Copilot extensibility, M365 integrations, intelligent automation. The next interface.</div>
-        </div>
-        <div class="lab-card">
-          <div class="lab-card-icon">🔐</div>
-          <div class="lab-card-title">Security & Identity</div>
-          <div class="lab-card-desc">Zero Trust architecture, Entra ID, Defender XDR, conditional access. Protecting the perimeter that no longer exists.</div>
-        </div>
-        <div class="lab-card">
-          <div class="lab-card-icon">⚙️</div>
-          <div class="lab-card-title">DevOps & Automation</div>
-          <div class="lab-card-desc">GitHub Actions, Infrastructure as Code, monitoring pipelines, GitOps patterns. Shipping faster.</div>
-        </div>
-      </div>
-      <div class="lab-architecture">
-        <div class="lab-architecture-head">
+      <div class="lab-azure">
+        <div class="lab-azure-head">
           <div>
-            <div class="lab-prompt">LOAD "EPYXLAB CLOUD",8,1</div>
-            <h3>THE CLOUD MEMORY MAP</h3>
-            <p>Old-school flow. Current stack.</p>
+            <div class="lab-azure-prompt">**** EPYXLAB AZURE CONSOLE ****</div>
+            <div class="lab-azure-load">LOAD "AZURE STACK",8,1</div>
+            <h3>THE MODERN MACHINE ROOM</h3>
+            <p>Current Azure services. Old-school interface.</p>
           </div>
-          <div class="lab-ready">READY.</div>
+          <div class="lab-azure-ready">READY.</div>
         </div>
-        <div class="lab-map" aria-label="EpyxLab modern cloud architecture">
-          <div class="lab-node">
-            <div class="lab-node-code">01 / INPUT</div>
-            <div class="lab-node-title">People & Signals</div>
-            <div class="lab-node-desc">Users, APIs, and telemetry entering the system.</div>
+        <div class="lab-azure-stack" role="group" aria-label="EpyxLab Azure service architecture">
+          <div class="lab-azure-module">
+            <div class="lab-azure-code">01 / FAST LOAD</div>
+            <div class="lab-azure-title">EDGE</div>
+            <div class="lab-azure-role">Get traffic in.</div>
+            <ul class="lab-azure-list">
+              <li>Azure Front Door</li>
+              <li>API Management</li>
+              <li>Global ingress</li>
+            </ul>
           </div>
-          <div class="lab-node">
-            <div class="lab-node-code">02 / FAST LOAD</div>
-            <div class="lab-node-title">Connectivity</div>
-            <div class="lab-node-desc">Hybrid connectivity and migration patterns.</div>
+          <div class="lab-azure-module">
+            <div class="lab-azure-code">02 / MEMORY MAP</div>
+            <div class="lab-azure-title">IDENTITY</div>
+            <div class="lab-azure-role">Know who is calling.</div>
+            <ul class="lab-azure-list">
+              <li>Microsoft Entra ID</li>
+              <li>Managed identities</li>
+              <li>Azure Key Vault</li>
+            </ul>
           </div>
-          <div class="lab-node">
-            <div class="lab-node-code">03 / MEMORY MAP</div>
-            <div class="lab-node-title">Guardrails</div>
-            <div class="lab-node-desc">Entra ID, Zero Trust, and Defender XDR.</div>
+          <div class="lab-azure-module">
+            <div class="lab-azure-code">03 / RUN</div>
+            <div class="lab-azure-title">COMPUTE</div>
+            <div class="lab-azure-role">Run the workload.</div>
+            <ul class="lab-azure-list">
+              <li>Azure Container Apps</li>
+              <li>Azure Functions</li>
+              <li>AKS</li>
+            </ul>
           </div>
-          <div class="lab-node">
-            <div class="lab-node-code">04 / RUN</div>
-            <div class="lab-node-title">Cloud Engine</div>
-            <div class="lab-node-desc">Azure infrastructure, scale, and automation.</div>
+          <div class="lab-azure-module">
+            <div class="lab-azure-code">04 / DATA BANK</div>
+            <div class="lab-azure-title">DATA</div>
+            <div class="lab-azure-role">Keep state useful.</div>
+            <ul class="lab-azure-list">
+              <li>Azure Storage</li>
+              <li>Azure SQL</li>
+              <li>Cosmos DB</li>
+            </ul>
           </div>
-          <div class="lab-node">
-            <div class="lab-node-code">05 / SID</div>
-            <div class="lab-node-title">Intelligence</div>
-            <div class="lab-node-desc">AI Foundry, Copilot, and intelligent automation.</div>
+          <div class="lab-azure-module">
+            <div class="lab-azure-code">05 / SID</div>
+            <div class="lab-azure-title">INTELLIGENCE</div>
+            <div class="lab-azure-role">Make signals useful.</div>
+            <ul class="lab-azure-list">
+              <li>Azure AI Foundry</li>
+              <li>Azure OpenAI Service</li>
+              <li>Copilot</li>
+            </ul>
           </div>
-          <div class="lab-node">
-            <div class="lab-node-code">06 / DISPLAY</div>
-            <div class="lab-node-title">Experience</div>
-            <div class="lab-node-desc">M365 integrations, dashboards, and digital experiences.</div>
+          <div class="lab-azure-module">
+            <div class="lab-azure-code">06 / DISPLAY</div>
+            <div class="lab-azure-title">OPERATIONS</div>
+            <div class="lab-azure-role">See the whole machine.</div>
+            <ul class="lab-azure-list">
+              <li>Azure Monitor</li>
+              <li>Application Insights</li>
+              <li>Defender for Cloud</li>
+            </ul>
           </div>
         </div>
-        <div class="lab-bus">
-          <span class="lab-bus-label">CONTROL BUS</span>
-          <span>GitHub Actions · Infrastructure as Code · GitOps · monitoring pipelines</span>
+        <div class="lab-azure-bus">
+          <span class="lab-azure-bus-label">CONTROL BUS</span>
+          <span>GitHub Actions → Bicep → Azure Policy → Azure Monitor → Cost Management / FinOps</span>
         </div>
-      </div>
-      <div class="lab-translation">
-        <div class="lab-translation-head">
-          <h3>THE OLD-SCHOOL TRANSLATOR</h3>
-          <span>THEN → NOW</span>
-        </div>
-        <div class="lab-translation-grid">
-          <div class="lab-translation-card">
-            <div class="lab-translation-old">JOYSTICK</div>
-            <div class="lab-translation-new">API</div>
-            <div class="lab-translation-desc">Input becomes requests, events, and signals.</div>
-          </div>
-          <div class="lab-translation-card">
-            <div class="lab-translation-old">FAST LOAD</div>
-            <div class="lab-translation-new">CI/CD</div>
-            <div class="lab-translation-desc">Waiting becomes repeatable delivery.</div>
-          </div>
-          <div class="lab-translation-card">
-            <div class="lab-translation-old">MEMORY MAP</div>
-            <div class="lab-translation-new">CLOUD</div>
-            <div class="lab-translation-desc">A fixed address becomes a living architecture.</div>
-          </div>
-          <div class="lab-translation-card">
-            <div class="lab-translation-old">SAVE GAME</div>
-            <div class="lab-translation-new">GIT</div>
-            <div class="lab-translation-desc">Progress becomes versioned and recoverable.</div>
-          </div>
-          <div class="lab-translation-card">
-            <div class="lab-translation-old">HIGH SCORE</div>
-            <div class="lab-translation-new">TELEMETRY</div>
-            <div class="lab-translation-desc">Success becomes visible, measurable, improvable.</div>
-          </div>
+        <div class="lab-azure-status">
+          <span>SECURE</span>
+          <span>OBSERVABLE</span>
+          <span>REPEATABLE</span>
+          <span>AI-READY</span>
         </div>
       </div>
     </div>
