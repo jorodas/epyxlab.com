@@ -268,6 +268,15 @@
     .lab-node-desc { margin-top: 7px; font-family: var(--head); font-size: 14px; line-height: 1.45; }
     .lab-bus { display: flex; align-items: center; gap: 14px; margin-top: 14px; padding: 12px 14px; border: 1px dashed rgba(167, 161, 232, .7); border-radius: 8px; font-family: var(--head); font-size: 14px; line-height: 1.45; }
     .lab-bus-label { flex: 0 0 auto; color: var(--yellow-l); }
+    .lab-translation { margin-top: 20px; padding: 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+    .lab-translation-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+    .lab-translation-head h3 { margin: 0; font-family: var(--head); font-size: 24px; font-weight: 600; }
+    .lab-translation-head span { font-family: var(--pixel); font-size: 10px; color: var(--violet); }
+    .lab-translation-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 16px; }
+    .lab-translation-card { padding: 14px 12px; border-radius: 8px; background: var(--bg); border: 1px solid var(--line); }
+    .lab-translation-old { font-family: var(--pixel); font-size: 10px; color: var(--violet); }
+    .lab-translation-new { margin-top: 8px; font-family: var(--head); font-size: 18px; font-weight: 600; color: var(--blue); }
+    .lab-translation-desc { margin-top: 6px; font-size: 14px; line-height: 1.45; }
 
     /* C64 READY footer */
     .ready-wrap { background: var(--c64-fg); padding: 34px; margin-top: 40px; }
@@ -302,6 +311,7 @@
       .sec-head h2 { font-size: 36px; }
       .lab-map { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .lab-node:not(:last-child)::after { display: none; }
+      .lab-translation-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
     @media (max-width: 560px) {
       .tabs a { font-size: 7px; height: 46px; }
@@ -328,6 +338,10 @@
       .lab-node { min-height: 138px; }
       .lab-bus { display: block; }
       .lab-bus-label { display: block; margin-bottom: 6px; }
+      .lab-translation { padding: 16px; }
+      .lab-translation-head { display: block; }
+      .lab-translation-head span { display: block; margin-top: 8px; }
+      .lab-translation-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -1038,11 +1052,11 @@
     <section class="group" data-group="lab">
       <div class="sec-head" id="lab">
         <h2>THE LAB TODAY</h2>
-        <p>Same spirit. New medium.</p>
+        <p>LOAD the old vocabulary. RUN it on today's stack.</p>
       </div>
       <div class="lab-section">
       <div class="lab-intro">
-        EpyxLab is a cloud innovation lab named in tribute to the studio that proved you could build extraordinary things with limited resources. The constraints have changed — from 64 KB of RAM to infinite cloud compute — but the philosophy hasn't: build something people remember.
+        The vocabulary is old: load, run, memory, bus. The work is current: connect people, protect identity, teach machines, and ship systems that hold up under pressure.
       </div>
       <div class="lab-grid">
         <div class="lab-card">
@@ -1110,6 +1124,39 @@
         <div class="lab-bus">
           <span class="lab-bus-label">CONTROL BUS</span>
           <span>GitHub Actions · Infrastructure as Code · GitOps · monitoring pipelines</span>
+        </div>
+      </div>
+      <div class="lab-translation">
+        <div class="lab-translation-head">
+          <h3>THE OLD-SCHOOL TRANSLATOR</h3>
+          <span>THEN → NOW</span>
+        </div>
+        <div class="lab-translation-grid">
+          <div class="lab-translation-card">
+            <div class="lab-translation-old">JOYSTICK</div>
+            <div class="lab-translation-new">API</div>
+            <div class="lab-translation-desc">Input becomes requests, events, and signals.</div>
+          </div>
+          <div class="lab-translation-card">
+            <div class="lab-translation-old">FAST LOAD</div>
+            <div class="lab-translation-new">CI/CD</div>
+            <div class="lab-translation-desc">Waiting becomes repeatable delivery.</div>
+          </div>
+          <div class="lab-translation-card">
+            <div class="lab-translation-old">MEMORY MAP</div>
+            <div class="lab-translation-new">CLOUD</div>
+            <div class="lab-translation-desc">A fixed address becomes a living architecture.</div>
+          </div>
+          <div class="lab-translation-card">
+            <div class="lab-translation-old">SAVE GAME</div>
+            <div class="lab-translation-new">GIT</div>
+            <div class="lab-translation-desc">Progress becomes versioned and recoverable.</div>
+          </div>
+          <div class="lab-translation-card">
+            <div class="lab-translation-old">HIGH SCORE</div>
+            <div class="lab-translation-new">TELEMETRY</div>
+            <div class="lab-translation-desc">Success becomes visible, measurable, improvable.</div>
+          </div>
         </div>
       </div>
     </div>
