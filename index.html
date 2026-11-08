@@ -278,7 +278,16 @@
     .lab-chart-area { fill: url(#labSignalFill); opacity: .24; }
     .lab-chart-line { fill: none; stroke: var(--blue); stroke-linecap: round; stroke-linejoin: round; stroke-width: 4; }
     .lab-chart-point { fill: var(--green); stroke: var(--paper); stroke-width: 3; }
+    .lab-chart-point { cursor: pointer; }
+    .lab-chart-point.is-active { fill: var(--yellow); stroke: var(--c64-bg); stroke-width: 4; }
     .lab-chart-key { margin-top: 6px; color: var(--muted); font-family: var(--head); font-size: 13px; }
+    .lab-signal-controls { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 6px; margin-top: 12px; }
+    .lab-signal-tab { padding: 8px 4px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); color: var(--muted); cursor: pointer; font-family: var(--pixel); font-size: 9px; }
+    .lab-signal-tab:hover, .lab-signal-tab[aria-selected="true"] { border-color: var(--c64-bg); background: var(--c64-bg); color: #fff; }
+    .lab-signal-readout { display: grid; grid-template-columns: 100px 1fr; gap: 4px 10px; margin-top: 10px; padding: 10px 12px; border-radius: 6px; background: var(--c64-bg); color: #fff; }
+    .lab-signal-readout-code { grid-row: 1 / span 2; align-self: center; color: var(--yellow-l); font-family: var(--pixel); font-size: 9px; }
+    .lab-signal-readout-title { font-family: var(--head); font-size: 15px; font-weight: 600; }
+    .lab-signal-readout-copy { color: var(--c64-fg); font-family: var(--head); font-size: 13px; line-height: 1.4; }
     .lab-layer-list { margin-top: 14px; }
     .lab-layer-row { display: grid; grid-template-columns: 76px 1fr 22px; align-items: center; gap: 8px; margin-top: 11px; }
     .lab-layer-row:first-child { margin-top: 0; }
@@ -357,6 +366,9 @@
       .lab-telemetry-head { display: block; }
       .lab-telemetry-note { display: block; margin-top: 8px; }
       .lab-layer-row { grid-template-columns: 68px 1fr 22px; }
+      .lab-signal-controls { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .lab-signal-readout { grid-template-columns: 1fr; }
+      .lab-signal-readout-code { grid-row: auto; }
     }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
@@ -1183,12 +1195,12 @@
               <line class="lab-chart-gridline" x1="42" y1="180" x2="590" y2="180"></line>
               <path class="lab-chart-area" d="M48 174 L150 142 L252 151 L354 106 L456 116 L558 62 L558 180 L48 180 Z"></path>
               <polyline class="lab-chart-line" points="48,174 150,142 252,151 354,106 456,116 558,62"></polyline>
-              <circle class="lab-chart-point" cx="48" cy="174" r="6"></circle>
-              <circle class="lab-chart-point" cx="150" cy="142" r="6"></circle>
-              <circle class="lab-chart-point" cx="252" cy="151" r="6"></circle>
-              <circle class="lab-chart-point" cx="354" cy="106" r="6"></circle>
-              <circle class="lab-chart-point" cx="456" cy="116" r="6"></circle>
-              <circle class="lab-chart-point" cx="558" cy="62" r="6"></circle>
+              <circle class="lab-chart-point is-active" data-stage="plan" tabindex="0" role="button" aria-pressed="true" aria-label="Plan stage" cx="48" cy="174" r="6"></circle>
+              <circle class="lab-chart-point" data-stage="build" tabindex="0" role="button" aria-pressed="false" aria-label="Build stage" cx="150" cy="142" r="6"></circle>
+              <circle class="lab-chart-point" data-stage="test" tabindex="0" role="button" aria-pressed="false" aria-label="Test stage" cx="252" cy="151" r="6"></circle>
+              <circle class="lab-chart-point" data-stage="ship" tabindex="0" role="button" aria-pressed="false" aria-label="Ship stage" cx="354" cy="106" r="6"></circle>
+              <circle class="lab-chart-point" data-stage="watch" tabindex="0" role="button" aria-pressed="false" aria-label="Watch stage" cx="456" cy="116" r="6"></circle>
+              <circle class="lab-chart-point" data-stage="learn" tabindex="0" role="button" aria-pressed="false" aria-label="Learn stage" cx="558" cy="62" r="6"></circle>
               <text class="lab-chart-axis" x="48" y="207" text-anchor="middle">PLAN</text>
               <text class="lab-chart-axis" x="150" y="207" text-anchor="middle">BUILD</text>
               <text class="lab-chart-axis" x="252" y="207" text-anchor="middle">TEST</text>
@@ -1197,6 +1209,19 @@
               <text class="lab-chart-axis" x="558" y="207" text-anchor="middle">LEARN</text>
             </svg>
             <div class="lab-chart-key">GitHub Actions → Bicep → Azure Monitor</div>
+            <div class="lab-signal-controls" role="tablist" aria-label="Deployment stages">
+              <button class="lab-signal-tab" type="button" role="tab" data-stage="plan" aria-selected="true">PLAN</button>
+              <button class="lab-signal-tab" type="button" role="tab" data-stage="build" aria-selected="false">BUILD</button>
+              <button class="lab-signal-tab" type="button" role="tab" data-stage="test" aria-selected="false">TEST</button>
+              <button class="lab-signal-tab" type="button" role="tab" data-stage="ship" aria-selected="false">SHIP</button>
+              <button class="lab-signal-tab" type="button" role="tab" data-stage="watch" aria-selected="false">WATCH</button>
+              <button class="lab-signal-tab" type="button" role="tab" data-stage="learn" aria-selected="false">LEARN</button>
+            </div>
+            <div class="lab-signal-readout" id="labSignalReadout" role="tabpanel" aria-live="polite">
+              <span class="lab-signal-readout-code" data-signal-code>01 / PLAN</span>
+              <strong class="lab-signal-readout-title" data-signal-title>Map the workload</strong>
+              <span class="lab-signal-readout-copy" data-signal-copy>Bicep and architecture decisions define the shape before the first deployment.</span>
+            </div>
           </div>
           <div class="lab-chart">
             <div class="lab-chart-head">
@@ -1266,6 +1291,42 @@
       const start = () => { if (reduce) return; clearInterval(timer); timer = setInterval(() => show(current + 1), 7000); };
       dots.forEach((d, k) => d.addEventListener('click', () => { show(k); start(); }));
       show(0); start();
+
+      const signalData = {
+        plan: { code: '01 / PLAN', title: 'Map the workload', copy: 'Bicep and architecture decisions define the shape before the first deployment.' },
+        build: { code: '02 / BUILD', title: 'Make it repeatable', copy: 'GitHub Actions turns source into a consistent, auditable build.' },
+        test: { code: '03 / TEST', title: 'Check the guardrails', copy: 'Identity, policy, and workload behavior get checked before release.' },
+        ship: { code: '04 / SHIP', title: 'Run the workload', copy: 'Container Apps, Functions, or AKS receive the workload.' },
+        watch: { code: '05 / WATCH', title: 'Observe the machine', copy: 'Azure Monitor and Application Insights show what the system is doing.' },
+        learn: { code: '06 / LEARN', title: 'Feed the next decision', copy: 'Cost Management and FinOps turn telemetry into the next move.' }
+      };
+      const signalReadout = document.getElementById('labSignalReadout');
+      const signalTabs = [...document.querySelectorAll('.lab-signal-tab')];
+      const signalPoints = [...document.querySelectorAll('.lab-chart-point[data-stage]')];
+      const setSignal = (key) => {
+        const data = signalData[key];
+        if (!data || !signalReadout) return;
+        signalTabs.forEach((tab) => {
+          const active = tab.dataset.stage === key;
+          tab.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        signalPoints.forEach((point) => {
+          const active = point.dataset.stage === key;
+          point.classList.toggle('is-active', active);
+          point.setAttribute('aria-pressed', active ? 'true' : 'false');
+        });
+        signalReadout.querySelector('[data-signal-code]').textContent = data.code;
+        signalReadout.querySelector('[data-signal-title]').textContent = data.title;
+        signalReadout.querySelector('[data-signal-copy]').textContent = data.copy;
+      };
+      signalTabs.forEach((tab) => tab.addEventListener('click', () => setSignal(tab.dataset.stage)));
+      signalPoints.forEach((point) => {
+        point.addEventListener('click', () => setSignal(point.dataset.stage));
+        point.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); setSignal(point.dataset.stage); }
+        });
+      });
+      setSignal('plan');
 
       const photos = [...document.querySelectorAll('.welcome-photos img')];
       if (photos.length > 1 && !reduce) {
