@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EpyxLab — C64 Game Library</title>
+  <meta name="description" content="The first 50 games from C64online's curated Top 100 Commodore 64 games list, ready to play in your browser.">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f3eee6; --paper: #fffaf2; --ink: #2d3138; --muted: #746b61; --line: #ded5c8;
+      --red: #e60c34; --orange: #f5661a; --yellow: #d6dd1b; --green: #2cc162; --blue: #0070e8;
+      --violet: #6c5eb5; --c64-bg: #352879; --c64-fg: #a7a1e8;
+      --head: 'Outfit', system-ui, sans-serif; --body: Georgia, 'Times New Roman', serif; --pixel: 'Press Start 2P', monospace;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .library-wrap { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+    .library-hero { padding: 18px 0 46px; background: var(--c64-bg); color: #fff; }
+    .library-topbar { display: flex; justify-content: space-between; gap: 20px; width: min(1180px, calc(100% - 48px)); margin: 0 auto 54px; font-family: var(--head); font-size: 13px; }
+    .library-topbar a { color: var(--c64-fg); }
+    .library-topbar a:hover { color: #fff; }
+    .c64badge { display: inline-flex; align-items: center; gap: 16px; height: 54px; padding: 0 24px; border-radius: 999px; background: #5b534d; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1); }
+    .c64badge .wordmark { font-family: var(--head); font-size: 30px; letter-spacing: .5px; line-height: 1; }
+    .c64badge .bars { display: flex; flex-direction: column; gap: 3px; width: 96px; }
+    .c64badge .bars i { display: block; height: 3px; }
+    .c64badge .bars i:nth-child(1) { background: #d9413a; }
+    .c64badge .bars i:nth-child(2) { background: #e9862d; }
+    .c64badge .bars i:nth-child(3) { background: #f0c233; }
+    .c64badge .bars i:nth-child(4) { background: #3fa45a; }
+    .c64badge .bars i:nth-child(5) { background: #2f86c8; }
+    .library-kicker { margin-top: 30px; color: var(--yellow); font-family: var(--pixel); font-size: 11px; letter-spacing: .6px; }
+    h1 { max-width: 760px; margin: 18px 0 10px; font-family: var(--head); font-size: clamp(42px, 8vw, 82px); font-weight: 600; letter-spacing: -3px; line-height: .95; }
+    .library-hero p { max-width: 700px; margin: 0; color: var(--c64-fg); font-size: 20px; line-height: 1.45; }
+    .library-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+    .library-button { display: inline-block; padding: 12px 16px; border-radius: 6px; background: var(--green); color: #fff; font-family: var(--head); font-size: 14px; font-weight: 600; }
+    .library-button:hover { filter: brightness(1.08); text-decoration: none; }
+    .library-button.secondary { background: transparent; border: 1px solid var(--c64-fg); color: #fff; }
+    .library-intro { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; padding: 36px 0 24px; border-bottom: 1px solid var(--line); }
+    .library-intro p { max-width: 650px; margin: 0; color: var(--muted); font-size: 17px; line-height: 1.5; }
+    .library-stats { display: flex; flex: 0 0 auto; gap: 18px; }
+    .library-stat { min-width: 90px; }
+    .library-stat strong { display: block; color: var(--violet); font-family: var(--pixel); font-size: 18px; }
+    .library-stat span { display: block; margin-top: 8px; color: var(--muted); font-family: var(--head); font-size: 11px; text-transform: uppercase; }
+    .library-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 18px; margin: 28px 0 18px; }
+    .library-toolbar h2 { margin: 0; font-family: var(--head); font-size: 34px; font-weight: 600; letter-spacing: -1px; }
+    .library-search { width: min(330px, 100%); padding: 12px 14px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper); color: var(--ink); font: 14px var(--head); }
+    .library-search:focus { outline: 2px solid var(--blue); outline-offset: 2px; }
+    .library-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(245px, 1fr)); gap: 14px; }
+    .library-card { display: flex; flex-direction: column; min-height: 170px; padding: 16px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); transition: transform .15s, box-shadow .15s; }
+    .library-card:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(40, 48, 58, .12); }
+    .library-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .library-rank { display: inline-block; padding: 7px 8px; border-radius: 4px; background: var(--violet); color: #fff; font-family: var(--pixel); font-size: 10px; }
+    .library-card:nth-child(4n+1) .library-rank { background: var(--red); }
+    .library-card:nth-child(4n+2) .library-rank { background: var(--orange); }
+    .library-card:nth-child(4n+3) .library-rank { background: var(--green); }
+    .library-card:nth-child(4n+4) .library-rank { background: var(--blue); }
+    .library-type { color: var(--muted); font-family: var(--pixel); font-size: 8px; text-align: right; }
+    .library-card h3 { margin: 20px 0 0; font-family: var(--head); font-size: 22px; font-weight: 600; line-height: 1.1; }
+    .library-play { display: block; margin-top: auto; padding: 10px 12px; border-radius: 6px; background: #eef5ff; color: var(--blue); font-family: var(--head); font-size: 12px; font-weight: 600; text-align: center; }
+    .library-play:hover { background: var(--blue); color: #fff; text-decoration: none; }
+    .library-empty { display: none; padding: 20px; border: 1px dashed var(--line); color: var(--muted); font-family: var(--head); }
+    .library-extra { display: grid; grid-template-columns: minmax(0, 1fr) minmax(260px, .7fr); gap: 16px; margin: 38px 0 60px; }
+    .library-extra-card { padding: 22px; border-radius: 10px; background: var(--c64-bg); color: #fff; }
+    .library-extra-card h2 { margin: 12px 0 8px; font-family: var(--head); font-size: 30px; font-weight: 600; }
+    .library-extra-card p { margin: 0; color: var(--c64-fg); font-size: 16px; line-height: 1.5; }
+    .library-extra-label { color: var(--yellow); font-family: var(--pixel); font-size: 10px; }
+    .library-extra-note { padding: 22px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); }
+    .library-extra-note h2 { margin: 0 0 8px; font-family: var(--head); font-size: 23px; font-weight: 600; }
+    .library-extra-note p { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
+    footer { padding: 22px 0 30px; background: #2d3138; color: #c9c4bb; font-family: var(--head); font-size: 13px; text-align: center; }
+    footer a { color: #fff; }
+    @media (max-width: 760px) {
+      .library-topbar { margin-bottom: 36px; }
+      .library-intro, .library-toolbar { display: block; }
+      .library-stats { margin-top: 22px; }
+      .library-search { margin-top: 16px; }
+      .library-extra { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 520px) {
+      .library-wrap, .library-topbar { width: min(100% - 32px, 1180px); }
+      .library-topbar { font-size: 11px; }
+      .c64badge { gap: 10px; padding: 0 16px; }
+      .c64badge .wordmark { font-size: 23px; }
+      .c64badge .bars { width: 64px; }
+      h1 { letter-spacing: -1.5px; }
+      .library-hero p { font-size: 17px; }
+      .library-stats { gap: 10px; }
+      .library-stat strong { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="library-hero">
+    <div class="library-topbar">
+      <a href="index.html">← EPYXLAB / HOME</a>
+      <a href="https://c64online.com/top-100-commodore-64-games-now-playable-in-your-browser/" target="_blank" rel="noopener noreferrer">SOURCE: C64ONLINE TOP 100 ↗</a>
+    </div>
+    <div class="library-wrap">
+      <div class="c64badge" role="img" aria-label="EpyxLab Commodore 64">
+        <span class="wordmark">epyxlab</span>
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      </div>
+      <div class="library-kicker">**** C64 GAME LIBRARY ****</div>
+      <h1>TOP 50 / LOAD &amp; PLAY</h1>
+      <p>Fifty Commodore 64 classics, ranked by C64online and linked to their browser emulator. No disk swap. No download. Just press fire.</p>
+      <div class="library-actions">
+        <a class="library-button" href="index.html#catalog">RETURN TO THE CATALOG</a>
+        <a class="library-button secondary" href="https://c64online.com/c64-games/" target="_blank" rel="noopener noreferrer">BROWSE 7,000+ MORE ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="library-wrap">
+    <section class="library-intro">
+      <p>This is the first 50 entries from C64online's editorial <a href="https://c64online.com/top-100-commodore-64-games-now-playable-in-your-browser/" target="_blank" rel="noopener noreferrer">Top 100 Commodore 64 Games</a> list. It is a sourced ranking, not a claim that one list can settle every retro argument.</p>
+      <div class="library-stats" aria-label="Library statistics">
+        <div class="library-stat"><strong>50</strong><span>ranked picks</span></div>
+        <div class="library-stat"><strong>50</strong><span>play links</span></div>
+        <div class="library-stat"><strong>0</strong><span>downloads</span></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="library-title">
+      <div class="library-toolbar">
+        <h2 id="library-title">THE PLAYABLE FIFTY</h2>
+        <input class="library-search" id="librarySearch" type="search" placeholder="SEARCH THE LIBRARY" aria-label="Search the C64 game library">
+      </div>
+      <div class="library-grid" id="libraryGrid"></div>
+      <p class="library-empty" id="libraryEmpty">No cartridge matched that search.</p>
+    </section>
+
+    <section class="library-extra" aria-labelledby="extra-title">
+      <article class="library-extra-card">
+        <div class="library-extra-label">**** REQUESTED EPYX EXTRA ****</div>
+        <h2 id="extra-title">SUPER CYCLE</h2>
+        <p>The motorcycle racer belongs on the shelf, even though C64online did not return a matching play page when this library was assembled.</p>
+      </article>
+      <aside class="library-extra-note">
+        <h2>Why a separate page?</h2>
+        <p>The homepage stays an Epyx history and Azure lab. This page can grow into a proper browser-playable cabinet without turning the main catalog into an endless scroll.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    Built by <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer">GitHub Copilot</a> · EpyxLab C64 Game Library · External games and emulators are hosted by C64online.
+  </footer>
+
+  <script>
+    (() => {
+      const games = [
+        { rank: 1, title: "Elite", tag: "SPACE / TRADING", url: "https://c64online.com/c64-games/elite-flicker-free-version/" },
+        { rank: 2, title: "The Last Ninja", tag: "ACTION / ADVENTURE", url: "https://c64online.com/c64-games/the-last-ninja/" },
+        { rank: 3, title: "Maniac Mansion", tag: "ADVENTURE / PUZZLE", url: "https://c64online.com/c64-games/8073/" },
+        { rank: 4, title: "Ghosts 'n Goblins", tag: "PLATFORM / ACTION", url: "https://c64online.com/c64-games/ghosts-n-goblins/" },
+        { rank: 5, title: "Impossible Mission", tag: "ACTION / PUZZLE", url: "https://c64online.com/c64-games/impossible-mission/" },
+        { rank: 6, title: "International Karate +", tag: "FIGHTING / ARCADE", url: "https://c64online.com/c64-games/ik/" },
+        { rank: 7, title: "Wizball", tag: "SHOOTER / PLATFORM", url: "https://c64online.com/c64-games/wizball/" },
+        { rank: 8, title: "Bruce Lee", tag: "PLATFORM / ACTION", url: "https://c64online.com/c64-games/bruce-lee/" },
+        { rank: 9, title: "Turrican", tag: "RUN & GUN", url: "https://c64online.com/c64-games/turrican/" },
+        { rank: 10, title: "Sid Meier's Pirates!", tag: "ADVENTURE / STRATEGY", url: "https://c64online.com/c64-games/pirates/" },
+        { rank: 11, title: "Boulder Dash", tag: "PUZZLE / ACTION", url: "https://c64online.com/c64-games/boulder-dash/" },
+        { rank: 12, title: "Bubble Bobble", tag: "ARCADE / CO-OP", url: "https://c64online.com/c64-games/bubble-bobble/" },
+        { rank: 13, title: "The Great Giana Sisters", tag: "PLATFORM / ACTION", url: "https://c64online.com/c64-games/the-great-giana-sisters/" },
+        { rank: 14, title: "The Sentinel", tag: "STRATEGY / PUZZLE", url: "https://c64online.com/c64-games/sentinel/" },
+        { rank: 15, title: "Summer Games II", tag: "SPORTS / OLYMPIC", url: "https://c64online.com/c64-games/summer-games-ii/" },
+        { rank: 16, title: "Paradroid", tag: "SHOOTER / STRATEGY", url: "https://c64online.com/c64-games/paradroid/" },
+        { rank: 17, title: "Uridium", tag: "SHOOTER / ARCADE", url: "https://c64online.com/c64-games/uridium/" },
+        { rank: 18, title: "Pitstop II", tag: "RACING / STRATEGY", url: "https://c64online.com/c64-games/pitstop-ii/" },
+        { rank: 19, title: "Skool Daze", tag: "ADVENTURE / SIM", url: "https://c64online.com/c64-games/skool-daze/" },
+        { rank: 20, title: "Archon: The Light and the Dark", tag: "STRATEGY / BOARD", url: "https://c64online.com/c64-games/archon-the-light-and-the-dark/" },
+        { rank: 21, title: "Wizard of Wor", tag: "ARCADE / SHOOTER", url: "https://c64online.com/c64-games/wizard-of-wor/" },
+        { rank: 22, title: "Armalyte", tag: "SHOOTER / ARCADE", url: "https://c64online.com/c64-games/armalyte/" },
+        { rank: 23, title: "Jumpman", tag: "PLATFORM / ACTION", url: "https://c64online.com/c64-games/jumpman/" },
+        { rank: 24, title: "Lode Runner", tag: "PUZZLE / PLATFORM", url: "https://c64online.com/c64-games/lode-runner/" },
+        { rank: 25, title: "Zak McKracken and the Alien Mindbenders", tag: "ADVENTURE / PUZZLE", url: "https://c64online.com/c64-games/zak-mckracken-and-the-alien-mindbenders/" },
+        { rank: 26, title: "Montezuma's Revenge", tag: "PLATFORM / ADVENTURE", url: "https://c64online.com/c64-games/montezumas-revenge/" },
+        { rank: 27, title: "M.U.L.E.", tag: "STRATEGY / ECONOMIC", url: "https://c64online.com/c64-games/m-u-l-e/" },
+        { rank: 28, title: "Defender of the Crown", tag: "STRATEGY / ADVENTURE", url: "https://c64online.com/c64-games/defender-of-the-crown/" },
+        { rank: 29, title: "Creatures", tag: "PLATFORM / ACTION", url: "https://c64online.com/c64-games/creatures/" },
+        { rank: 30, title: "Spy vs. Spy", tag: "ACTION / TWO PLAYER", url: "https://c64online.com/c64-games/spy-vs-spy/" },
+        { rank: 31, title: "California Games", tag: "SPORTS / EXTREME", url: "https://c64online.com/c64-games/california-games/" },
+        { rank: 32, title: "World Games", tag: "SPORTS / INTERNATIONAL", url: "https://c64online.com/c64-games/world-games/" },
+        { rank: 33, title: "MicroProse Soccer", tag: "SPORTS / FOOTBALL", url: "https://c64online.com/c64-games/microprose-soccer/" },
+        { rank: 34, title: "Buggy Boy", tag: "RACING / ARCADE", url: "https://c64online.com/c64-games/buggy-boy/" },
+        { rank: 35, title: "Nebulus", tag: "PLATFORM / PUZZLE", url: "https://c64online.com/c64-games/nebulus/" },
+        { rank: 36, title: "Dropzone", tag: "SHOOTER / RESCUE", url: "https://c64online.com/c64-games/dropzone/" },
+        { rank: 37, title: "Project Firestart", tag: "ACTION / ADVENTURE", url: "https://c64online.com/c64-games/project-firestart/" },
+        { rank: 38, title: "Space Taxi", tag: "ARCADE / PHYSICS", url: "https://c64online.com/c64-games/space-taxi/" },
+        { rank: 39, title: "Wasteland", tag: "RPG / ADVENTURE", url: "https://c64online.com/c64-games/wastelands/" },
+        { rank: 40, title: "Way of the Exploding Fist", tag: "FIGHTING / MARTIAL ARTS", url: "https://c64online.com/c64-games/way-of-the-exploding-fist-the/" },
+        { rank: 41, title: "Raid on Bungeling Bay", tag: "SHOOTER / STRATEGY", url: "https://c64online.com/c64-games/raid-on-bungeling-bay/" },
+        { rank: 42, title: "Zork I", tag: "ADVENTURE / TEXT", url: "https://c64online.com/c64-games/zork-i-the-great-underground-empire/" },
+        { rank: 43, title: "H.E.R.O.", tag: "ACTION / RESCUE", url: "https://c64online.com/c64-games/h-e-r-o/" },
+        { rank: 44, title: "Stunt Car Racer", tag: "RACING / STUNT", url: "https://c64online.com/c64-games/stunt-car-racer/" },
+        { rank: 45, title: "Little Computer People", tag: "SIMULATION / LIFE", url: "https://c64online.com/c64-games/little-computer-people/" },
+        { rank: 46, title: "The Bard's Tale", tag: "RPG / FANTASY", url: "https://c64online.com/c64-games/the-bards-tale/" },
+        { rank: 47, title: "Autoduel", tag: "ACTION / DRIVING", url: "https://c64online.com/c64-games/autoduel/" },
+        { rank: 48, title: "Forbidden Forest", tag: "ACTION / SURVIVAL", url: "https://c64online.com/c64-games/forbidden-forest/" },
+        { rank: 49, title: "Knight Lore", tag: "ACTION / ADVENTURE", url: "https://c64online.com/c64-games/knight-lore/" },
+        { rank: 50, title: "Last Ninja 2", tag: "ACTION / ADVENTURE", url: "https://c64online.com/c64-games/the-last-ninja-2/" }
+      ];
+      const grid = document.getElementById('libraryGrid');
+      const search = document.getElementById('librarySearch');
+      const empty = document.getElementById('libraryEmpty');
+      const render = () => {
+        const query = search.value.trim().toLowerCase();
+        const visible = games.filter((game) => `${game.title} ${game.tag}`.toLowerCase().includes(query));
+        grid.innerHTML = visible.map((game) => `
+          <article class="library-card">
+            <div class="library-card-top">
+              <span class="library-rank">#${String(game.rank).padStart(2, '0')}</span>
+              <span class="library-type">${game.tag}</span>
+            </div>
+            <h3>${game.title}</h3>
+            <a class="library-play" href="${game.url}" target="_blank" rel="noopener noreferrer">PLAY ON C64ONLINE ↗</a>
+          </article>
+        `).join('');
+        empty.style.display = visible.length ? 'none' : 'block';
+      };
+      search.addEventListener('input', render);
+      render();
+    })();
+  </script>
+</body>
+</html>
